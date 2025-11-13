@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="frontend/src/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <title>ShoeDev</title>
 </head>
 
@@ -28,7 +29,7 @@
 
 
     <!-- Colección de Temporada -->
-
+    <?php include 'frontend/templates/Temporadas.php' ?>
 
 
     <!-- Footer -->
@@ -36,7 +37,7 @@
 
 </body>
 
-
-<script type="module" src="frontend/src/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script src="frontend/src/js/main.js"></script>
 
 </html>

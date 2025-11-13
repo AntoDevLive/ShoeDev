@@ -30,3 +30,33 @@ function closeModal() {
     }, 400);
     mdoal.classList.add('fade-out');
 }
+
+
+
+
+
+const swiper = new Swiper('.swiper', {
+    slidesPerView: 1, // Por defecto móvil
+    spaceBetween: 20,
+    loop: true,
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+
+    breakpoints: {
+        768: {  // Tablet
+            slidesPerView: 3,
+        },
+        1024: { // Desktop
+            slidesPerView: 3,
+        },
+    },
+});
+

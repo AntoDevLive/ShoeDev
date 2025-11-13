@@ -25,6 +25,7 @@ input[type='number']:hover::-webkit-outer-spin-button {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -46,4 +47,129 @@ input[type='number']:hover::-webkit-outer-spin-button {
 
 .fade-out {
     animation: closeCart .4s;
+}
+
+
+
+/* CONTENEDOR GENERAL */
+.swiper-container {
+    width: 80%;
+    /* Por defecto, móvil y tablet 80% */
+    max-width: 1200px;
+    /* Máx. 1200px para desktop */
+    position: relative;
+}
+
+/* SWIPER */
+.swiper {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+.swiper-slide {
+    border: 1px solid lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+/* BOTONES */
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute !important;
+    top: 50%;
+    transform: translateY(-50%);
+    color: orange !important;
+    z-index: 20;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+    box-shadow: 0px 2px 6px rgb(56, 56, 56);
+}
+
+
+.swiper-button-prev {
+    left: -18px !important;
+}
+
+.swiper-button-next {
+    right: -18px !important;
+}
+
+/* PAGINACIÓN */
+.swiper-pagination {
+    position: relative !important;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: orange !important;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+/* IMÁGENES */
+.img-container {
+    width: 100%;
+    height: 350px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: .3s;
+}
+
+.swiper-slide:hover .img-container img {
+    transform: scale(1.1);
+}
+
+.swiper-slide:hover {
+    border: 1px solid orange;
+}
+
+.info {
+    font-size: 20px;
+    padding-block: 20px;
+    font-weight: bold;
+}
+
+.info-footer {
+    font-size: 23px;
+    color: #e66621;
+    font-weight: 700;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.info-footer button {
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 8px;
+    padding: 7px 10px;
+    cursor: pointer;
+    background-color: rgb(228, 228, 228);
+    border: 1px solid lightgray;
+    transition: .3s;
 }
