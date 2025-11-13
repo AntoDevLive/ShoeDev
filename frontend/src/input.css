@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+input[type='number']:hover::-webkit-inner-spin-button,
+input[type='number']:hover::-webkit-outer-spin-button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+
+@keyframes openCart {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes closeCart {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: openCart .4s;
+}
+
+.fade-out {
+    animation: closeCart .4s;
+}
