@@ -1,3 +1,3 @@
-<?php 
+<?php
 
-require 'frontend/views/index.view.php';
+require 'backend/controllers/producto_controller.php';

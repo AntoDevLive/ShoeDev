@@ -11,20 +11,23 @@
 
 <body class="min-h-screen text-gray-900">
 
-    <!-- MODAL -->
+    <!-- Modal -->
     <div id="modal" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
-    <!-- HEADER -->
+
+    <!-- Header -->
     <?php include 'frontend/templates/Header.php' ?>
 
-    <!-- CARRITO -->
+
+    <!-- Carrito -->
     <?php include 'frontend/templates/Carrito.php' ?>
 
-    <!-- HERO -->
-    <?php include 'frontend/templates/Hero.php' ?>
+
+    <!-- Hero -->
+    <?php include 'frontend/templates/Hero.php'; ?>
 
 
-    <!-- CATEGORÍAS -->
+    <!-- Categorías -->
     <?php include 'frontend/templates/Categorias.php' ?>
 
 
@@ -39,5 +42,4 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script src="frontend/src/js/main.js"></script>
-
 </html>

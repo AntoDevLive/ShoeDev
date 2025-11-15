@@ -16,7 +16,7 @@
                     <!-- Slides -->
                     <div class="swiper-slide">
                         <div class="img-container">
-                            <img src="frontend/src/assets/ref4.jpg" alt="">
+                            <img src="frontend/src/assets/model4.jpg" alt="">
                         </div>
                         <div class="info">
                             <p>Velocity Runner</p>
@@ -29,7 +29,7 @@
 
                     <div class="swiper-slide">
                         <div class="img-container">
-                            <img src="frontend/src/assets/ref5.jpg" alt="">
+                            <img src="frontend/src/assets/model5.jpg" alt="">
                         </div>
                         <div class="info">
                             <p>Ultra Stride</p>
@@ -42,7 +42,7 @@
 
                     <div class="swiper-slide">
                         <div class="img-container">
-                            <img src="frontend/src/assets/ref6.jpg" alt="">
+                            <img src="frontend/src/assets/model6.jpg" alt="">
                         </div>
                         <div class="info">
                             <p>Classic Low</p>
@@ -55,7 +55,7 @@
 
                     <div class="swiper-slide">
                         <div class="img-container">
-                            <img src="frontend/src/assets/ref7.jpg" alt="">
+                            <img src="frontend/src/assets/model7.jpg" alt="">
                         </div>
                         <div class="info">
                             <p>Power Jump</p>
@@ -68,7 +68,7 @@
 
                     <div class="swiper-slide">
                         <div class="img-container">
-                            <img src="frontend/src/assets/ref1.jpg" alt="">
+                            <img src="frontend/src/assets/model1.jpg" alt="">
                         </div>
                         <div class="info">
                             <p>Motion Trainer</p>

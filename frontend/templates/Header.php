@@ -6,7 +6,7 @@
                         Shoe<span class="text-orange-600">Dev</span>
                     </a>
                     <div class="flex items-center gap-6">
-                        <a href="#" class="text-sm font-medium hover:text-orange-600 transition">Inicio</a>
+                        <a href="#" class="text-sm font-medium hover:text-orange-600 transition">Tienda</a>
                         <a href="#" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Categorías</a>
                         <a href="#" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Ofertas</a>
                         <button id="carrito-btn" class="cursor-pointer flex items-center gap-2 bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-500 transition">
@@ -24,3 +24,5 @@
             </div>
         </nav>
     </header>
+
+                

@@ -12,7 +12,7 @@
     </header>
 
     <!-- Body del carrito -->
-    <section class="grow w-full pt-5">
+    <section class="grow w-full flex flex-col gap-8 pt-5 overflow-y-scroll">
 
         <!-- Plantilla Producto Carrito -->
         <section class="bg-white w-5/6 mx-auto px-8 py-4 rounded-xl shadow-md/20 space-y-5">
@@ -22,17 +22,17 @@
                 </div>
                 <div>
                     <h3>Air Force</h3>
-                    <span>82.00€</span>
+                    <span id="precio-producto-carrito">82.00€</span>
                 </div>
             </div>
 
             <div class="w-full flex justify-between items-center">
                 <div class="text-xl">
-                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-secondary-foreground h-9 px-4 py-2 has-[>svg]:px-3 bg-orange-300 cursor-pointer hover:bg-orange-300/80">-</button>
+                    <button id="decrementar-btn" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-secondary-foreground h-9 px-4 py-2 has-[>svg]:px-3 bg-orange-300 cursor-pointer hover:bg-orange-300/80">-</button>
 
-                    <input data-slot="input" class="text-center file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 min-w-0 rounded-sm border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[0.5px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive w-12" min="1" max="99" type="number" value="1" name="quantity">
+                    <input id="cantidad" data-slot="input" class="text-center file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 min-w-0 rounded-sm border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[0.5px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive w-12" min="1" max="99" type="number" value="1" name="quantity">
 
-                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-secondary-foreground h-9 px-4 py-2 has-[>svg]:px-3 bg-orange-300 cursor-pointer hover:bg-orange-300/80">+</button>
+                    <button id="aumentar-btn" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-secondary-foreground h-9 px-4 py-2 has-[>svg]:px-3 bg-orange-300 cursor-pointer hover:bg-orange-300/80">+</button>
                 </div>
 
                 <button data-slot="button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-[0.5px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 h-9 px-4 py-2 has-[&gt;svg]:px-3 cursor-pointer bg-red-500 transform-all duration-200 hover:bg-red-500/80">
@@ -48,13 +48,13 @@
 
         </section>
 
-        <!-- Texto Carrito vacío -->
+        <!-- Texto Carrito vacío 
         <section class="hidden">
             <div class="px-5 text-5xl text-center h-full flex justify-center items-center flex-col gap-5 text-gray-500">
                 <p>¡Vaya!</p>
                 <p class="text-3xl">Tu carrito está vacío</p>
             </div>
-        </section>
+        </section> -->
 
     </section>
 
