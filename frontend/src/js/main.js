@@ -1,37 +1,53 @@
+// ---------------------------
+// Referencias DOM
+// ---------------------------
 const carritoBtn = document.querySelector('#carrito-btn');
 const carrito = document.querySelector('#carrito');
 const cerrarCarritoBtn = document.querySelector('#cerrar-carrito');
 const modal = document.querySelector('#modal');
-const cantidad = document.querySelector('#cantidad');
-const decrementarBtn = document.querySelector('#decrementar-btn');
-const aumentarBtn = document.querySelector('#aumentar-btn');
-const precioProductoCarrito = document.querySelector('#precio-producto-carrito');
-const precioProductos = document.querySelectorAll('#precio-producto');
-const productoBtns = document.querySelectorAll('#producto-btn');
+const carritoBody = document.getElementById("carrito-body");
+const carritoVacio = document.getElementById("carrito-vacio");
+const productoBtns = document.querySelectorAll('.producto-btn');
+const precioProducto = document.querySelectorAll('.precio-producto');
 
 
-
-// formatear precio de productos a euro
-precioProductos.forEach(precio => {
-    precio.textContent = formatearEuro(Number(precio.textContent))
+precioProducto.forEach(producto => {
+   producto.textContent = formatearEuro(producto.textContent);
 })
 
 
-productoBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        console.log(btn.closest('#producto').getAttribute('data-id'))
-    })
-})
 
 
-//Handle Modal
+// ---------------------------
+// Carrito y persistencia
+// ---------------------------
+let carritoArray = [];
+
+// Guardar carrito en localStorage
+function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carritoArray));
+}
+
+// Cargar carrito desde localStorage
+function cargarCarrito() {
+    const data = localStorage.getItem('carrito');
+    if (data) {
+        carritoArray = JSON.parse(data);
+        carritoArray.forEach(producto => renderProductoCarrito(producto));
+    }
+    actualizarCarritoVacio();
+    actualizarSubtotal();
+}
+
+// ---------------------------
+// Abrir/Cerrar modal
+// ---------------------------
+carritoBtn.addEventListener('click', openModal);
+cerrarCarritoBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', closeModal);
-
-const body = document.querySelector('body')
-
-body.addEventListener('keydown', e => { //Cerrar carrito presionando Esc
+document.body.addEventListener('keydown', e => {
     if (!modal.classList.contains('hidden') && e.key === 'Escape') {
-        closeModal()
+        closeModal();
     }
 });
 
@@ -42,12 +58,12 @@ function openModal() {
     modal.classList.add('fade-in');
 }
 
-
 function closeModal() {
     carrito.classList.add('translate-x-full');
     modal.classList.remove('fade-in');
     setTimeout(() => {
         modal.classList.add('hidden');
+        closeDialog();
     }, 300);
     setTimeout(() => {
         modal.classList.remove('fade-out');
@@ -55,9 +71,9 @@ function closeModal() {
     modal.classList.add('fade-out');
 }
 
-
-
-//Handle carrito
+// ---------------------------
+// Formatear precios
+// ---------------------------
 function formatearEuro(valor) {
     return new Intl.NumberFormat("es-ES", {
         style: "currency",
@@ -65,36 +81,218 @@ function formatearEuro(valor) {
     }).format(valor);
 }
 
-let precioBase = 82.99;
+// ---------------------------
+// Función actualizar carrito vacío
+// ---------------------------
+function actualizarCarritoVacio() {
+    if (carritoArray.length === 0) {
+        carritoVacio.classList.remove('hidden');
+        vaciarBtn.classList.add('disabled');
+        vaciarBtn.disabled = true;
+        carritoComprarBtn.classList.add('disabled');
+        carritoComprarBtn.disabled = true;
+    } else {
+        carritoVacio.classList.add('hidden');
+        vaciarBtn.classList.remove('disabled');
+        vaciarBtn.disabled = false;
+        carritoComprarBtn.classList.remove('disabled');
+        carritoComprarBtn.disabled = false;
+    }
+}
 
+// ---------------------------
+// Actualizar subtotal
+// ---------------------------
+function actualizarSubtotal() {
+    const subtotalSpan = carrito.querySelector("footer section div span:last-child");
+    let total = 0;
+    carritoArray.forEach(producto => {
+        total += producto.precio * producto.cantidad;
+    });
+    subtotalSpan.textContent = formatearEuro(total);
+}
 
-carritoBtn.addEventListener('click', openModal);
-cerrarCarritoBtn.addEventListener('click', closeModal);
+// ---------------------------
+// Renderizar producto en carrito
+// ---------------------------
+function renderProductoCarrito(producto) {
+    // Verificar si ya existe la sección en DOM
+    let sectionExistente = carritoBody.querySelector(`section[data-id='${producto.id}']`);
+    if (sectionExistente) {
+        // Solo actualizar cantidad y precio
+        sectionExistente.querySelector("#cantidad").value = producto.cantidad;
+        sectionExistente.querySelector("#precio-producto-carrito").textContent = formatearEuro(producto.precio * producto.cantidad);
+        actualizarSubtotal();
+        actualizarCarritoVacio();
+        return;
+    }
 
-cantidad.addEventListener('input', () => {
-    if (cantidad.value <= 0) cantidad.value = 1;
-    let cantidadInt = parseInt(cantidad.value);
-    precioProductoCarrito.textContent = formatearEuro(cantidadInt * precioBase);
+    // Crear nueva sección
+    const section = document.createElement("section");
+    section.className = "bg-white w-5/6 mx-auto px-8 py-4 rounded-xl shadow-md/20 space-y-5";
+    section.dataset.id = producto.id;
+
+    section.innerHTML = `
+        <div class="flex justify-start items-center gap-4 text-xl w-full">
+            <div class="w-36 overflow-hidden rounded-md">
+                <img class="w-100% object-cover" src="${producto.imagen}" alt="">
+            </div>
+            <div>
+                <h3>${producto.titulo}</h3>
+                <span id="precio-producto-carrito">${producto.precio}€</span>
+            </div>
+        </div>
+
+        <div class="w-full flex justify-between items-center">
+            <div class="text-xl">
+                <button id="decrementar-btn" 
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-secondary-foreground h-9 px-4 py-2 has-[>svg]:px-3 bg-orange-300 cursor-pointer hover:bg-orange-300/80">-</button>
+
+                <input id="cantidad" 
+                    data-slot="input"
+                    class="text-center file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 min-w-0 rounded-sm border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[0.5px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive w-12"
+                    min="1" max="99" type="number" value="1" name="quantity">
+
+                <button id="aumentar-btn"
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-secondary-foreground h-9 px-4 py-2 has-[>svg]:px-3 bg-orange-300 cursor-pointer hover:bg-orange-300/80">+</button>
+            </div>
+
+            <button class="btn-eliminar inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-[0.5px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 h-9 px-4 py-2 has-[&gt;svg]:px-3 cursor-pointer bg-red-500 transform-all duration-200 hover:bg-red-500/80">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" aria-hidden="true">
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                        <path d="M3 6h18"></path>
+                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+            </button>
+        </div>
+    `;
+
+    carritoBody.appendChild(section);
+
+    const cantidadInput = section.querySelector("#cantidad");
+    const precioSpan = section.querySelector("#precio-producto-carrito");
+    const aumentarBtn = section.querySelector("#aumentar-btn");
+    const decrementarBtn = section.querySelector("#decrementar-btn");
+    const btnEliminar = section.querySelector(".btn-eliminar");
+
+    // Eventos
+    cantidadInput.addEventListener("input", () => {
+        let value = parseInt(cantidadInput.value);
+        if (isNaN(value) || value <= 0) value = 1;
+        cantidadInput.value = value;
+        producto.cantidad = value;
+        precioSpan.textContent = formatearEuro(producto.precio * producto.cantidad);
+        actualizarSubtotal();
+        guardarCarrito();
+    });
+
+    aumentarBtn.addEventListener("click", () => {
+        producto.cantidad++;
+        cantidadInput.value = producto.cantidad;
+        precioSpan.textContent = formatearEuro(producto.precio * producto.cantidad);
+        actualizarSubtotal();
+        guardarCarrito();
+    });
+
+    decrementarBtn.addEventListener("click", () => {
+        producto.cantidad = Math.max(1, producto.cantidad - 1);
+        cantidadInput.value = producto.cantidad;
+        precioSpan.textContent = formatearEuro(producto.precio * producto.cantidad);
+        actualizarSubtotal();
+        guardarCarrito();
+    });
+
+    btnEliminar.addEventListener("click", () => {
+        carritoBody.removeChild(section);
+        carritoArray = carritoArray.filter(p => p.id !== producto.id);
+        actualizarSubtotal();
+        guardarCarrito();
+        actualizarCarritoVacio();
+    });
+
+    actualizarCarritoVacio();
+}
+
+// ---------------------------
+// Click en productos
+// ---------------------------
+productoBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const card = btn.closest('.producto');
+        const id = card.dataset.id;
+        const titulo = card.querySelector('h3').textContent;
+        const precio = parseFloat(card.querySelector('.precio-producto').textContent.replace("€", "").replace(",", "."));
+        const imagen = card.querySelector('img').src;
+
+        // Revisar si ya existe en carrito
+        let productoExistente = carritoArray.find(p => p.id === id);
+        if (productoExistente) {
+            productoExistente.cantidad++;
+        } else {
+            productoExistente = { id, titulo, precio, imagen, cantidad: 1 };
+            carritoArray.push(productoExistente);
+        }
+
+        renderProductoCarrito(productoExistente);
+        guardarCarrito();
+    });
 });
 
+// ---------------------------
+// Vaciar carrito
+// ---------------------------
+const vaciarBtn = carrito.querySelector("#vaciar-carrito-btn");
+const carritoComprarBtn = carrito.querySelector("#comprar-carrito-btn");
+
+vaciarBtn.addEventListener("click", showDialog);
 
 
-aumentarBtn.addEventListener('click', () => {
-    let cantidadInt = parseInt(cantidad.value);
-    cantidadInt++
-    cantidad.value = cantidadInt;
-    precioProductoCarrito.textContent = formatearEuro(cantidadInt * precioBase);
-});
+//DIALOG
+const dialog = document.querySelector('#dialog');
+const dialogConfirmarBtn = document.querySelector('#dialog-confirmar');
+const dialogCancelarBtn = document.querySelector('#dialog-cancelar');
 
-decrementarBtn.addEventListener('click', () => {
-    let cantidadInt = parseInt(cantidad.value);
-    cantidadInt--
-    if (cantidadInt <= 0) cantidadInt = 1;
-    cantidad.value = cantidadInt;
-    precioProductoCarrito.textContent = formatearEuro(cantidadInt * precioBase);
-});
+function showDialog() {
+    modal.classList.remove('z-40');
+    modal.classList.add('z-96');
+    dialog.classList.remove('hidden');
+    dialog.addEventListener('click', e => e.stopPropagation());
+}
+
+function closeDialog() {
+    modal.classList.remove('z-96');
+    modal.classList.add('z-40');
+    dialog.classList.add('hidden');
+}
 
 
+dialogConfirmarBtn.addEventListener('click', vaciarCarrito);
+dialogCancelarBtn.addEventListener('click', closeDialog);
+
+
+function vaciarCarrito() {
+    // Vaciar todos los productos excepto el carrito-vacio
+    const productos = carritoBody.querySelectorAll("section:not(#carrito-vacio)");
+    productos.forEach(p => p.remove());
+
+    // Vaciar array y actualizar localStorage
+    carritoArray = [];
+    guardarCarrito();
+
+    // Actualizar subtotal y mostrar mensaje de carrito vacío
+    actualizarSubtotal();
+    actualizarCarritoVacio();
+    closeModal();
+}
+
+
+
+// ---------------------------
+// Inicializar
+// ---------------------------
+cargarCarrito();
 
 
 //Slider index
@@ -122,4 +320,3 @@ const swiper = new Swiper('.swiper', {
         },
     },
 });
-

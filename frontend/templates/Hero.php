@@ -8,7 +8,7 @@
             <?php foreach ($productos as $producto): ?>
 
                 <!-- Producto -->
-                <div id="producto" data-id="<?php echo $producto['id'] ?>" class="shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group">
+                <div data-id="<?php echo $producto['id'] ?>" class="producto shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group">
                     <a href="#">
                         <div class="aspect-square mb-4 bg-gray-100 rounded-lg overflow-hidden">
                             <img src="<?php echo $producto['imagen'] ?>" alt="Zapatilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
@@ -20,8 +20,8 @@
                         </svg> <span class="text-sm text-gray-800"><?php echo $producto['valoracion'] ?>/5</span></div>
                     <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
                     <div class="flex items-center justify-between mt-4">
-                        <span id="precio-producto" class="text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
-                        <button id="producto-btn" class="flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">
+                        <span class="precio-producto text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
+                        <button class="producto-btn flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
