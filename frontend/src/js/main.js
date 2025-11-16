@@ -1,6 +1,4 @@
-// ---------------------------
-// Referencias DOM
-// ---------------------------
+// ---- Selectores ---- //
 const carritoBtn = document.querySelector('#carrito-btn');
 const carrito = document.querySelector('#carrito');
 const cerrarCarritoBtn = document.querySelector('#cerrar-carrito');
@@ -18,73 +16,31 @@ precioProducto.forEach(producto => {
 
 
 
-// ---------------------------
-// Carrito y persistencia
-// ---------------------------
+// ---- Carrito con persistencia ---- //
 let carritoArray = [];
 
-// Guardar carrito en localStorage
+carritoBtn.addEventListener('click', openModal);
+cerrarCarritoBtn.addEventListener('click', closeModal);
+
+// Guarda el carrito en localStorage
 function guardarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carritoArray));
 }
 
-// Cargar carrito desde localStorage
+// Carga el carrito desde localStorage
 function cargarCarrito() {
     const data = localStorage.getItem('carrito');
     if (data) {
         carritoArray = JSON.parse(data);
         carritoArray.forEach(producto => renderProductoCarrito(producto));
     }
-    actualizarCarritoVacio();
+    actualizarCarrito();
     actualizarSubtotal();
 }
 
-// ---------------------------
-// Abrir/Cerrar modal
-// ---------------------------
-carritoBtn.addEventListener('click', openModal);
-cerrarCarritoBtn.addEventListener('click', closeModal);
-modal.addEventListener('click', closeModal);
-document.body.addEventListener('keydown', e => {
-    if (!modal.classList.contains('hidden') && e.key === 'Escape') {
-        closeModal();
-    }
-});
 
-function openModal() {
-    carrito.classList.remove('translate-x-full');
-    modal.classList.remove('hidden');
-    modal.classList.remove('fade-out');
-    modal.classList.add('fade-in');
-}
-
-function closeModal() {
-    carrito.classList.add('translate-x-full');
-    modal.classList.remove('fade-in');
-    setTimeout(() => {
-        modal.classList.add('hidden');
-        closeDialog();
-    }, 300);
-    setTimeout(() => {
-        modal.classList.remove('fade-out');
-    }, 400);
-    modal.classList.add('fade-out');
-}
-
-// ---------------------------
-// Formatear precios
-// ---------------------------
-function formatearEuro(valor) {
-    return new Intl.NumberFormat("es-ES", {
-        style: "currency",
-        currency: "EUR"
-    }).format(valor);
-}
-
-// ---------------------------
-// Función actualizar carrito vacío
-// ---------------------------
-function actualizarCarritoVacio() {
+// Maneja el carrito cuando está vacío y cuando contiene algo
+function actualizarCarrito() {
     if (carritoArray.length === 0) {
         carritoVacio.classList.remove('hidden');
         vaciarBtn.classList.add('disabled');
@@ -100,9 +56,8 @@ function actualizarCarritoVacio() {
     }
 }
 
-// ---------------------------
-// Actualizar subtotal
-// ---------------------------
+
+// Maneja el subtotal
 function actualizarSubtotal() {
     const subtotalSpan = carrito.querySelector("footer section div span:last-child");
     let total = 0;
@@ -112,9 +67,8 @@ function actualizarSubtotal() {
     subtotalSpan.textContent = formatearEuro(total);
 }
 
-// ---------------------------
-// Renderizar producto en carrito
-// ---------------------------
+
+// Renderiza los productos en el carrito
 function renderProductoCarrito(producto) {
     // Verificar si ya existe la sección en DOM
     let sectionExistente = carritoBody.querySelector(`section[data-id='${producto.id}']`);
@@ -123,11 +77,11 @@ function renderProductoCarrito(producto) {
         sectionExistente.querySelector("#cantidad").value = producto.cantidad;
         sectionExistente.querySelector("#precio-producto-carrito").textContent = formatearEuro(producto.precio * producto.cantidad);
         actualizarSubtotal();
-        actualizarCarritoVacio();
+        actualizarCarrito();
         return;
     }
 
-    // Crear nueva sección
+    // Crear nuevo card a partir del seleccionado para renderizar en el carrito
     const section = document.createElement("section");
     section.className = "bg-white w-5/6 mx-auto px-8 py-4 rounded-xl shadow-md/20 space-y-5";
     section.dataset.id = producto.id;
@@ -139,7 +93,7 @@ function renderProductoCarrito(producto) {
             </div>
             <div>
                 <h3>${producto.titulo}</h3>
-                <span id="precio-producto-carrito">${producto.precio}€</span>
+                <span id="precio-producto-carrito">${formatearEuro(producto.precio)}</span>
             </div>
         </div>
 
@@ -169,15 +123,19 @@ function renderProductoCarrito(producto) {
         </div>
     `;
 
+    // Añadimos el producto al cuerpo del carrito
     carritoBody.appendChild(section);
 
+    actualizarSubtotal();
+
+    // Selectores de elementos del card
     const cantidadInput = section.querySelector("#cantidad");
     const precioSpan = section.querySelector("#precio-producto-carrito");
     const aumentarBtn = section.querySelector("#aumentar-btn");
     const decrementarBtn = section.querySelector("#decrementar-btn");
     const btnEliminar = section.querySelector(".btn-eliminar");
 
-    // Eventos
+    // Eventos para manejar las cantidades
     cantidadInput.addEventListener("input", () => {
         let value = parseInt(cantidadInput.value);
         if (isNaN(value) || value <= 0) value = 1;
@@ -204,20 +162,62 @@ function renderProductoCarrito(producto) {
         guardarCarrito();
     });
 
+    // Elimina el producto del carrito
     btnEliminar.addEventListener("click", () => {
         carritoBody.removeChild(section);
         carritoArray = carritoArray.filter(p => p.id !== producto.id);
         actualizarSubtotal();
         guardarCarrito();
-        actualizarCarritoVacio();
+        actualizarCarrito();
     });
 
-    actualizarCarritoVacio();
+
+    actualizarCarrito();
 }
 
-// ---------------------------
+
+// Maneja el modal
+modal.addEventListener('click', closeModal);
+document.body.addEventListener('keydown', e => {
+    if (!modal.classList.contains('hidden') && e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+function openModal() {
+    carrito.classList.remove('translate-x-full');
+    modal.classList.remove('hidden');
+    modal.classList.remove('fade-out');
+    modal.classList.add('fade-in');
+}
+
+function closeModal() {
+    carrito.classList.add('translate-x-full');
+    modal.classList.remove('fade-in');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+        closeDialog();
+    }, 300);
+    setTimeout(() => {
+        modal.classList.remove('fade-out');
+    }, 400);
+    modal.classList.add('fade-out');
+}
+
+
+// Formatea valores a moneda
+function formatearEuro(valor) {
+    return new Intl.NumberFormat("es-ES", {
+        style: "currency",
+        currency: "EUR"
+    }).format(valor);
+}
+
+
+
+
+
 // Click en productos
-// ---------------------------
 productoBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         const card = btn.closest('.producto');
@@ -240,16 +240,15 @@ productoBtns.forEach(btn => {
     });
 });
 
-// ---------------------------
+
 // Vaciar carrito
-// ---------------------------
 const vaciarBtn = carrito.querySelector("#vaciar-carrito-btn");
 const carritoComprarBtn = carrito.querySelector("#comprar-carrito-btn");
 
 vaciarBtn.addEventListener("click", showDialog);
 
 
-//DIALOG
+// Manejar alerta Dialog
 const dialog = document.querySelector('#dialog');
 const dialogConfirmarBtn = document.querySelector('#dialog-confirmar');
 const dialogCancelarBtn = document.querySelector('#dialog-cancelar');
@@ -273,7 +272,7 @@ dialogCancelarBtn.addEventListener('click', closeDialog);
 
 
 function vaciarCarrito() {
-    // Vaciar todos los productos excepto el carrito-vacio
+    // Vaciar todos los productos excepto el mensaje del carrito vacio
     const productos = carritoBody.querySelectorAll("section:not(#carrito-vacio)");
     productos.forEach(p => p.remove());
 
@@ -283,17 +282,13 @@ function vaciarCarrito() {
 
     // Actualizar subtotal y mostrar mensaje de carrito vacío
     actualizarSubtotal();
-    actualizarCarritoVacio();
+    actualizarCarrito();
     closeModal();
 }
 
 
 
-// ---------------------------
-// Inicializar
-// ---------------------------
-cargarCarrito();
-
+document.addEventListener('DOMContentLoaded', cargarCarrito)
 
 //Slider index
 const swiper = new Swiper('.swiper', {

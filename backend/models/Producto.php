@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/../funciones.php';
-
 class Producto {
 
   private $conexion;
@@ -15,10 +13,5 @@ class Producto {
     $stmt->execute();
     return $stmt->fetchAll();
   }
-
+  
 }
-
-
-$conexion = conectarDB();
-$producto = new Producto($conexion);
-$productos = $producto->obtenerTodo();
