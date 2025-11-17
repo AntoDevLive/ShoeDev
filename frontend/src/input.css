@@ -187,27 +187,19 @@ img {
     transition: none;
 }
 
-@theme {
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
 
-        to {
-            opacity: 1;
-        }
+
+
+@keyframes bubble {
+    from {
+        transform: scale(.5);
     }
 
-    @keyframes fade-out {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0;
-        }
+    to {
+        transform: scale(.8);
     }
+}
 
-    --animate-fade-in: fade-in 0.4s ease-out forwards;
-    --animate-fade-out: fade-out 0.4s ease-in forwards;
+.animated-bubble {
+    animation: bubble .15s ease-out forwards;
 }

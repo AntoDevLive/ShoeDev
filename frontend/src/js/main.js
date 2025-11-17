@@ -7,6 +7,7 @@ const carritoBody = document.getElementById("carrito-body");
 const carritoVacio = document.getElementById("carrito-vacio");
 const productoBtns = document.querySelectorAll('.producto-btn');
 const precioProducto = document.querySelectorAll('.precio-producto');
+const cartBubble = document.querySelector('.cart-bubble');
 
 
 precioProducto.forEach(producto => {
@@ -34,19 +35,21 @@ function cargarCarrito() {
         carritoArray = JSON.parse(data);
         carritoArray.forEach(producto => renderProductoCarrito(producto));
     }
+
     actualizarCarrito();
     actualizarSubtotal();
 }
 
 
 // Maneja el carrito cuando está vacío y cuando contiene algo
-function actualizarCarrito() {
+function actualizarCarrito(nuevoProducto = true) {
     if (carritoArray.length === 0) {
         carritoVacio.classList.remove('hidden');
         vaciarBtn.classList.add('disabled');
         vaciarBtn.disabled = true;
         carritoComprarBtn.classList.add('disabled');
         carritoComprarBtn.disabled = true;
+        cartBubble.classList.add('opacity-0');
     } else {
         carritoVacio.classList.add('hidden');
         vaciarBtn.classList.remove('disabled');
@@ -57,9 +60,19 @@ function actualizarCarrito() {
 }
 
 
+//manejar animación del bubble
+function animarBubble() {
+        cartBubble.classList.remove('opacity-0');
+        cartBubble.textContent = carritoArray.length;
+        cartBubble.classList.remove('animated-bubble');
+        void cartBubble.offsetWidth;
+        cartBubble.classList.add('animated-bubble');
+}
+
+
 // Maneja el subtotal
 function actualizarSubtotal() {
-    const subtotalSpan = carrito.querySelector("footer section div span:last-child");
+    const subtotalSpan = carrito.querySelector(".subtotal");
     let total = 0;
     carritoArray.forEach(producto => {
         total += producto.precio * producto.cantidad;
@@ -172,6 +185,7 @@ function renderProductoCarrito(producto) {
     });
 
 
+    animarBubble();
     actualizarCarrito();
 }
 
