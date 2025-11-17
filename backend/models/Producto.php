@@ -9,7 +9,7 @@ class Producto {
   }
 
   public function obtenerTodo() {
-    $stmt = $this->conexion->prepare("SELECT * FROM productos;");
+    $stmt = $this->conexion->prepare("SELECT * FROM productos");
     $stmt->execute();
     return $stmt->fetchAll();
   }

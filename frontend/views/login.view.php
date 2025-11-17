@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="frontend/src/output.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <link rel="shortcut icon" href="frontend/src/assets/favicon.png" type="image/x-icon">
+  <title>ShoeDev</title>
+</head>
+
+<body class="min-h-screen text-gray-900 flex flex-col">
+
+  <?php include 'frontend/templates/Header.php' ?>
+
+  <section class="h-[calc(100dvh-4rem)] grid grid-cols-1 lg:grid-cols-2 relative bg-neutral-100">
+
+
+    <!-- Form Login -->
+    <div class="relative flex justify-center items-center transition-all duration-300">
+      <div id="login-img" class="absolute w-full h-full opacity-0 duration-500 transition-all">
+        <img
+          src="frontend/src/assets/img-registro.jpg"
+          alt=""
+          class="w-full h-full object-cover rotate-y-180 mask-[linear-gradient(to_left,black_30%,transparent)]">
+      </div>
+
+      <form id="login-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-8 w-96 px-8 py-10 z-10 transition-all duration-300">
+        <h2 class="text-2xl font-semibold text-gray-600">Iniciar Sesión</h2>
+        <input class="outline-none focus:border-orange-500 w-full rounded-md p-1 text-xl bg-white border border-orange-300" type="text" name="" id="" placeholder="Email o Usuario">
+        <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
+          <input class="outline-none w-full p-1 text-xl" type="password" name="" id="" placeholder="Contraseña">
+        </div>
+        <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white" type="submit" value="Iniciar Sesión">
+
+        <p>¿Aún no tienes una cuenta? <span id="login-link" class="underline text-orange-600 font-semibold cursor-pointer">Registrarme</span></p>
+      </form>
+    </div>
+
+
+    <!-- Form Registro -->
+    <div class="relative flex justify-center items-center">
+      <div id="register-img" class="absolute w-full h-full duration-500 transition-all">
+        <img
+          src="frontend/src/assets/img-login.jpg"
+          alt=""
+          class="w-full h-full object-cover mask-[linear-gradient(to_left,black_30%,transparent)]">
+      </div>
+
+      <form id="register-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-8 w-96 px-8 py-10 z-10 transition-all duration-300 opacity-0 pointer-events-none">
+        <h2 class="text-2xl font-semibold text-gray-600">Registro</h2>
+        <input class="outline-none focus:border-orange-500 w-full rounded-md p-1 text-xl bg-white border border-orange-300" type="text" name="" id="">
+        <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
+          <input class="outline-none w-full p-1 text-xl" type="password" name="" id="">
+        </div>
+        <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white" type="submit" value="Registrarme">
+        <p>¿Ya tienes una cuenta? <span id="register-link" class="underline text-orange-600 font-semibold cursor-pointer">Iniciar Sesión</span></p>
+      </form>
+    </div>
+
+  </section>
+
+  <?php include 'frontend/templates/Footer.php' ?>
+</body>
+
+<script src="frontend/src/js/temp.js"></script>
+
+</html>

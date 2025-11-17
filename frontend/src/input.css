@@ -181,3 +181,33 @@ img {
     transition: none;
     pointer-events: none;
 }
+
+.bg-product-btn {
+    background: #17be22;
+    transition: none;
+}
+
+@theme {
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-out {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    --animate-fade-in: fade-in 0.4s ease-out forwards;
+    --animate-fade-out: fade-out 0.4s ease-in forwards;
+}

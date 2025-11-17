@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="frontend/src/output.css">
-  <title>SneakerStore</title>
+  <title>ShoeDev | Tienda</title>
 </head>
 
 <body class="min-h-screen bg-gray-50 text-gray-900">
@@ -119,4 +119,5 @@
 
 </body>
 
+<script src="frontend/src/js/main.js"></script>
 </html>

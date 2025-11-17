@@ -32,7 +32,7 @@
         <section class="w-full border-b border-b-neutral-400 pb-2">
             <div class="w-full flex justify-between items-center">
                 <span>Subtotal:</span>
-                <span>0.00€</span>
+                <span>0,00 €</span>
             </div>
 
             <button id="comprar-carrito-btn" class="w-full bg-orange-600 mt-2 text-white rounded-sm p-1.5 cursor-pointer transition-all duration-300 hover:bg-orange-600/80 hover:tracking-wide">Proceder a la compra</button>

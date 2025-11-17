@@ -21,7 +21,7 @@
                     <p class="text-xl p-0 m-0">Esta acción no podrá revertirse</p>
                 </div>
                 <div class="flex justify-center items-center gap-4">
-                    <button id="dialog-confirmar" class="text-xl py-1 px-5 rounded-md cursor-pointer transition-all duration-300 bg-orange-500 hover:bg-orange-500/80">Confirmar</button>
+                    <button id="dialog-confirmar" class="text-xl py-1 px-5 rounded-md cursor-pointer transition-all duration-300 bg-orange-600 hover:bg-orange-600/80 text-white">Confirmar</button>
                     <button id="dialog-cancelar" class="text-xl py-1 px-5 rounded-md cursor-pointer transition-all duration-300 bg-neutral-500 hover:bg-neutral-500/80 text-white">Cancelar</button>
                 </div>
             </div>
