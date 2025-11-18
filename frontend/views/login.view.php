@@ -48,7 +48,7 @@
           class="w-full h-full object-cover mask-[linear-gradient(to_left,black_30%,transparent)]">
       </div>
 
-      <form id="register-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-5 w-116 px-8 py-10 z-10 transition-all duration-300 opacity-0 pointer-events-none">
+      <form method="POST" action="backend/controllers/User_controller.php" id="register-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-5 w-116 px-8 py-10 z-10 transition-all duration-300 opacity-0 pointer-events-none">
         <h2 class="text-2xl font-semibold text-gray-600">Registro</h2>
 
         <fieldset class="grid grid-cols-2 gap-2">
@@ -72,6 +72,10 @@
         <!-- Email -->
         <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
           type="email" name="email" placeholder="Correo electrónico" required>
+
+        <!-- Username -->
+        <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
+          type="text" name="username" placeholder="Nombre de usuario" required>
 
         <!-- Contraseña -->
         <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">

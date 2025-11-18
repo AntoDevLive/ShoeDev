@@ -350,3 +350,27 @@ const swiper = new Swiper('.swiper', {
 
 
 
+const userProfile = document.querySelector('.user-profile');
+const userMenu = document.querySelector('.user-menu') ?? null;
+const body = document.querySelector('body');
+
+userProfile.addEventListener('click', e => {
+    if (userMenu.classList.contains('opacity-0')) {
+        e.stopPropagation()
+    }
+    openUserMenu()
+} );
+
+function openUserMenu() {
+    if (userMenu === null) return
+    userMenu.classList.remove('opacity-0');
+    userMenu.classList.remove('pointer-events-none');
+    userMenu.addEventListener('click', e => e.stopPropagation());
+    body.addEventListener('click', closeUserMenu);
+}
+
+function closeUserMenu() {
+    if(userMenu === null) return
+    userMenu.classList.add('opacity-0');
+    userMenu.classList.add('pointer-events-none');
+}
