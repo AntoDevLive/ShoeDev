@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="frontend/src/output.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <link rel="shortcut icon" href="frontend/src/assets/favicon.png" type="image/x-icon">
-  <title>ShoeDev</title>
+  <title>ShoeDev | Login</title>
 </head>
 
 <body class="min-h-screen text-gray-900 flex flex-col">
@@ -26,11 +26,11 @@
           class="w-full h-full object-cover rotate-y-180 mask-[linear-gradient(to_left,black_30%,transparent)]">
       </div>
 
-      <form id="login-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-8 w-96 px-8 py-10 z-10 transition-all duration-300">
+      <form id="login-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-6 w-96 px-8 py-10 z-10 transition-all duration-300">
         <h2 class="text-2xl font-semibold text-gray-600">Iniciar Sesión</h2>
-        <input class="outline-none focus:border-orange-500 w-full rounded-md p-1 text-xl bg-white border border-orange-300" type="text" name="" id="" placeholder="Email o Usuario">
+        <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300" type="text" name="" id="" placeholder="Email o Usuario">
         <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
-          <input class="outline-none w-full p-1 text-xl" type="password" name="" id="" placeholder="Contraseña">
+          <input class="outline-none w-full py-1.5 px-2.5 text-xl" type="password" name="" id="" placeholder="Contraseña">
         </div>
         <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white" type="submit" value="Iniciar Sesión">
 
@@ -48,15 +48,52 @@
           class="w-full h-full object-cover mask-[linear-gradient(to_left,black_30%,transparent)]">
       </div>
 
-      <form id="register-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-8 w-96 px-8 py-10 z-10 transition-all duration-300 opacity-0 pointer-events-none">
+      <form id="register-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-5 w-116 px-8 py-10 z-10 transition-all duration-300 opacity-0 pointer-events-none">
         <h2 class="text-2xl font-semibold text-gray-600">Registro</h2>
-        <input class="outline-none focus:border-orange-500 w-full rounded-md p-1 text-xl bg-white border border-orange-300" type="text" name="" id="">
+
+        <fieldset class="grid grid-cols-2 gap-2">
+          <!-- Nombre -->
+          <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
+            type="text" name="nombre" placeholder="Nombre" required>
+
+          <!-- Apellidos -->
+          <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
+            type="text" name="apellidos" placeholder="Apellidos" required>
+
+          <!-- Fecha de nacimiento -->
+          <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
+            type="date" name="fecha_nacimiento" required>
+
+          <!-- Dirección -->
+          <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
+            type="text" name="direccion" placeholder="Dirección" required>
+        </fieldset>
+
+        <!-- Email -->
+        <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
+          type="email" name="email" placeholder="Correo electrónico" required>
+
+        <!-- Contraseña -->
         <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
-          <input class="outline-none w-full p-1 text-xl" type="password" name="" id="">
+          <input class="outline-none w-full py-1.5 px-2.5 text-xl"
+            type="password" name="password" placeholder="Contraseña" required>
         </div>
-        <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white" type="submit" value="Registrarme">
-        <p>¿Ya tienes una cuenta? <span id="register-link" class="underline text-orange-600 font-semibold cursor-pointer">Iniciar Sesión</span></p>
+
+        <!-- Repite contraseña -->
+        <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
+          <input class="outline-none w-full py-1.5 px-2.5 text-xl"
+            type="password" name="password2" placeholder="Repite la contraseña" required>
+        </div>
+
+        <!-- Botón -->
+        <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white"
+          type="submit" value="Registrarme">
+
+        <p>¿Ya tienes una cuenta?
+          <span id="register-link" class="underline text-orange-600 font-semibold cursor-pointer">Iniciar Sesión</span>
+        </p>
       </form>
+
     </div>
 
   </section>
