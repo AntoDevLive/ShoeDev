@@ -32,7 +32,7 @@
                                     <div class="w-7 h-7">
                                         <img src="frontend/src/assets/user-default.png" alt="">
                                     </div>
-                                    <span class="truncate">username</span>
+                                    <span class="truncate capitalize"><?php echo $_SESSION['username'] ?></span>
                                 </header>
                                 <!-- links -->
                                 <nav class="w-full">
@@ -69,7 +69,7 @@
                                             </a>
                                         </li>
                                         <li class="w-full">
-                                            <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4" href="#">
+                                            <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4" href="backend/config/cerrar.php">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-logout-2">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />

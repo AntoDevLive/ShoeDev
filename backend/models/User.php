@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 class User {
 
@@ -8,22 +8,45 @@ class User {
    $this->conexion = $conexion;
   }
 
-  public function userRegister($username, $nombre, $apellidos, $nacimiento, $direccion, $email, $password) {
-    $stmt = $this->conexion->prepare(
-      "INSERT INTO usuario (username, nombre, apellidos, nacimiento, direccion, email, password)
-      VALUES (:username, :nombre, :apellidos, :nacimiento, :direccion, :email, :password)"
+  public function register($username, $nombre, $apellidos, $nacimiento, $direccion, $email, $password) {
+
+    // INSERT usuario
+    $stmt_user = $this->conexion->prepare(
+      "INSERT INTO usuario (username, email, password, rol)
+       VALUES (:username, :email, :password, :rol)"
     );
 
-    $stmt->execute([
-      ':username' => $username,
-      ':nombre' => $nombre,
-      ':apellidos' => $apellidos,
-      ':nacimiento' => $nacimiento,
-      ':direccion' => $direccion,
-      ':email' => $email,
-      ':password' => $password,
-    ]);
-    
-  }
+    // INSERT perfil
+    $stmt_perfil = $this->conexion->prepare(
+      "INSERT INTO perfil (nombre, apellidos, nacimiento, direccion, usuario_id)
+       VALUES (:nombre, :apellidos, :nacimiento, :direccion, :usuario_id)"
+    );
 
+    try {
+
+      // 1. Insert usuario
+      $stmt_user->execute([
+        ':username' => $username,
+        ':email'    => $email,
+        ':password' => $password,
+        ':rol'      => 'usuario'
+      ]);
+
+      // 2. Obtener ID generado
+      $id = $this->conexion->lastInsertId();
+
+      // 3. Insert perfil
+      $stmt_perfil->execute([
+        ':nombre'     => $nombre,
+        ':apellidos'  => $apellidos,
+        ':nacimiento' => $nacimiento,
+        ':direccion'  => $direccion,
+        ':usuario_id' => $id
+      ]);
+
+      $_SESSION['username'] = $username;
+    } catch (PDOException $e) {
+      error_log($e->getMessage(), 3, __DIR__ . '/../logs/db_errors.log');
+    }
+  }
 }

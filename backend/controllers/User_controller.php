@@ -33,10 +33,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   $direccion = $_POST['direccion'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $password_hashed = password_hash($pasword, PASSWORD_BCRYPT);
+
 
   $conexion = conectarDB();
   $user = new User($conexion);
-  $user->userRegister($username, $nombre, $apellidos, $fecha_nacimiento, $direccion, $email, $password);
+  $user->register($username, $nombre, $apellidos, $fecha_nacimiento, $direccion, $email, $password_hashed);
 
   header('Location: /shoedev/index.php');
   }
