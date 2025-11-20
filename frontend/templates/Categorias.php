@@ -1,4 +1,4 @@
-    <section class="py-20 bg-gray-50">
+    <section id="categorias" class="py-20 bg-gray-50 scroll-mt-50">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-4xl font-bold mb-12">Explora por <span class="text-orange-600">Categoría</span></h2>
             <div class="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">

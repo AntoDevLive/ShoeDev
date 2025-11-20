@@ -4,13 +4,13 @@ class User {
 
   private $conexion;
 
-  public function __contruct($conexion) {
+  public function __construct($conexion) {
    $this->conexion = $conexion;
   }
 
   public function userRegister($username, $nombre, $apellidos, $nacimiento, $direccion, $email, $password) {
     $stmt = $this->conexion->prepare(
-      "INSERT INTO usuarios (username, nombre, apellidos, nacimiento, direccion, email, password)
+      "INSERT INTO usuario (username, nombre, apellidos, nacimiento, direccion, email, password)
       VALUES (:username, :nombre, :apellidos, :nacimiento, :direccion, :email, :password)"
     );
 
@@ -23,6 +23,7 @@ class User {
       ':email' => $email,
       ':password' => $password,
     ]);
+    
   }
 
 }
