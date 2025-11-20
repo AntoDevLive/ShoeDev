@@ -26,11 +26,12 @@
           class="w-full h-full object-cover rotate-y-180 mask-[linear-gradient(to_left,black_30%,transparent)]">
       </div>
 
-      <form id="login-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-6 w-96 px-8 py-10 z-10 transition-all duration-300">
+      <form method="POST" action="backend/controllers/User_controller.php" id="login-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-6 w-96 px-8 py-10 z-10 transition-all duration-300">
         <h2 class="text-2xl font-semibold text-gray-600">Iniciar Sesión</h2>
-        <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300" type="text" name="" id="" placeholder="Email o Usuario">
+        <input type="hidden" name="action" value="login">
+        <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300" type="text" name="email" id="email-login" placeholder="Email">
         <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
-          <input class="outline-none w-full py-1.5 px-2.5 text-xl" type="password" name="" id="" placeholder="Contraseña">
+          <input class="outline-none w-full py-1.5 px-2.5 text-xl" type="password" name="password" id="password-login" placeholder="Contraseña">
         </div>
         <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white" type="submit" value="Iniciar Sesión">
 
@@ -50,6 +51,7 @@
 
       <form method="POST" action="backend/controllers/User_controller.php" id="register-form" class="bg-orange-50 shadow-2xl shadow-black/80 rounded-xl flex justify-center items-center flex-col gap-5 w-116 px-8 py-10 z-10 transition-all duration-300 opacity-0 pointer-events-none">
         <h2 class="text-2xl font-semibold text-gray-600">Registro</h2>
+        <input type="hidden" name="action" value="register">
 
         <fieldset class="grid grid-cols-2 gap-2">
           <!-- Nombre -->

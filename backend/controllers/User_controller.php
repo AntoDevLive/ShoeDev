@@ -26,21 +26,40 @@ if (file_exists($user_model)) {
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  $username = $_POST['username'];
-  $nombre = $_POST['nombre'];
-  $apellidos = $_POST['apellidos'];
-  $fecha_nacimiento = $_POST['fecha_nacimiento'];
-  $direccion = $_POST['direccion'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $password_hashed = password_hash($pasword, PASSWORD_BCRYPT);
+  $action = $_POST['action'] ?? '';
+
+  // Registrar usuario
+  if($action === 'register') {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $fecha_nacimiento = $_POST['fecha_nacimiento'];
+    $direccion = $_POST['direccion'];
+    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+
+    $conexion = conectarDB();
+    $user = new User($conexion);
+    $user->register($username, $nombre, $apellidos, $fecha_nacimiento, $direccion, $email, $password_hashed);
+
+    header('Location: /shoedev/index.php');
+    exit;
+  }
 
 
-  $conexion = conectarDB();
-  $user = new User($conexion);
-  $user->register($username, $nombre, $apellidos, $fecha_nacimiento, $direccion, $email, $password_hashed);
+  // Iniciar sesión
+  if ($action === 'login') {
 
-  header('Location: /shoedev/index.php');
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $conexion = conectarDB();
+    $user = new User($conexion);
+    $user->login($email, $password);
+  }
+
+
   }
 
 
