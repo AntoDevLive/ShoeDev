@@ -85,9 +85,6 @@ class User {
         exit('email mal');
       }
 
-
-      
-
     } catch (PDOException $e) {
       echo 'Error inicio de sesión ' . $e->getMessage();
       die('Error al iniciar sesión. Por favor, inténtalo más tarde.');

@@ -23,20 +23,30 @@
                         <div class="relative">
                             <!-- IMG de usuario -->
                             <div class="user-profile w-9 h-9 cursor-pointer">
-                                <img src="frontend/src/assets/user-default.png" alt="">
+                                <img src="/shoedev/frontend/src/assets/user-default.png" alt="">
                             </div>
 
                             <!-- Menú de usuario -->
                             <section class="user-menu flex justify-center items-center flex-col text-xl user-submenu absolute bg-slate-700 text-white w-50 rounded-lg overflow-hidden opacity-0 pointer-events-none transition-all duration-300">
                                 <header class="w-full h-full bg-slate-800 flex justify-center items-center gap-2 py-2 border-b px-5 border-slate-600">
                                     <div class="w-7 h-7">
-                                        <img src="frontend/src/assets/user-default.png" alt="">
+                                        <img src="/shoedev/frontend/src/assets/user-default.png" alt="">
                                     </div>
                                     <span class="truncate capitalize"><?php echo $_SESSION['username'] ?></span>
                                 </header>
                                 <!-- links -->
                                 <nav class="w-full">
                                     <ul class="text-[1.05rem]">
+                                        <li class="w-full">
+                                            <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4 border-b border-slate-500" href="user/perfil.php">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                                </svg>
+                                                Mi perfil
+                                            </a>
+                                        </li>
                                         <li class="w-full">
                                             <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4 border-b border-slate-500" href="#">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-bag">
@@ -59,16 +69,6 @@
                                             </a>
                                         </li>
                                         <li class="w-full">
-                                            <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4 border-b border-slate-500" href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                                </svg>
-                                                Configuración
-                                            </a>
-                                        </li>
-                                        <li class="w-full">
                                             <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4" href="backend/config/cerrar.php">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-logout-2">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -87,7 +87,7 @@
                         </div>
 
                     <?php elseif (basename($_SERVER['SCRIPT_NAME']) == 'login.php' && isset($_SESSION['username'])): ?>
-                    <?php header('Location: perfil.php') ;?>
+                        <?php header('Location: perfil.php'); ?>
                     <?php endif; ?>
 
                     <a href="tienda.php" class="text-sm font-medium hover:text-orange-600 transition">Tienda</a>
