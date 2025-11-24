@@ -40,6 +40,7 @@ function ocultarCamposEditar() {
 }
 
 
+const toast = document.querySelector('#toast');
 
 async function editarUser(id) {
   try {
@@ -57,7 +58,10 @@ async function editarUser(id) {
     if (!res.ok) throw new Error('Error al actualizar el usuario');
 
     const data = await res.json();
-    console.log(data.message);
+    const toast = mostrarToast(data.message);
+    setTimeout(() => {
+      ocultarToast();
+    }, 2000);
 
     if (data.success) {
       // Actualizar el DOM con el nuevo username
@@ -72,6 +76,13 @@ async function editarUser(id) {
 }
 
 
-function mostrarToast() {
+function mostrarToast(msg) {
+  toast.textContent = msg;
+  toast.classList.remove('opacity-0');
+  toast.classList.remove('-translate-x-full');
+}
 
+function ocultarToast() {
+  toast.classList.add('opacity-0');
+  toast.classList.add('-translate-x-full');
 }

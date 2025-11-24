@@ -1,5 +1,3 @@
-<?php var_dump($_SESSION) ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,6 +11,10 @@
 </head>
 
 <body>
+  <!-- Toast -->
+  <div id="toast" class="bg-green-500 text-xl text-center fixed top-25 left-0 text-white py-2 px-2 rounded-tr-sm rounded-br-sm transition-all duration-500 opacity-0 -translate-x-full">
+  </div>
+
   <?php include '../frontend/templates/Header.php' ?>
 
   <!-- Imagen y username -->
