@@ -11,15 +11,13 @@
 </head>
 
 <body>
-  <!-- Toast -->
-  <div id="toast" class="bg-green-500 text-xl text-center fixed top-25 left-0 text-white py-2 px-3 rounded-tr-sm rounded-br-sm transition-all duration-500 opacity-0 -translate-x-full">
-  </div>
 
   <?php include '../frontend/templates/Header.php' ?>
 
   <!-- Imagen y username -->
   <section class="bg-neutral-50 flex justify-center items-center flex-col p-10">
-    <form action="" method="POST" class="flex justify-center items-center gap-4">
+    <form enctype="multipart/form-data" action="/shoedev/backend/controllers/User_controller.php" method="POST" class="flex justify-center items-center gap-4">
+      <input type="hidden" name="action" value="setUsername">
 
       <div class="user-profile w-30 h-30 cursor-pointer relative overflow-hidden rounded-full group">
 
@@ -35,12 +33,13 @@
 
         <img class="object-cover" src="<?php echo $perfil['imagen']; ?>" alt="">
 
-        <input type="file" name="img-perfil" class="absolute inset-0 opacity-0 cursor-pointer">
+        <input id="profile-img" type="file" name="img-perfil" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
       </div>
 
       <div class="username-perfil flex justify-center items-center gap-4">
         <h2 id="username-text" class="text-5xl font-semibold capitalize"><?php echo $_SESSION['username'] ?></h2>
-        <input data-id="<?php echo $perfil['id'] ?>" id="username-input" type="text" class="text-4xl py-1 px-2 bg-orange-50 rounded-md font-semibold capitalize outline-none focus:border-orange-400 focus:border-2 border border-orange-300 hidden w-96" value="<?php echo $_SESSION['username'] ?>">
+        <input type="hidden" name="id" value="<?php echo $perfil['usuario_id'] ?>">
+        <input name="username" id="username-input" type="text" class="text-4xl py-1 px-2 bg-orange-50 rounded-md font-semibold capitalize outline-none focus:border-orange-400 focus:border-2 border border-orange-300 hidden w-96" value="<?php echo $_SESSION['username'] ?>">
 
         <!-- Botones editar y guardar -->
         <button title="Editar nombre" id="edit-username-btn" class="bg-yellow-500 p-1 rounded-full cursor-pointer transition-all duration-200 hover:bg-yellow-500/80">

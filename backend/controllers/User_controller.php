@@ -4,6 +4,11 @@
 $user_model = __DIR__ . '/../models/User.php';
 $database_php = __DIR__ . '/../config/database.php';
 
+// Obtener el cuerpo JSON crudo
+$rawData = file_get_contents("php://input");
+
+// Convertir JSON a array asociativo
+$data = json_decode($rawData, true);
 
 // Verificar que las rutas existen
 if (file_exists($database_php)) {
@@ -24,12 +29,13 @@ if (file_exists($user_model)) {
 }
 
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $action = $_POST['action'] ?? '';
 
   // Registrar usuario
-  if($action === 'register') {
+  if ($action === 'register') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -60,4 +66,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
 
-  }
+  if($action === 'setUsername') {
+
+      $id = $_POST['id'];
+      $username = $_POST['username'];
+
+      $conexion = conectarDB();
+      $user = new User($conexion);
+      $user->editUsername($username, $id);
+
+      header('Location: /shoedev/user/perfil.php');
+
+      exit;
+}
+
+
+
+}

@@ -92,4 +92,24 @@ class User {
 
   }
 
+
+  //Editar username
+  public function editUsername($username, $id) {
+
+    $stmt = $this->conexion->prepare(
+      "UPDATE usuario SET username = :username WHERE id = :id"
+    );
+
+    $stmt->execute([
+      ':username' => $username,
+      ':id' => $id,
+    ]);
+
+    if($stmt) {
+      $_SESSION['username'] = $username;
+    }
+
+  }
+
+
 }

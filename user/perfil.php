@@ -1,6 +1,5 @@
 <?php session_start();
 
-
 require __DIR__ . '/../backend/config/database.php';
 
 $conexion = conectarDB();
@@ -16,8 +15,6 @@ $query_perfil->execute([
   ':username' => $_SESSION['username']
 ]);
 
-$perfil = $query_perfil->fetch();;
-
-
+$perfil = $query_perfil->fetch();
 
 require __DIR__ . '/../frontend/views/perfil.view.php';
