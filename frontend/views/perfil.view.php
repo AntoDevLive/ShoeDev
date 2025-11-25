@@ -12,7 +12,7 @@
 
 <body>
   <!-- Toast -->
-  <div id="toast" class="bg-green-500 text-xl text-center fixed top-25 left-0 text-white py-2 px-2 rounded-tr-sm rounded-br-sm transition-all duration-500 opacity-0 -translate-x-full">
+  <div id="toast" class="bg-green-500 text-xl text-center fixed top-25 left-0 text-white py-2 px-3 rounded-tr-sm rounded-br-sm transition-all duration-500 opacity-0 -translate-x-full">
   </div>
 
   <?php include '../frontend/templates/Header.php' ?>
@@ -40,7 +40,7 @@
 
       <div class="username-perfil flex justify-center items-center gap-4">
         <h2 id="username-text" class="text-5xl font-semibold capitalize"><?php echo $_SESSION['username'] ?></h2>
-        <input data-id="<?php echo $usuario['id'] ?>" id="username-input" type="text" class="text-4xl py-1 px-2 bg-orange-50 rounded-md font-semibold capitalize outline-none focus:border-orange-400 focus:border-2 border border-orange-300 hidden w-96" value="<?php echo $_SESSION['username'] ?>">
+        <input data-id="<?php echo $perfil['id'] ?>" id="username-input" type="text" class="text-4xl py-1 px-2 bg-orange-50 rounded-md font-semibold capitalize outline-none focus:border-orange-400 focus:border-2 border border-orange-300 hidden w-96" value="<?php echo $_SESSION['username'] ?>">
 
         <!-- Botones editar y guardar -->
         <button title="Editar nombre" id="edit-username-btn" class="bg-yellow-500 p-1 rounded-full cursor-pointer transition-all duration-200 hover:bg-yellow-500/80">
@@ -67,9 +67,9 @@
     <form class="disabled w-150 py-12 px-8 bg-orange-50 flex flex-col gap-5 justify-center items-center shadow-xl rounded-lg" action="/shoedev/backend/">
       <fieldset class="grid grid-cols-2 w-full gap-5">
         <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="email" placeholder="Email" value="<?php echo $perfil['email'] ?>">
-        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="text" placeholder="Nombre" value="<?php echo $perfil['nombre'] ?>">
-        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="text" placeholder="Apellidos" value="<?php echo $perfil['apellidos'] ?>">
-        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="text" placeholder="Dirección" value="<?php echo $perfil['direccion'] ?>">
+        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Nombre" value="<?php echo $perfil['nombre'] ?>">
+        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Apellidos" value="<?php echo $perfil['apellidos'] ?>">
+        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Dirección" value="<?php echo $perfil['direccion'] ?>">
       </fieldset>
       <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="date" placeholder="Nacimiento" value="<?php echo $perfil['nacimiento'] ?>">
       <button class="p-2.5 text-xl text-white rounded-md w-full bg-orange-600 transition-all duration-300 hover:bg-orange-600/85 cursor-pointer flex justify-center items-center gap-2" type="submit">

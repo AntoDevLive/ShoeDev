@@ -25,7 +25,7 @@ if (isset($data['id']) && isset($data['username'])) {
   if ($stmt) {
     echo json_encode([
       'success' => true,
-      'message' => "Usuario actualizado",
+      'message' => "Guardado correctamente",
       'id' => $id,
       'username' => $username
     ]);
