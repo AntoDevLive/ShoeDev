@@ -95,4 +95,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
   }
 
+
+  // Eliminar cuenta
+  if ($action === 'eliminar-cuenta') {
+
+    $password = $_POST['password'];
+
+    $conexion = conectarDB();
+    $user = new User($conexion);
+    $user->eliminarCuenta($password);
+
+    // header('Location: /shoedev/backend/config/cerrar.php');
+
+    exit;
+
+  }
+
 }

@@ -164,4 +164,34 @@ class User {
     ]);
   }
 
+
+  // Eliminar cuenta
+  public function eliminarCuenta($password) {
+
+    // Obtener password del usuario
+    $stmt = $this->conexion->prepare("SELECT password FROM usuario WHERE id = :id");
+    $stmt->execute([
+      ':id' => $_SESSION['id']
+    ]);
+    $found = $stmt->fetch();
+
+    if (!$found || !password_verify($password, $found['password'])) {
+      header('Location: /shoedev/user/perfil.php');
+      return false; // contraseña incorrecta
+    }
+
+    // Eliminar perfil y usuario en una sola llamada usando una transacción
+    $this->conexion->beginTransaction();
+
+    $stmt = $this->conexion->prepare(
+      "DELETE p, u FROM usuario u LEFT JOIN perfil p ON p.usuario_id = u.id WHERE u.id = :id"
+    );
+
+    $stmt->execute([':id' => $_SESSION['id']]);
+
+    $this->conexion->commit();
+    header('Location: /shoedev/backend/config/cerrar.php');
+    return true;
+  }
+  
 }

@@ -14,8 +14,51 @@
 
   <?php include '../frontend/templates/Header.php' ?>
 
+  <!-- Toast -->
   <div id="toast-edit"
-  class="text-xl bg-green-500 text-white py-2 px-5 fixed left-0 top-20 rounded-tr-md rounded-br-md -translate-x-full duration-500 transition-all opacity-0"> actualizado correctamente
+    class="text-xl bg-green-500 text-white py-2 px-5 fixed left-0 top-2/4 rounded-tr-md rounded-br-md -translate-x-full duration-500 transition-all opacity-0">
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="hidden fixed inset-0 bg-black/50 z-99 flex justify-center items-center">
+    <div id="form-eliminar-cuenta" class="text-xl flex justify-between items-center flex-col bg-neutral-300 rounded-lg shadow-lg shadow-neutral-700 relative overflow-hidden">
+      <button id="btn-cerrar" class="absolute top-1 right-1 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M18 6l-12 12" />
+          <path d="M6 6l12 12" />
+        </svg>
+      </button>
+      <header class="py-2 text-center text-[23px] bg-red-900 w-full font-semibold text-white">Eliminar cuenta</header>
+      <div class="flex justify-center items-center flex-col gap-3 py-6 px-5">
+        <p>Introduce tu contraseña para eliminar la cuenta</p>
+        <form method="POST" action="/shoedev/backend/controllers/User_controller.php" class="w-full flex justify-center items-center relative flex-col gap-3">
+          <div class="w-full flex justify-center items-center relative">
+            <input name="password" id="input-confirmar-password" type="password" placeholder="Contraseña" class="bg-white text-lg py-1 px-2.5 rounded-md shadow-md w-[80%] outline-none duration-300 transition-all focus:shadow-black/50 focus:shadow-md">
+
+            <!-- Mostrar/Ocultar contraseña -->
+            <button id="password-btn" title="Mostrar/Ocultar contraseña" class="absolute right-0 top-0 cursor-pointer bg-white p-1 rounded-full">
+              <svg id="eye" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#616161" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-eye">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+              </svg>
+              <svg id="eye-off" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="hidden icon-tabler icons-tabler-outline icon-tabler-eye-off">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" />
+                <path d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87" />
+                <path d="M3 3l18 18" />
+              </svg>
+            </button>
+          </div>
+
+          <input type="hidden" name="action" value="eliminar-cuenta">
+
+          <input type="submit" value="Eliminar cuenta" class="bg-red-500 text-lg py-1 px-2.5 rounded-md w-[50%] duration-300 hover:bg-red-500/85 cursor-pointer transition-all text-white">
+        </form>
+
+      </div>
+    </div>
   </div>
 
   <!-- Imagen y username -->
@@ -101,9 +144,9 @@
       <a href="/shoedev/backend/config/cerrar.php" class="text-md text-white bg-gray-900 py-2 px-5 rounded-xl cursor-pointer transition-all duration-200 hover:bg-gray-900/80">
         Cerrar Sesión
       </a>
-      <button class="text-md text-white bg-red-700 py-2 px-5 rounded-xl cursor-pointer transition-all duration-200 hover:bg-red-700/80">
+      <button id="eliminar-cuenta-btn" class="text-md text-white bg-red-700 py-2 px-5 rounded-xl cursor-pointer transition-all duration-200 hover:bg-red-700/80">
         Eliminar Cuenta
-        </burron>
+        </button>
     </div>
   </section>
 

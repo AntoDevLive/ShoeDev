@@ -8,6 +8,16 @@ const usernameText = document.querySelector('#username-text');
 const usernameInput = document.querySelector('#username-input');
 const submitInfo = document.querySelector('#edit-info-submit');
 const toastEdit = document.querySelector('#toast-edit');
+const formUserProfile = document.querySelector('#form-user-profile');
+const inputProfile = document.querySelector('#input-profile');
+const inputConfirmarPassword = document.querySelector('#input-confirmar-password');
+const passwordBtn = document.querySelector('#password-btn');
+const eye = document.querySelector('#eye');
+const eyeOff = document.querySelector('#eye-off');
+const cerrarBtn = document.querySelector('#btn-cerrar');
+const formEliminarCuenta = document.querySelector('#form-eliminar-cuenta');
+const modal = document.querySelector('#modal');
+const eliminarCuentaBtn = document.querySelector('#eliminar-cuenta-btn');
 
 editUserBtn.addEventListener('click', e => {
   e.preventDefault();
@@ -35,32 +45,39 @@ function ocultarCamposEditar() {
   editUserBtn.classList.remove('hidden');
   usernameText.classList.remove('hidden');
   usernameInput.classList.add('hidden');
+  inputProfile.setAttribute('value', 'setUsername');
 }
 
 const fileInput = document.getElementById('profile-img');
 const previewImg = document.getElementById('preview-img');
 
-fileInput.addEventListener('change', (e) => {
+fileInput.addEventListener('change', e => {
   const file = e.target.files[0];
-  if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = () => {
-    previewImg.src = reader.result;  // Muestra la imagen seleccionada
-  };
-  reader.readAsDataURL(file);
-});
+  if (file) {
+    // Usuario seleccionó imagen → SOLO mostrar GUARDAR
+    saveUserBtn.classList.remove('hidden');
+    editUserBtn.classList.add('hidden');
 
+    // Ocultar cancelar
+    cancelBtn.classList.add('hidden');
 
-const formUserProfile = document.querySelector('#form-user-profile');
-const inputProfile = document.querySelector('#input-profile');
+    // Actualizar preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      previewImg.src = reader.result;
+    };
+    reader.readAsDataURL(file);
 
-fileInput.addEventListener('click', () => {
-  cancelBtn.classList.remove('hidden');
-  saveUserBtn.classList.remove('hidden');
-  editUserBtn.classList.add('hidden');
-  formUserProfile.setAttribute('action', '/shoedev/backend/controllers/User_controller.php');
-  inputProfile.setAttribute('value', 'profile-img');
+    // Indicar al backend la acción
+    inputProfile.value = 'profile-img';
+
+  } else {
+    // Usuario canceló la ventana → OCULTAR TODOS los botones de edición
+    saveUserBtn.classList.add('hidden');
+    cancelBtn.classList.add('hidden');
+    editUserBtn.classList.remove('hidden');
+  }
 });
 
 
@@ -98,7 +115,6 @@ async function editInfo() {
   const data = await res.json();
 
   if (data.status === 'success') {
-    console.log('Actualizado correctamente');
     mostrarToast(data.message);
     setTimeout(() => {
       ocultarToast();
@@ -118,3 +134,39 @@ function mostrarToast(msg) {
 function ocultarToast() {
   toastEdit.classList.add('-translate-x-full', 'opacity-0');
 }
+
+passwordBtn.addEventListener('click', e => {
+
+  e.preventDefault();
+
+  eye.classList.toggle('hidden');
+  eyeOff.classList.toggle('hidden');
+
+  eye.classList.contains('hidden') ? inputConfirmarPassword.type = 'text' : inputConfirmarPassword.type = 'password';
+
+});
+
+cerrarBtn.addEventListener('click', e => {
+  closeModal();
+});
+
+modal.addEventListener('click', () => {
+  closeModal();
+});
+
+formEliminarCuenta.addEventListener('click', e => e.stopPropagation());
+
+eliminarCuentaBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  openModal();
+}); 
+
+function openModal() {
+  modal.classList.remove('hidden');
+}
+
+
+function closeModal() {
+    modal.classList.add('hidden');
+    inputConfirmarPassword.value = '';
+  }
