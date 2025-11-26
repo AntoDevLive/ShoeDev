@@ -8,7 +8,7 @@ $folder = '../backend/uploads/profile/';
 
 // Archivo subido
 $originalName = $_FILES['img-perfil']['name'];
-$extension = pathinfo($originalName, PATHINFO_EXTENSION); // obtiene jpg, png, etc.
+$extension = pathinfo($originalName, PATHINFO_EXTENSION); // obtiene extensión de archivo
 
 // Generar un nombre corto único
 $newFileName = uniqid('img_', true) . '.' . $extension;

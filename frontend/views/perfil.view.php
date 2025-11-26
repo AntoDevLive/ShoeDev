@@ -21,7 +21,7 @@
   <!-- Imagen y username -->
   <section class="bg-neutral-50 flex justify-center items-center flex-col p-10">
     <form id="form-user-profile" enctype="multipart/form-data" action="/shoedev/backend/controllers/User_controller.php" method="POST" class="flex justify-center items-center gap-4">
-      <input type="hidden" name="action" value="setUsername">
+      <input id="input-profile" type="hidden" name="action" value="setUsername">
 
       <div class="user-profile w-30 h-30 cursor-pointer relative overflow-hidden rounded-full group">
 

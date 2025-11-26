@@ -83,6 +83,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       exit;
 }
 
+  //Cambiar imagen del perfil
+  if ($action === 'profile-img') {
 
+    $conexion = conectarDB();
+    $user = new User($conexion);
+    $user->changeProfileImage();
+
+    header('Location: /shoedev/user/perfil.php');
+
+    exit;
+  }
 
 }

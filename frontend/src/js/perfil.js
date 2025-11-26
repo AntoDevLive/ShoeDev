@@ -53,12 +53,14 @@ fileInput.addEventListener('change', (e) => {
 
 
 const formUserProfile = document.querySelector('#form-user-profile');
+const inputProfile = document.querySelector('#input-profile');
 
 fileInput.addEventListener('click', () => {
   cancelBtn.classList.remove('hidden');
   saveUserBtn.classList.remove('hidden');
   editUserBtn.classList.add('hidden');
-  formUserProfile.setAttribute('action', '/shoedev/user/subir.php');
+  formUserProfile.setAttribute('action', '/shoedev/backend/controllers/User_controller.php');
+  inputProfile.setAttribute('value', 'profile-img');
 });
 
 
