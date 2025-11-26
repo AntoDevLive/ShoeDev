@@ -14,6 +14,10 @@
 
   <?php include '../frontend/templates/Header.php' ?>
 
+  <div id="toast-edit"
+  class="text-xl bg-green-500 text-white py-2 px-5 fixed left-0 top-20 rounded-tr-md rounded-br-md -translate-x-full duration-500 transition-all opacity-0"> actualizado correctamente
+  </div>
+
   <!-- Imagen y username -->
   <section class="bg-neutral-50 flex justify-center items-center flex-col p-10">
     <form id="form-user-profile" enctype="multipart/form-data" action="/shoedev/backend/controllers/User_controller.php" method="POST" class="flex justify-center items-center gap-4">
@@ -71,18 +75,18 @@
           <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
           <path d="M16 5l3 3" />
         </svg>
-        <button id="cancel-info-btn" type="submit" class="bg-gray-500 py-2 px-5 rounded-md text-white  text-md cursor-pointer transition-all duration-200 hover:bg-gray-600 hidden">Cancelar</button>
+        <button id="cancel-info-btn" type="submit" class="bg-gray-500 py-1.5 px-4 rounded-md text-white  text-md cursor-pointer transition-all duration-200 hover:bg-gray-600 hidden">Cancelar</button>
       </button>
     </div>
-    <form id="info-profile-form" class="disabled w-150 py-12 px-8 bg-orange-50 flex flex-col gap-5 justify-center items-center shadow-xl rounded-lg" action="/shoedev/backend/">
+    <form id="info-profile-form" class="disabled w-150 py-12 px-8 bg-orange-50 flex flex-col gap-5 justify-center items-center shadow-xl rounded-lg">
       <fieldset class="grid grid-cols-2 w-full gap-5">
-        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="email" placeholder="Email" value="<?php echo $perfil['email'] ?>">
-        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Nombre" value="<?php echo $perfil['nombre'] ?>">
-        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Apellidos" value="<?php echo $perfil['apellidos'] ?>">
-        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Dirección" value="<?php echo $perfil['direccion'] ?>">
+        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="email" placeholder="Email" value="<?php echo $perfil['email'] ?>" name="email">
+        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Nombre" value="<?php echo $perfil['nombre'] ?>" name="nombre">
+        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Apellidos" value="<?php echo $perfil['apellidos'] ?>" name="apellidos">
+        <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Dirección" value="<?php echo $perfil['direccion'] ?>" name="direccion">
       </fieldset>
-      <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="date" placeholder="Nacimiento" value="<?php echo $perfil['nacimiento'] ?>">
-      <button class="p-2.5 text-xl text-white rounded-md w-full bg-orange-600 transition-all duration-300 hover:bg-orange-600/85 cursor-pointer flex justify-center items-center gap-2" type="submit">
+      <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="date" placeholder="Nacimiento" value="<?php echo $perfil['nacimiento'] ?>" name="nacimiento">
+      <button id="edit-info-submit" class="p-2.5 text-xl text-white rounded-md w-full bg-orange-600 transition-all duration-300 hover:bg-orange-600/85 cursor-pointer flex justify-center items-center gap-2" type="submit">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-device-floppy">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />

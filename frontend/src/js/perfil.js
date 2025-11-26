@@ -6,6 +6,8 @@ const cancelInfoBtn = document.querySelector('#cancel-info-btn');
 const infoForm = document.querySelector('#info-profile-form');
 const usernameText = document.querySelector('#username-text');
 const usernameInput = document.querySelector('#username-input');
+const submitInfo = document.querySelector('#edit-info-submit');
+const toastEdit = document.querySelector('#toast-edit');
 
 editUserBtn.addEventListener('click', e => {
   e.preventDefault();
@@ -74,4 +76,43 @@ function disableForm() {
   editInfoBtn.classList.remove('hidden');
   infoForm.classList.add('disabled');
   cancelInfoBtn.classList.add('hidden');
+}
+
+submitInfo.addEventListener('click', e => {
+  e.preventDefault();
+  editInfo();
+  disableForm();
+});
+
+
+async function editInfo() {
+  const formData = new FormData(infoForm);
+
+  const res = await fetch('/shoedev/ajax.php', {
+    method: 'POST',
+    body: formData
+  });
+
+  const data = await res.json();
+
+  if (data.status === 'success') {
+    console.log('Actualizado correctamente');
+    mostrarToast(data.message);
+    setTimeout(() => {
+      ocultarToast();
+    }, 3000);
+
+  } else {
+    console.error('Error:', data.message);
+  }
+}
+
+
+function mostrarToast(msg) {
+  toastEdit.textContent = msg;
+  toastEdit.classList.remove('-translate-x-full', 'opacity-0');
+}
+
+function ocultarToast() {
+  toastEdit.classList.add('-translate-x-full', 'opacity-0');
 }
