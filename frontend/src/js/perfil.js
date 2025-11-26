@@ -1,6 +1,9 @@
 const editUserBtn = document.querySelector('#edit-username-btn');
+const editInfoBtn = document.querySelector('#edit-info-btn');
 const saveUserBtn = document.querySelector('#save-user-btn');
 const cancelBtn = document.querySelector('#cancel-btn');
+const cancelInfoBtn = document.querySelector('#cancel-info-btn');
+const infoForm = document.querySelector('#info-profile-form');
 const usernameText = document.querySelector('#username-text');
 const usernameInput = document.querySelector('#username-input');
 
@@ -55,3 +58,20 @@ fileInput.addEventListener('click', () => {
   editUserBtn.classList.add('hidden');
   formUserProfile.setAttribute('action', '/shoedev/user/subir.php');
 });
+
+
+editInfoBtn.addEventListener('click', enableForm);
+cancelInfoBtn.addEventListener('click', disableForm);
+
+
+function enableForm() {
+  editInfoBtn.classList.add('hidden');
+  infoForm.classList.remove('disabled');
+  cancelInfoBtn.classList.remove('hidden');
+}
+
+function disableForm() {
+  editInfoBtn.classList.remove('hidden');
+  infoForm.classList.add('disabled');
+  cancelInfoBtn.classList.add('hidden');
+}

@@ -203,11 +203,13 @@ function openModal() {
     modal.classList.remove('hidden');
     modal.classList.remove('fade-out');
     modal.classList.add('fade-in');
+    carrito.classList.add('shadow-black');
 }
 
 function closeModal() {
     carrito.classList.add('translate-x-full');
     modal.classList.remove('fade-in');
+    carrito.classList.remove('shadow-black');
     setTimeout(() => {
         modal.classList.add('hidden');
         closeDialog();

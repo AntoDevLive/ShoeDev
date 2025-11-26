@@ -62,8 +62,19 @@
 
   <!-- Datos del usuario -->
   <section class="flex justify-center items-center flex-col gap-4 bg-neutral-100 p-10">
-    <h3 class="text-4xl">Mi información</h3>
-    <form class="disabled w-150 py-12 px-8 bg-orange-50 flex flex-col gap-5 justify-center items-center shadow-xl rounded-lg" action="/shoedev/backend/">
+    <div class="flex justify-center items-center gap-2">
+      <h3 class="text-4xl">Mi información</h3>
+      <button title="Editar información" id="edit-info-btn" class="bg-yellow-500 p-1 rounded-full cursor-pointer transition-all duration-200 hover:bg-yellow-500/80">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+          <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+          <path d="M16 5l3 3" />
+        </svg>
+        <button id="cancel-info-btn" type="submit" class="bg-gray-500 py-2 px-5 rounded-md text-white  text-md cursor-pointer transition-all duration-200 hover:bg-gray-600 hidden">Cancelar</button>
+      </button>
+    </div>
+    <form id="info-profile-form" class="disabled w-150 py-12 px-8 bg-orange-50 flex flex-col gap-5 justify-center items-center shadow-xl rounded-lg" action="/shoedev/backend/">
       <fieldset class="grid grid-cols-2 w-full gap-5">
         <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="email" placeholder="Email" value="<?php echo $perfil['email'] ?>">
         <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Nombre" value="<?php echo $perfil['nombre'] ?>">
