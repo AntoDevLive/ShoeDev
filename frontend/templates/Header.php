@@ -22,15 +22,15 @@
                         <!-- Perfil de usuario -->
                         <div class="relative">
                             <!-- IMG de usuario -->
-                            <div class="user-profile w-9 h-9 cursor-pointer">
-                                <img src="/shoedev/frontend/src/assets/user-default.png" alt="">
+                            <div class="user-profile w-9 h-9 cursor-pointer rounded-full">
+                                <img class="rounded-full" src="/shoedev/backend/uploads/profile/<?php echo $_SESSION['profile_img']; ?>" alt="">
                             </div>
 
                             <!-- Menú de usuario -->
                             <section class="user-menu flex justify-center items-center flex-col text-xl user-submenu absolute bg-slate-700 text-white w-50 rounded-lg overflow-hidden opacity-0 pointer-events-none transition-all duration-300">
                                 <header class="w-full h-full bg-slate-800 flex justify-center items-center gap-2 py-2 border-b px-5 border-slate-600">
-                                    <div class="w-7 h-7">
-                                        <img src="/shoedev/frontend/src/assets/user-default.png" alt="">
+                                    <div class="w-7 h-7 rounded-full">
+                                        <img class="rounded-full" src="/shoedev/backend/uploads/profile/<?php echo $_SESSION['profile_img']; ?>" alt="">
                                     </div>
                                     <span class="truncate capitalize"><?php echo $_SESSION['username'] ?></span>
                                 </header>

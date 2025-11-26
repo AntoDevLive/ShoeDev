@@ -16,7 +16,7 @@
 
   <!-- Imagen y username -->
   <section class="bg-neutral-50 flex justify-center items-center flex-col p-10">
-    <form enctype="multipart/form-data" action="/shoedev/backend/controllers/User_controller.php" method="POST" class="flex justify-center items-center gap-4">
+    <form id="form-user-profile" enctype="multipart/form-data" action="/shoedev/backend/controllers/User_controller.php" method="POST" class="flex justify-center items-center gap-4">
       <input type="hidden" name="action" value="setUsername">
 
       <div class="user-profile w-30 h-30 cursor-pointer relative overflow-hidden rounded-full group">
@@ -31,7 +31,7 @@
           </svg>
         </div>
 
-        <img class="object-cover" src="<?php echo $perfil['imagen']; ?>" alt="">
+        <img id="preview-img" class="object-cover" src="/shoedev/backend/uploads/profile/<?php echo $perfil['imagen']; ?>" alt="">
 
         <input id="profile-img" type="file" name="img-perfil" class="absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
       </div>
@@ -86,7 +86,7 @@
       <a href="/shoedev/backend/config/cerrar.php" class="text-md text-white bg-gray-900 py-2 px-5 rounded-xl cursor-pointer transition-all duration-200 hover:bg-gray-900/80">
         Cerrar Sesión
       </a>
-      <button class="text-md text-white bg-red-600 py-2 px-5 rounded-xl cursor-pointer transition-all duration-200 hover:bg-red-600/80">
+      <button class="text-md text-white bg-red-700 py-2 px-5 rounded-xl cursor-pointer transition-all duration-200 hover:bg-red-700/80">
         Eliminar Cuenta
         </burron>
     </div>

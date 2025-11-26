@@ -31,3 +31,27 @@ function ocultarCamposEditar() {
   usernameText.classList.remove('hidden');
   usernameInput.classList.add('hidden');
 }
+
+const fileInput = document.getElementById('profile-img');
+const previewImg = document.getElementById('preview-img');
+
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    previewImg.src = reader.result;  // Muestra la imagen seleccionada
+  };
+  reader.readAsDataURL(file);
+});
+
+
+const formUserProfile = document.querySelector('#form-user-profile');
+
+fileInput.addEventListener('click', () => {
+  cancelBtn.classList.remove('hidden');
+  saveUserBtn.classList.remove('hidden');
+  editUserBtn.classList.add('hidden');
+  formUserProfile.setAttribute('action', '/shoedev/user/subir.php');
+});

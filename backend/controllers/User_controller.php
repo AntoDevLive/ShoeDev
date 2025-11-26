@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // Registrar las rutas
 $user_model = __DIR__ . '/../models/User.php';
 $database_php = __DIR__ . '/../config/database.php';
@@ -66,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
 
+  //Editar nombre de usuario
   if($action === 'setUsername') {
 
       $id = $_POST['id'];

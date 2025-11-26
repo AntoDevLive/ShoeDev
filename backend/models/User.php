@@ -45,7 +45,9 @@ class User {
         ':usuario_id' => $id
       ]);
 
+      $_SESSION['id'] = $id;
       $_SESSION['username'] = $username;
+      $_SESSION['profile_img'] = 'user-default.png';
 
     } catch (PDOException $e) {
       error_log($e->getMessage(), 3, __DIR__ . '/../logs/db_errors.log');
@@ -75,7 +77,9 @@ class User {
         $password_verified = password_verify($password, $password_user);
 
         if ($password_verified) {
+          $_SESSION['id'] = $found_user['id'];
           $_SESSION['username'] = $found_user['username'];
+          $_SESSION['profile_img'] = 'user-default.png';
           header('Location: /shoedev/index.php');
         } else {
           exit('contraseña mal');

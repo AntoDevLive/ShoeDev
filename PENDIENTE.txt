@@ -1,4 +1,0 @@
-funcionalidad ocultar/mostrar password en forms de login.php
-
-si el usuario desea eliminarla deberá confirmar su contraseña.
-
