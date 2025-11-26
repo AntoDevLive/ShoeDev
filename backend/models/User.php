@@ -56,7 +56,7 @@ class User {
 
   }
 
-  // Verificar usuario e iniciar sesión
+  // Iniciar sesión
   public function login($email, $password) {
     
     try {
@@ -77,9 +77,16 @@ class User {
         $password_verified = password_verify($password, $password_user);
 
         if ($password_verified) {
+          // Obtener imagen del perfil
+          $query = $this->conexion->prepare("SELECT imagen FROM perfil WHERE usuario_id = :id");
+          $query->execute([
+            ':id' => $found_user['id']
+          ]);
+          $profile = $query->fetch();
+
           $_SESSION['id'] = $found_user['id'];
           $_SESSION['username'] = $found_user['username'];
-          $_SESSION['profile_img'] = 'user-default.png';
+          $_SESSION['profile_img'] = $profile['imagen'];
           header('Location: /shoedev/index.php');
         } else {
           exit('contraseña mal');
