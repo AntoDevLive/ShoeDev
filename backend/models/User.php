@@ -45,9 +45,17 @@ class User {
         ':usuario_id' => $id
       ]);
 
+      // Obtener rol del usuario registrado y añadirlo a los datos de su sesión
+      $query_user = $this->conexion->prepare("SELECT rol FROM usuario WHERE id = :id");
+      $query_user->execute([
+        ':id' => $id
+      ]);
+      $rol = $query_user->fetch();
+
       $_SESSION['id'] = $id;
       $_SESSION['username'] = $username;
       $_SESSION['profile_img'] = 'user-default.png';
+      $_SESSION['rol'] = $rol['rol'];
 
     } catch (PDOException $e) {
       error_log($e->getMessage(), 3, __DIR__ . '/../logs/db_errors.log');
@@ -87,6 +95,7 @@ class User {
           $_SESSION['id'] = $found_user['id'];
           $_SESSION['username'] = $found_user['username'];
           $_SESSION['profile_img'] = $profile['imagen'];
+          $_SESSION['rol'] = $found_user['rol'];
           header('Location: /shoedev/index.php');
         } else {
           exit('contraseña mal');

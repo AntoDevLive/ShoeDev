@@ -1,4 +1,4 @@
-<section class="carrito fixed transition-all duration-500 translate-x-full h-screen bg-neutral-100 right-0 top-0 w-110 z-50 flex items-start flex-col shadow-2xl">
+<section class="carrito fixed transition-all duration-500 translate-x-full h-screen bg-neutral-100 right-0 top-0 w-110 z-50 flex items-start flex-col shadow-xl shadow-black">
     <!-- Cabecera del carrito -->
     <header class="w-full text-xl flex justify-center items-center bg-neutral-200 shadow-sm shadow-neutral-300 py-2">
         <h2 class="">Tus productos:</h2>
