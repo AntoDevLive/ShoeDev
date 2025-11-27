@@ -10,8 +10,16 @@
 
 <body class="min-h-screen bg-gray-50 text-gray-900">
 
+  <!-- Modal -->
+  <?php include 'frontend/templates/Modal.php' ?>
+
+
   <!-- Header -->
   <?php include 'frontend/templates/Header.php' ?>
+
+
+  <!-- Carrito -->
+  <?php include 'frontend/templates/Carrito.php' ?>
 
   <!-- Search & Filters -->
   <div class="bg-gray-100/30 border-b border-gray-300">
@@ -119,5 +127,7 @@
 
 </body>
 
+<script src="frontend/src/js/carrito.js"></script>
 <script src="frontend/src/js/main.js"></script>
+
 </html>

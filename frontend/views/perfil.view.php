@@ -12,15 +12,24 @@
 
 <body>
 
+  <!-- Modal -->
+  <?php include '../frontend/templates/Modal.php' ?>
+
+
+  <!-- Header -->
   <?php include '../frontend/templates/Header.php' ?>
+
+
+  <!-- Carrito -->
+  <?php include '../frontend/templates/Carrito.php' ?>
 
   <!-- Toast -->
   <div id="toast-edit"
     class="text-xl bg-green-500 text-white py-2 px-5 fixed left-0 top-2/4 rounded-tr-md rounded-br-md -translate-x-full duration-500 transition-all opacity-0">
   </div>
 
-  <!-- Modal -->
-  <div id="modal" class="hidden fixed inset-0 bg-black/50 z-99 flex justify-center items-center">
+  <!-- Modal Eliminar -->
+  <div id="modal-eliminar" class="hidden fixed inset-0 bg-black/50 z-99 flex justify-center items-center">
     <div id="form-eliminar-cuenta" class="text-xl flex justify-between items-center flex-col bg-neutral-300 rounded-lg shadow-lg shadow-neutral-700 relative overflow-hidden">
       <button id="btn-cerrar" class="absolute top-1 right-1 cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
@@ -146,7 +155,7 @@
       </a>
       <button id="eliminar-cuenta-btn" class="text-md text-white bg-red-700 py-2 px-5 rounded-xl cursor-pointer transition-all duration-200 hover:bg-red-700/80">
         Eliminar Cuenta
-        </button>
+      </button>
     </div>
   </section>
 
@@ -154,5 +163,7 @@
 </body>
 
 <script src="../frontend/src/js/perfil.js"></script>
+<script src="../frontend/src/js/carrito.js"></script>
+<script src="../frontend/src/js/main.js"></script>
 
 </html>

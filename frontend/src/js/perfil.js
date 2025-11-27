@@ -16,7 +16,7 @@ const eye = document.querySelector('#eye');
 const eyeOff = document.querySelector('#eye-off');
 const cerrarBtn = document.querySelector('#btn-cerrar');
 const formEliminarCuenta = document.querySelector('#form-eliminar-cuenta');
-const modal = document.querySelector('#modal');
+const modalEliminar = document.querySelector('#modal-eliminar');
 const eliminarCuentaBtn = document.querySelector('#eliminar-cuenta-btn');
 
 editUserBtn.addEventListener('click', e => {
@@ -147,26 +147,26 @@ passwordBtn.addEventListener('click', e => {
 });
 
 cerrarBtn.addEventListener('click', e => {
-  closeModal();
+  closeModalEliminar();
 });
 
-modal.addEventListener('click', () => {
-  closeModal();
+modalEliminar.addEventListener('click', () => {
+  closeModalEliminar();
 });
 
 formEliminarCuenta.addEventListener('click', e => e.stopPropagation());
 
 eliminarCuentaBtn.addEventListener('click', e => {
   e.stopPropagation();
-  openModal();
+  openModalEliminar();
 }); 
 
-function openModal() {
-  modal.classList.remove('hidden');
+function openModalEliminar() {
+  modalEliminar.classList.remove('hidden');
 }
 
 
-function closeModal() {
-    modal.classList.add('hidden');
+function closeModalEliminar() {
+    modalEliminar.classList.add('hidden');
     inputConfirmarPassword.value = '';
   }

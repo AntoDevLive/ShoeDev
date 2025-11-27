@@ -6,12 +6,13 @@ const loginImg = document.querySelector('#login-img');
 const registerImg = document.querySelector('#register-img');
 
 
-loginLink.addEventListener('click', () => {
+// Mostrar registro, ocultar login
+function tabLogin() {
 
-  loginForm.classList.remove('opacity-100'); 
-  loginForm.classList.remove('z-10'); 
-  loginForm.classList.add('pointer-events-none'); 
-  loginForm.classList.add('opacity-0');  
+  loginForm.classList.remove('opacity-100');
+  loginForm.classList.remove('z-10');
+  loginForm.classList.add('pointer-events-none');
+  loginForm.classList.add('opacity-0');
 
   registerForm.classList.remove('opacity-0');
   registerForm.classList.remove('pointer-events-none');
@@ -24,14 +25,14 @@ loginLink.addEventListener('click', () => {
   registerImg.classList.remove('opacity-100');
   registerImg.classList.add('opacity-0');
 
-});
+}
 
+// Mostrar login, ocultar registro
+function tabRegister() {
 
-registerLink.addEventListener('click', () => {
-
-  registerForm.classList.add('opacity-0');   
-  registerForm.classList.remove('opacity-100');  
-  registerForm.classList.add('pointer-events-none');   
+  registerForm.classList.add('opacity-0');
+  registerForm.classList.remove('opacity-100');
+  registerForm.classList.add('pointer-events-none');
 
   loginForm.classList.add('opacity-100');
   loginForm.classList.remove('opacity-0');
@@ -44,4 +45,13 @@ registerLink.addEventListener('click', () => {
   loginImg.classList.remove('opacity-100');
   loginImg.classList.add('opacity-0');
 
-});
+}
+
+
+function tabForm(form) {
+  form === loginForm ? tabLogin() : tabRegister();
+}
+
+
+loginLink.addEventListener('click', () => tabForm(loginForm));
+registerLink.addEventListener('click', () => tabForm(registerForm));

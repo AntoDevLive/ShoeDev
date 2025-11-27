@@ -38,7 +38,7 @@
                                 <nav class="w-full">
                                     <ul class="text-[1.05rem]">
                                         <li class="w-full">
-                                            <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4 border-b border-slate-500" href="user/perfil.php">
+                                            <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4 border-b border-slate-500" href="/shoedev/user/perfil.php">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -48,7 +48,7 @@
                                             </a>
                                         </li>
                                         <li class="w-full">
-                                            <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4 border-b border-slate-500" href="#">
+                                            <a class="transition-all duration-300 hover:bg-slate-600 flex items-center gap-2 py-1.5 px-4 border-b border-slate-500" href="/shoedev/user/compras.php">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-bag">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                                     <path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z" />
@@ -79,11 +79,11 @@
                         <?php header('Location: perfil.php'); ?>
                     <?php endif; ?>
 
-                    <a href="tienda.php" class="text-sm font-medium hover:text-orange-600 transition">Tienda</a>
-                    <a href="index.php#categorias" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Categorías</a>
-                    <a href="contacto.php" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Contacto</a>
+                    <a href="/shoedev/tienda.php" class="text-sm font-medium hover:text-orange-600 transition">Tienda</a>
+                    <a href="/shoedev/index.php#categorias" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Categorías</a>
+                    <a href="/shoedev/contacto.php" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Contacto</a>
 
-                    <button id="carrito-btn" class="cursor-pointer flex items-center gap-2 bg-orange-600 text-white p-2 rounded-full hover:bg-orange-500 transition relative">
+                    <button class="carrito-btn cursor-pointer flex items-center gap-2 bg-orange-600 text-white p-2 rounded-full hover:bg-orange-500 transition relative">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />

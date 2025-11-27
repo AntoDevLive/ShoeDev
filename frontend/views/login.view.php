@@ -12,7 +12,16 @@
 
 <body class="min-h-screen text-gray-900 flex flex-col">
 
+  <!-- Modal -->
+  <?php include 'frontend/templates/Modal.php' ?>
+
+
+  <!-- Header -->
   <?php include 'frontend/templates/Header.php' ?>
+
+
+  <!-- Carrito -->
+  <?php include 'frontend/templates/Carrito.php' ?>
 
   <section class="h-[calc(100dvh-4rem)] grid grid-cols-1 lg:grid-cols-2 relative bg-neutral-100">
 
@@ -107,6 +116,7 @@
   <?php include 'frontend/templates/Footer.php' ?>
 </body>
 
-<script src="frontend/src/js/temp.js"></script>
+<script src="frontend/src/js/login.js"></script>
+<script src="frontend/src/js/carrito.js"></script>
 
 </html>
