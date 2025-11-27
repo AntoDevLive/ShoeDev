@@ -37,8 +37,8 @@
     <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
 
       <!-- Card Administrar productos -->
-      <a href="#"
-        class="group bg-white rounded-2xl shadow-md hover:shadow-lg p-6 transition-all duration-300 border border-slate-200 flex items-center justify-center flex-col">
+      <a href="/shoedev/backend/admin/productos.php"
+        class="group bg-white rounded-2xl shadow-md hover:shadow-lg hover:shadow-black/30 p-6 transition-all duration-300 border border-slate-200 flex items-center justify-center flex-col">
 
         <div class="w-16 h-16 bg-orange-100 rounded-xl group-hover:bg-orange-200 transition self-center flex justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg"
@@ -61,8 +61,8 @@
 
 
       <!-- Card Administrar Usuarios -->
-      <a href="#"
-        class="group bg-white rounded-2xl shadow-md hover:shadow-lg p-6 transition-all duration-300 border border-slate-200 flex items-center justify-center flex-col">
+      <a href="/shoedev/backend/admin/usuarios.php"
+        class="group bg-white rounded-2xl shadow-md hover:shadow-lg hover:shadow-black/30 p-6 transition-all duration-300 border border-slate-200 flex items-center justify-center flex-col">
 
         <div class="w-16 h-16 bg-orange-100 rounded-xl group-hover:bg-orange-200 transition self-center flex justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="orangered" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
@@ -84,8 +84,8 @@
 
 
       <!-- Card listar compras -->
-      <a href="#"
-        class="group bg-white rounded-2xl shadow-md hover:shadow-lg p-6 transition-all duration-300 border border-slate-200 flex items-center justify-center flex-col">
+      <a href="/shoedev/backend/admin/compras.php"
+        class="group bg-white rounded-2xl shadow-md hover:shadow-lg hover:shadow-black/30 p-6 transition-all duration-300 border border-slate-200 flex items-center justify-center flex-col">
 
         <div class="w-16 h-16 bg-orange-100 rounded-xl group-hover:bg-orange-200 transition self-center flex justify-center items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="orangered" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-list">
@@ -111,7 +111,7 @@
     </div>
   </section>
 
-  <!-- Carrito -->
+  <!-- Footer -->
   <?php include __DIR__ . '/../templates/Footer.php' ?>
 </body>
 
