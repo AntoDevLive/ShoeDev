@@ -2,4 +2,4 @@
 
 session_start();
 
-require '/shoedev/frontend/views/admin.view.php';
+require __DIR__ . '/../../frontend/views/admin.view.php';
