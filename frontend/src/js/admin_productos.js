@@ -3,13 +3,11 @@ const preview = document.getElementById("preview");
 const cerrarBtn = document.getElementById("cerrar-btn");
 const form = document.querySelector("form");
 const errorMsg = document.getElementById("errorMsg");
-
 const titleInput = form.querySelector('input[placeholder="Título del producto"]');
 const descriptionInput = form.querySelector("textarea");
 const brandSelect = form.querySelector("select");
 const stockInput = form.querySelector('input[placeholder="Stock"]');
 const priceInput = form.querySelector('input[placeholder="Precio"]');
-
 const modalForm = document.querySelector('#modal-form');
 const nuevoProductoBtn = document.querySelector('#nuevo-producto-btn');
 
@@ -97,11 +95,10 @@ function validarFormulario() {
   return true;
 }
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", e => {
   e.preventDefault();
 
   if (validarFormulario()) {
-    alert("Producto creado correctamente");
     form.submit();
   }
 });

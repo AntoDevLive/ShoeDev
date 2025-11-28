@@ -1,5 +1,7 @@
   <div id="modal-form" class="fixed inset-0 flex justify-center items-center bg-black/50 hidden">
-    <form enctype="multipart/form-data" action="" class="flex flex-col justify-center items-center bg-neutral-100 gap-6 py-10 px-8 w-120 rounded-lg shadow-lg shadow-black/50 relative">
+    <form enctype="multipart/form-data" method="POST" action="/shoedev/backend/controllers/Producto_controller.php" class="flex flex-col justify-center items-center bg-neutral-100 gap-6 py-10 px-8 w-120 rounded-lg shadow-lg shadow-black/50 relative">
+      
+    <input type="hidden" name="action" value="crear-producto">
 
       <button id="cerrar-btn" class="absolute right-2 top-2 cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
@@ -24,23 +26,23 @@
             Subir Imagen
           </label>
 
-          <input type="file" id="imagen" class="hidden" accept="image/*">
+          <input type="file" id="imagen" class="hidden" accept="image/*" name="imagen">
         </div>
       </div>
 
-      <input type="text" placeholder="Título del producto" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
-      <textarea placeholder="Descripción del producto" class="border p-2 w-full h-30 rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all resize-none"></textarea>
+      <input name="titulo" type="text" placeholder="Título del producto" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+      <textarea name="descripcion" placeholder="Descripción del producto" class="border p-2 w-full h-30 rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all resize-none"></textarea>
 
-      <select class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+      <select name="marca" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
         <option disabled selected>-- Seleccionar Marca ---</option>
-        <option>Nike</option>
-        <option>Puma</option>
-        <option>Adidas</option>
-        <option>Vans</option>
+        <option value="nike">Nike</option>
+        <option value="puma">Puma</option>
+        <option value="adidas">Adidas</option>
+        <option value="vans">Vans</option>
       </select>
 
-      <input type="number" placeholder="Stock" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
-      <input type="number" placeholder="Precio" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all" step="0.01" min="0">
+      <input name="stock" type="number" placeholder="Stock" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+      <input name="precio" type="number" placeholder="Precio" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all" step="0.01" min="0">
 
       <input type="submit" value="Crear Producto" class="bg-blue-500 text-white p-2 rounded-md w-full cursor-pointer transition-all duration-300 hover:bg-blue-500/90">
 

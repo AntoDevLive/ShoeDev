@@ -42,3 +42,24 @@ class ProductoController {
 
 $productoController = new ProductoController();
 $productoController->index();
+
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  $action = $_POST['action'];
+
+  if($action === 'crear-producto') {
+    $titulo = $_POST['titulo'];
+    $marca = $_POST['marca'];
+    $descripcion = $_POST['descripcion'];
+    $stock = $_POST['stock'];
+    $precio = $_POST['precio'];
+
+    $conexion = conectarDB();
+    $producto = new Producto($conexion);
+    $producto->crearProducto($titulo, $marca, $descripcion, $stock, $precio);
+
+    header('Location: /shoedev/backend/admin/productos.php');
+  }
+
+}

@@ -14,4 +14,17 @@ class Producto {
     return $stmt->fetchAll();
   }
   
+  public function crearProducto($titulo, $marca, $descripcion, $stock, $precio) {
+    $stmt = $this->conexion->prepare(
+      "INSERT INTO producto (titulo, marca, descripcion, stock, precio) VALUES (:titulo, :marca, :descripcion, :stock, :precio)"
+    );
+    $stmt->execute([
+      ':titulo' => $titulo,
+      ':marca' => $marca,
+      ':descripcion' => $descripcion,
+      ':stock' => $stock,
+      ':precio' => $precio,
+    ]);
+  }
+
 }
