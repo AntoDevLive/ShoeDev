@@ -126,11 +126,11 @@ if (carrito) {
 
             <div class="w-full flex justify-between items-center">
                 <div class="text-xl">
-                    <button id="decrementar-btn" class="btn-cantidad">-</button>
-                    <input id="cantidad" type="number" value="${producto.cantidad}" min="1" max="99" class="text-center w-12">
-                    <button id="aumentar-btn" class="btn-cantidad">+</button>
+                    <button id="decrementar-btn" class="btn-cantidad py-0 px-2 bg-orange-200 cursor-pointer rounded-sm transition-all duration-200 active:scale-90 hover:bg-orange-300">-</button>
+                    <input id="cantidad" type="number" value="${producto.cantidad}" min="1" max="99" class="text-center w-12 bg-neutral-200 rounded-sm">
+                    <button id="aumentar-btn" class="btn-cantidad py-0 px-2 bg-orange-200 cursor-pointer rounded-sm transition-all duration-200 active:scale-90 hover:bg-orange-300">+</button>
                 </div>
-                <button class="btn-eliminar bg-red-500 text-white px-4 py-2 rounded">Eliminar</button>
+                <button class="btn-eliminar bg-red-500 text-white px-4 py-2 rounded cursor-pointer transition-all duration-200 hover:bg-red-500/90">Eliminar</button>
             </div>
         `;
 
@@ -148,6 +148,7 @@ if (carrito) {
     cantidadInput.addEventListener("input", () => {
       let value = parseInt(cantidadInput.value);
       if (isNaN(value) || value < 1) value = 1;
+      if (isNaN(value) || value > 99) value = 99;
 
       producto.cantidad = value;
       precioSpan.textContent = formatearEuro(producto.precio * value);
@@ -197,7 +198,6 @@ if (carrito) {
   }
 
 
-
   // Modal carrito
   function openModal() {
     carrito.classList.remove('translate-x-full');
@@ -217,12 +217,12 @@ if (carrito) {
   }
 
 
-
   // Añadir productos
   productoBtns.forEach(btn => {
     btn.addEventListener('click', () => {
 
       const card = btn.closest('.producto');
+      const productoAgregadoBtn = btn.closest('.producto').querySelector('.producto-agregado-btn');
       const id = card.dataset.id;
       const titulo = card.querySelector('h3').textContent;
       const precio = parseFloat(
@@ -239,6 +239,14 @@ if (carrito) {
         carritoArray.push(producto);
       }
 
+      btn.classList.add('hidden');
+      productoAgregadoBtn.classList.remove('hidden');
+
+      setTimeout(() => {
+        btn.classList.remove('hidden');
+        productoAgregadoBtn.classList.add('hidden');
+      }, 1000);
+      
       guardarCarrito();
       renderProductoCarrito(producto);
     });
@@ -247,16 +255,27 @@ if (carrito) {
 
 
   // Vaciar
-  if (vaciarBtn) {
-    vaciarBtn.addEventListener("click", () => {
-      carritoArray = [];
-      guardarCarrito();
-      carritoBody.innerHTML = "";
-      actualizarSubtotal();
-      actualizarCarrito();
-      closeModal();
-    });
-  }
+  vaciarBtn?.addEventListener("click", () => {
+    // Vaciar array de productos
+    carritoArray = [];
+    guardarCarrito();
+
+    // Vaciar DOM de productos
+    if (carritoBody) {
+      // Eliminamos todos los productos excepto el div de carrito-vacio
+      carritoBody.querySelectorAll("section").forEach(sec => {
+        if (!sec.classList.contains("carrito-vacio")) {
+          sec.remove();
+        }
+      });
+    }
+
+    // Actualizar subtotal y botones
+    actualizarSubtotal();
+    actualizarCarrito();
+    closeModal();
+  });
+
 
 
 
