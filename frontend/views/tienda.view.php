@@ -30,7 +30,7 @@
 
       <!-- Search -->
       <div class="max-w-2xl mx-auto mb-6 relative">
-        <input type="text" placeholder="Buscar zapatillas..." class="pl-10 h-12 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-600">
+        <input id="searchInput" type="text" placeholder="Buscar zapatillas..." class="pl-10 h-12 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-600">
         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
       </div>
 
@@ -55,7 +55,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <!-- Productos Nike -->
-          <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4">
+          <div class="product-card bg-white rounded-lg shadow hover:shadow-xl transition p-4" data-name="Nike Air Force" data-brand="Nike">
             <div class="aspect-square overflow-hidden rounded-lg mb-4">
               <img src="frontend/src/assets/nike1.jfif" alt="Nike 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
             </div>
@@ -82,7 +82,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4">
+          <div class="product-card bg-white rounded-lg shadow hover:shadow-xl transition p-4" data-name="Puma RS" data-brand="Puma">
             <div class="aspect-square overflow-hidden rounded-lg mb-4">
               <img src="frontend/src/assets/puma1.jfif" alt="Puma 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
             </div>
@@ -108,7 +108,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4">
+          <div class="product-card bg-white rounded-lg shadow hover:shadow-xl transition p-4" data-name="Adidas Ultraboost" data-brand="Adidas">
             <div class="aspect-square overflow-hidden rounded-lg mb-4">
               <img src="frontend/src/assets/adidas1.jfif" alt="Adidas 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
             </div>
@@ -131,6 +131,7 @@
 </body>
 
 <script src="frontend/src/js/carrito.js"></script>
+<script src="frontend/src/js/tienda.js"></script>
 <script src="frontend/src/js/main.js"></script>
 
 </html>
