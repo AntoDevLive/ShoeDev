@@ -10,6 +10,9 @@
 
 <body class="min-h-screen bg-gray-50 text-gray-900">
 
+  <!-- Subir Btn -->
+  <?php include 'frontend/templates/Btn_subir.php' ?>
+
   <!-- Modal -->
   <?php include 'frontend/templates/Modal.php' ?>
 

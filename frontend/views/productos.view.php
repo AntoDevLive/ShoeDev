@@ -12,6 +12,9 @@
 
 <body class="min-h-screen text-gray-900 relative">
 
+  <!-- Subir Btn -->
+  <?php include __DIR__ .'/../templates/Btn_subir.php' ?>
+
   <!-- Modal -->
   <?php include __DIR__ . '/../templates/Modal.php' ?>
 
@@ -21,10 +24,8 @@
   <!-- Carrito -->
   <?php include __DIR__ . '/../templates/Carrito.php' ?>
 
-
   <!-- Modal form -->
   <?php include __DIR__ . '/../templates/Modal_form_admin.php' ?>
-
 
   <!-- Título section -->
   <section class="bg-neutral-50 py-15 flex flex-col justify-center items-center gap-8">
@@ -34,7 +35,6 @@
     </div>
 
   </section>
-
 
   <!-- Secciones de productos -->
   <section class="flex flex-col justify-center items-center gap-12 py-8">
@@ -170,7 +170,6 @@
     </section>
 
   </section>
-
 
   <!-- Footer -->
   <?php include __DIR__ . '/../templates/Footer.php' ?>

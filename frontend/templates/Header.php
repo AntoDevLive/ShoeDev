@@ -1,4 +1,4 @@
-<header class="bg-white/90">
+<header id="inicio" class="bg-white/90">
     <nav class="border-b border-b-slate-400/40 backdrop-blur">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">

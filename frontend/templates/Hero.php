@@ -8,14 +8,14 @@
             <?php foreach ($productos as $producto): ?>
 
                 <!-- Producto -->
-                <div data-id="<?php echo $producto['id'] ?>" class="producto shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group">
+                <div data-id="<?php echo $producto['id'] ?>" class="producto shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group flex flex-col justify-center items-start">
                     <a href="#">
                         <div class="aspect-square mb-4 bg-gray-100 rounded-lg overflow-hidden">
                             <img src="/shoedev/backend/uploads/products/<?php echo $producto['imagen'] ?>" alt="Zapatilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                         </div>
                     </a>
                     <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
-                    <div class="flex items-center justify-between mt-4 relative">
+                    <div class="flex items-center justify-between mt-4 relative w-full">
                         <span class="precio-producto text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
                         <button class="producto-btn flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">

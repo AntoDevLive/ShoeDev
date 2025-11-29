@@ -1,5 +1,6 @@
 // Selectores
 const modal = document.querySelector('.modal') ?? null;
+const header = document.querySelector('header') ?? null;
 const carritoBtns = document.querySelectorAll('.carrito-btn');
 const carrito = document.querySelector('.carrito') ?? null;
 const cerrarCarritoBtn = document.querySelector('.cerrar-carrito') ?? null;
@@ -206,12 +207,14 @@ if (carrito) {
     carrito.classList.remove('translate-x-full');
     modal.classList.remove('hidden');
     modal.classList.add('fade-in');
+    body.classList.add('overflow-y-hidden');
   }
 
   function closeModal() {
     carrito.classList.add('translate-x-full');
     modal.classList.remove('fade-in');
     modal.classList.add('fade-out');
+    body.classList.remove('overflow-y-hidden');
     ocultarDialog();
 
     setTimeout(() => {

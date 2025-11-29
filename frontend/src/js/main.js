@@ -1,6 +1,17 @@
 const userProfile = document.querySelector('.user-profile');
 const userMenu = document.querySelector('.user-menu') ?? null;
 const body = document.querySelector('body') ?? null;
+const arrowUp = document.querySelector('#arrow-up') ?? null;
+
+
+window.addEventListener('scroll', () => {
+    if (!arrowUp) return;
+    if (window.scrollY > 0) {
+        arrowUp.classList.remove('opacity-0');
+    } else {
+        arrowUp.classList.add('opacity-0');
+    }
+})
 
 
 if(userProfile) {
