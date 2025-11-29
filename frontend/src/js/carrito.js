@@ -10,6 +10,9 @@ const precioProducto = document.querySelectorAll('.precio-producto');
 const cartBubble = document.querySelector('.cart-bubble') ?? null;
 const vaciarBtn = document.querySelector('.vaciar-carrito-btn') ?? null;
 const carritoComprarBtn = document.querySelector('.comprar-carrito-btn') ?? null;
+const dialog = document.querySelector('#dialog') ?? null;
+const dialogConfirmar = document.querySelector('#dialog-confirmar') ?? null;
+const dialogCancelar = document.querySelector('#dialog-cancelar') ?? null;
 
 
 if (carrito) {
@@ -209,6 +212,7 @@ if (carrito) {
     carrito.classList.add('translate-x-full');
     modal.classList.remove('fade-in');
     modal.classList.add('fade-out');
+    ocultarDialog();
 
     setTimeout(() => {
       modal.classList.add('hidden');
@@ -246,21 +250,35 @@ if (carrito) {
         btn.classList.remove('hidden');
         productoAgregadoBtn.classList.add('hidden');
       }, 1000);
-      
+
       guardarCarrito();
       renderProductoCarrito(producto);
     });
   });
 
 
+  function mostrarDialog() {
+    dialog?.classList.remove('hidden'); // muestra solo el diálogo
+  }
+
+  function ocultarDialog() {
+    dialog?.classList.add('hidden'); // oculta el diálogo
+  }
+
 
   // Vaciar
   vaciarBtn?.addEventListener("click", () => {
-    // Vaciar array de productos
+    mostrarDialog();
+    dialogConfirmar.addEventListener('click', vaciarCarrito);
+    dialogCancelar.addEventListener('click', ocultarDialog);
+  });
+
+
+  function vaciarCarrito() {
+
     carritoArray = [];
     guardarCarrito();
 
-    // Vaciar DOM de productos
     if (carritoBody) {
       // Eliminamos todos los productos excepto el div de carrito-vacio
       carritoBody.querySelectorAll("section").forEach(sec => {
@@ -273,10 +291,9 @@ if (carrito) {
     // Actualizar subtotal y botones
     actualizarSubtotal();
     actualizarCarrito();
+    ocultarDialog();
     closeModal();
-  });
-
-
+  }
 
 
   // Formatear a moneda
