@@ -100,8 +100,19 @@ form.addEventListener("submit", e => {
 
   if (validarFormulario()) {
     form.submit();
+    // crearProducto();
   }
 });
+
+
+async function crearProducto() {
+
+  const res = await fetch('/shoedev/backend/controllers/Producto_controller.php', {
+    'method': 'POST',
+
+  });
+
+}
 
 
 // MODAL DEL FORMULARIO

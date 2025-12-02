@@ -28,7 +28,7 @@
                     <path d="M17 17h-11v-14h-2" />
                     <path d="M6 5l14 1l-1 7h-13" />
                 </svg>
-                <a class="bg-orange-600 text-2xl text-white py-2 px-5 rounded-lg transition-all duration-300 hover:bg-orange-500 hover:tracking-wide" href="tienda.php">Ir a la tienda</a>
+                <a class="bg-orange-600 text-2xl text-white py-2 px-5 rounded-lg transition-all duration-300 hover:bg-orange-500 hover:tracking-wide" href="/shoedev/tienda.php">Ir a la tienda</a>
             </div>
         </section>
 

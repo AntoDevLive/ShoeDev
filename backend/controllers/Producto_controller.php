@@ -32,7 +32,7 @@ class ProductoController {
     $conexion = conectarDB();
     $productoModel = new Producto($conexion);
 
-    $productos = $productoModel->obtenerTodo();
+    $productos_estrella = $productoModel->obtenerLimit(3);
 
     require_once __DIR__ . '/../../frontend/views/index.view.php';
 
@@ -40,26 +40,31 @@ class ProductoController {
 
 }
 
-$productoController = new ProductoController();
-$productoController->index();
 
-
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $action = $_POST['action'];
 
-  if($action === 'crear-producto') {
+  // Crear producto
+  if ($action === 'crear-producto') {
+
     $titulo = $_POST['titulo'];
     $marca = $_POST['marca'];
     $descripcion = $_POST['descripcion'];
     $stock = $_POST['stock'];
     $precio = $_POST['precio'];
+    $precio = $_FILES['imagen']['tmp_name'] | null;
 
     $conexion = conectarDB();
     $producto = new Producto($conexion);
-    $producto->crearProducto($titulo, $marca, $descripcion, $stock, $precio);
+    $producto->crearProducto($titulo, $marca, $descripcion, $stock, $precio, $imagen);
 
-    header('Location: /shoedev/backend/admin/productos.php');
+    exit;
+
   }
-
 }
+
+
+
+$productoController = new ProductoController();
+$productoController->index();

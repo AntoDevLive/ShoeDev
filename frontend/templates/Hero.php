@@ -5,16 +5,19 @@
 
         <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
-            <?php foreach ($productos as $producto): ?>
+            <?php foreach ($productos_estrella as $producto): ?>
 
                 <!-- Producto -->
                 <div data-id="<?php echo $producto['id'] ?>" class="producto shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group flex flex-col justify-center items-start">
-                    <a href="#">
+                    <a href="/shoedev/producto.php?id=<?php echo $producto['id'] ?>">
                         <div class="aspect-square mb-4 bg-gray-100 rounded-lg overflow-hidden">
                             <img src="/shoedev/backend/uploads/products/<?php echo $producto['imagen'] ?>" alt="Zapatilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                         </div>
                     </a>
-                    <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
+                    <div class="flex justify-center items-start gap-2">
+                        <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
+                        <span class="py-1 px-2 rounded-sm bg-neutral-300 text-sm capitalize"><?php echo $producto['marca'] ?></span>
+                    </div>
                     <div class="flex items-center justify-between mt-4 relative w-full">
                         <span class="precio-producto text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
                         <button class="producto-btn flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">

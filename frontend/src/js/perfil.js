@@ -73,7 +73,6 @@ fileInput.addEventListener('change', e => {
     inputProfile.value = 'profile-img';
 
   } else {
-    // Usuario canceló la ventana → OCULTAR TODOS los botones de edición
     saveUserBtn.classList.add('hidden');
     cancelBtn.classList.add('hidden');
     editUserBtn.classList.remove('hidden');
