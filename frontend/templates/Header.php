@@ -94,7 +94,7 @@
                     <?php endif; ?>
 
                     <a href="/shoedev/tienda.php" class="text-sm font-medium hover:text-orange-600 transition">Tienda</a>
-                    <a href="/shoedev/index.php#categorias" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Categorías</a>
+                    <a href="/shoedev/index.php#marcas" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Marcas</a>
                     <a href="/shoedev/contacto.php" class="text-sm font-medium text-gray-500 hover:text-orange-600 transition">Contacto</a>
 
                     <button class="carrito-btn cursor-pointer flex items-center gap-2 bg-orange-600 text-white p-2 rounded-full hover:bg-orange-500 transition relative">

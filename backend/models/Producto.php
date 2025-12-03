@@ -48,6 +48,23 @@ class Producto
     return $stmt->fetchAll();
   }
 
+  // Obtener productos aleatorios
+  public function obtenerRandom($limite)
+  {
+    $stmt = $this->conexion->prepare("
+        SELECT * 
+        FROM producto 
+        ORDER BY RAND()
+        LIMIT :limite
+    ");
+
+    $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+
+    $stmt->execute();
+    return $stmt->fetchAll();
+  }
+
+
   // Crear producto
   public function crearProducto($titulo, $marca, $descripcion, $stock, $precio, $imagen)
   {

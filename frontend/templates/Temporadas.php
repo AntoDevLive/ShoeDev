@@ -14,18 +14,22 @@
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
-                    <div class="swiper-slide">
-                        <div class="img-container">
-                            <img src="frontend/src/assets/model4.jpg" alt="">
-                        </div>
-                        <div class="info">
-                            <p>Velocity Runner</p>
-                            <div class="info-footer">
-                                <span>139.99€</span>
-                                <button>Ver más</button>
+                    <?php foreach ($productos_temporada as $producto): ?>
+
+                        <div class="swiper-slide">
+                            <div class="img-container">
+                                <img src="backend/uploads/products/<?php echo $producto['imagen']; ?>" alt="">
+                            </div>
+                            <div class="info">
+                                <p><?php echo $producto['titulo']; ?></p>
+                                <div class="info-footer">
+                                    <span><?php echo $producto['precio']; ?></span>
+                                    <button>Ver más</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                    <?php endforeach; ?>
 
                     <div class="swiper-slide">
                         <div class="img-container">

@@ -27,17 +27,21 @@ if (file_exists($producto_model)) {
 // Manejar Model Producto
 class ProductoController {
 
-  public function index() {
+  public function index()
+  {
 
     $conexion = conectarDB();
     $productoModel = new Producto($conexion);
 
-    $productos_estrella = $productoModel->obtenerLimit(3);
+    $productos_limite = $productoModel->obtenerLimit(3);
+    $productos_total_nike = $productoModel->obtenerTotalMarca("nike");
+    $productos_total_adidas = $productoModel->obtenerTotalMarca("adidas");
+    $productos_total_puma = $productoModel->obtenerTotalMarca("puma");
+    $productos_estrella = $productoModel->obtenerRandom(3);
+    $productos_temporada = $productoModel->obtenerRandom(3);
 
     require_once __DIR__ . '/../../frontend/views/index.view.php';
-
   }
-
 }
 
 
@@ -45,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $action = $_POST['action'];
 
-  // Crear producto
   if ($action === 'crear-producto') {
 
     $titulo = $_POST['titulo'];
@@ -53,18 +56,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = $_POST['descripcion'];
     $stock = $_POST['stock'];
     $precio = $_POST['precio'];
-    $precio = $_FILES['imagen']['tmp_name'] | null;
+
+    // Manejar imagen
+    if ($_FILES['imagen']['error'] === 0) {
+      $imagen = $_FILES['imagen']['name'];
+      move_uploaded_file($_FILES['imagen']['tmp_name'], __DIR__ . "/../../uploads/$imagen");
+    } else {
+      $imagen = null;
+    }
 
     $conexion = conectarDB();
     $producto = new Producto($conexion);
     $producto->crearProducto($titulo, $marca, $descripcion, $stock, $precio, $imagen);
 
     exit;
-
   }
 }
-
-
 
 $productoController = new ProductoController();
 $productoController->index();

@@ -29,7 +29,7 @@
     <div class="container mx-auto px-4 py-6">
 
       <!-- Search -->
-      <div class="max-w-2xl mx-auto mb-6 relative">
+      <div class="max-w-2xl mx-auto mb-6 relative barra-busqueda">
         <input id="searchInput" type="text" placeholder="Buscar zapatillas..." class="pl-10 h-12 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-600">
         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search">

@@ -207,3 +207,7 @@ img {
 .animated-bubble {
     animation: bubble .15s ease-out forwards;
 }
+
+.barra-busqueda:focus-within  svg {
+    stroke: orangered;
+}

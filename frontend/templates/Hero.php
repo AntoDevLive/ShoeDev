@@ -14,11 +14,11 @@
                             <img src="/shoedev/backend/uploads/products/<?php echo $producto['imagen'] ?>" alt="Zapatilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                         </div>
                     </a>
-                    <div class="flex justify-center items-start gap-2">
+                    <div class="flex justify-center items-start flex-col">
+                        <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded mb-2 text-sm capitalize"><?php echo $producto['marca'] ?></span>
                         <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
-                        <span class="py-1 px-2 rounded-sm bg-neutral-300 text-sm capitalize"><?php echo $producto['marca'] ?></span>
                     </div>
-                    <div class="flex items-center justify-between mt-4 relative w-full">
+                    <div class="flex items-center justify-between mt-1 relative w-full">
                         <span class="precio-producto text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
                         <button class="producto-btn flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
