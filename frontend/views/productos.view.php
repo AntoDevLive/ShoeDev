@@ -38,6 +38,9 @@
 
   <!-- Secciones de productos -->
   <section class="flex flex-col justify-center items-center gap-12 py-8">
+
+  
+
     <button id="nuevo-producto-btn" class="bg-blue-500 text-white text-xl py-2 px-5 capitalize cursor-pointer rounded-md transition-all duration-300 hover:bg-blue-500/90">Nuevo producto</button>
 
     <!-- Adidas -->

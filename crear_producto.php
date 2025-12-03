@@ -5,11 +5,15 @@ session_start();
 require_once __DIR__ . "/backend/config/database.php";
 require_once __DIR__ . "/backend/models/Producto.php";
 
-// Validación
+// Validación mínima
 $required = ['titulo', 'marca', 'descripcion', 'stock', 'precio'];
 foreach ($required as $campo) {
   if (empty($_POST[$campo])) {
-    die("El campo $campo es obligatorio");
+    echo json_encode([
+      "status" => "error",
+      "message" => "El campo $campo es obligatorio"
+    ]);
+    exit;
   }
 }
 
@@ -24,35 +28,42 @@ $uploadDir = __DIR__ . "/backend/uploads/products/";
 
 // Procesar imagen
 if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
-
   $tmpName = $_FILES['imagen']['tmp_name'];
   $ext = strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
-
-  // Extensiones válidas
   $validExt = ['jpg', 'jpeg', 'png', 'webp', 'jfif'];
 
   if (!in_array($ext, $validExt)) {
-    die("Formato de imagen no permitido");
+    echo json_encode([
+      "status" => "error",
+      "message" => "Formato de imagen no permitido"
+    ]);
+    exit;
   }
 
-  // Nombre único
   $imagen = uniqid('img_', true) . "." . $ext;
-
-  // Mover archivo
   if (!move_uploaded_file($tmpName, $uploadDir . $imagen)) {
-    die("Error al subir la imagen");
+    echo json_encode([
+      "status" => "error",
+      "message" => "Error al subir la imagen"
+    ]);
+    exit;
   }
 }
 
-// GUARDAR EN BD
+// Guardar en BD
 try {
   $conexion = conectarDB();
   $producto = new Producto($conexion);
 
   $producto->crearProducto($titulo, $marca, $descripcion, $stock, $precio, $imagen);
 
-  header("Location: /shoedev/backend/admin/productos.php");
-  exit;
+  echo json_encode([
+    "status" => "success",
+    "message" => "Producto creado correctamente"
+  ]);
 } catch (Exception $e) {
-  die("Error en la BD: " . $e->getMessage());
+  echo json_encode([
+    "status" => "error",
+    "message" => "Error en la BD: " . $e->getMessage()
+  ]);
 }

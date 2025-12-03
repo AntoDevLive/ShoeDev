@@ -99,19 +99,35 @@ form.addEventListener("submit", e => {
   e.preventDefault();
 
   if (validarFormulario()) {
-    form.submit();
-    // crearProducto();
+    // form.submit();
+    crearProducto();
   }
 });
 
 
 async function crearProducto() {
+  // Crear FormData con todos los campos del form
+  const formData = new FormData(form);
 
-  const res = await fetch('/shoedev/backend/controllers/Producto_controller.php', {
-    'method': 'POST',
+  try {
+    const res = await fetch('/shoedev/crear_producto.php', {
+      method: 'POST',
+      body: formData
+    });
 
-  });
+    const data = await res.json();
 
+    if (data.status === "success") {
+      closeModalForm();
+      console.log(data.message);
+    } else {
+      console.log('error');
+    }
+
+  } catch (err) {
+    console.error(err);
+    console.log('error');
+  }
 }
 
 
