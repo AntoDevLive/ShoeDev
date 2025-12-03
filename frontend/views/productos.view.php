@@ -44,6 +44,57 @@
 
     <button id="nuevo-producto-btn" class="bg-blue-500 text-white text-xl py-2 px-5 capitalize cursor-pointer rounded-md transition-all duration-300 hover:bg-blue-500/90">Nuevo producto</button>
 
+    <!-- Nike -->
+    <section>
+      <div class="container mx-auto px-4">
+        <div class="mb-12">
+          <div class="bg-gradient-to-r from-orange-100 to-transparent p-8 rounded-lg mb-8">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Nike</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+            <!-- Producto -->
+            <?php foreach ($productos_nike as $producto): ?>
+
+              <div class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-center flex-col w-full shadow-lg shadow-black/30">
+                <div class="aspect-square overflow-hidden rounded-lg mb-4">
+                  <a href="#"><img src="../uploads/products/<?php echo $producto['imagen']; ?>" alt="Adidas 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"></a>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2 capitalize"> <?php echo $producto['titulo'] ?> </h3>
+                <div class="flex items-center justify-center gap-5 w-full mt-2">
+                  <button class="py-1 px-4 bg-amber-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-yellow-500/90 flex justify-center items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                      <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                      <path d="M16 5l3 3" />
+                    </svg>
+                    Editar
+                  </button>
+                  <button class="py-1 px-4 bg-red-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-red-500/90 flex justify-center items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 7l16 0" />
+                      <path d="M10 11l0 6" />
+                      <path d="M14 11l0 6" />
+                      <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                    </svg>
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+
+            <?php endforeach; ?>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+
     <!-- Adidas -->
     <section>
       <div class="container mx-auto px-4">
@@ -53,78 +104,41 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <div class="bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-center flex-col w-full shadow-lg shadow-black/30">
-              <div class="aspect-square overflow-hidden rounded-lg mb-4">
-                <a href="#"><img src="../../frontend/src/assets/adidas1.jfif" alt="Adidas 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"></a>
-              </div>
-              <h3 class="font-semibold text-gray-900 mb-2">Adidas Ultraboost</h3>
-              <div class="flex items-center justify-center gap-5 w-full">
-                <button class="py-1 px-4 bg-amber-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-yellow-500/90 flex justify-center items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                    <path d="M16 5l3 3" />
-                  </svg>
-                  Editar
-                </button>
-                <button class="py-1 px-4 bg-red-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-red-500/90 flex justify-center items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M4 7l16 0" />
-                    <path d="M10 11l0 6" />
-                    <path d="M14 11l0 6" />
-                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                  </svg>
-                  Eliminar
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
+            <!-- Producto -->
+            <?php foreach ($productos_adidas as $producto): ?>
 
-
-    <!-- Nike -->
-    <section>
-      <div class="container mx-auto px-4">
-        <div class="mb-12">
-          <div class="bg-gradient-to-r from-orange-100 to-transparent p-8 rounded-lg mb-8">
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Nike</h2>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <div class="bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-center flex-col w-full shadow-lg shadow-black/30">
-              <div class="aspect-square overflow-hidden rounded-lg mb-4">
-                <a href="#"><img src="../../frontend/src/assets/nike1.jfif" alt="Adidas 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"></a>
+              <div class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-center flex-col w-full shadow-lg shadow-black/30">
+                <div class="aspect-square overflow-hidden rounded-lg mb-4">
+                  <a href="#"><img src="../uploads/products/<?php echo $producto['imagen']; ?>" alt="Adidas 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"></a>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2 capitalize"> <?php echo $producto['titulo'] ?> </h3>
+                <div class="flex items-center justify-center gap-5 w-full mt-2">
+                  <button class="py-1 px-4 bg-amber-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-yellow-500/90 flex justify-center items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                      <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                      <path d="M16 5l3 3" />
+                    </svg>
+                    Editar
+                  </button>
+                  <button class="py-1 px-4 bg-red-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-red-500/90 flex justify-center items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 7l16 0" />
+                      <path d="M10 11l0 6" />
+                      <path d="M14 11l0 6" />
+                      <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                    </svg>
+                    Eliminar
+                  </button>
+                </div>
               </div>
-              <h3 class="font-semibold text-gray-900 mb-2">Adidas Ultraboost</h3>
-              <div class="flex items-center justify-center gap-5 w-full">
-                <button class="py-1 px-4 bg-amber-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-yellow-500/90 flex justify-center items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                    <path d="M16 5l3 3" />
-                  </svg>
-                  Editar
-                </button>
-                <button class="py-1 px-4 bg-red-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-red-500/90 flex justify-center items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M4 7l16 0" />
-                    <path d="M10 11l0 6" />
-                    <path d="M14 11l0 6" />
-                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                  </svg>
-                  Eliminar
-                </button>
-              </div>
-            </div>
+
+            <?php endforeach; ?>
+
           </div>
         </div>
       </div>
@@ -140,34 +154,41 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <div class="bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-center flex-col w-full shadow-lg shadow-black/30">
-              <div class="aspect-square overflow-hidden rounded-lg mb-4">
-                <a href="#"><img src="../../frontend/src/assets/puma1.jfif" alt="Adidas 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"></a>
+
+            <!-- Producto -->
+            <?php foreach ($productos_puma as $producto): ?>
+
+              <div class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-center flex-col w-full shadow-lg shadow-black/30">
+                <div class="aspect-square overflow-hidden rounded-lg mb-4">
+                  <a href="#"><img src="../uploads/products/<?php echo $producto['imagen']; ?>" alt="Adidas 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"></a>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2 capitalize"> <?php echo $producto['titulo'] ?> </h3>
+                <div class="flex items-center justify-center gap-5 w-full mt-2">
+                  <button class="py-1 px-4 bg-amber-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-yellow-500/90 flex justify-center items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                      <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                      <path d="M16 5l3 3" />
+                    </svg>
+                    Editar
+                  </button>
+                  <button class="py-1 px-4 bg-red-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-red-500/90 flex justify-center items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 7l16 0" />
+                      <path d="M10 11l0 6" />
+                      <path d="M14 11l0 6" />
+                      <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                    </svg>
+                    Eliminar
+                  </button>
+                </div>
               </div>
-              <h3 class="font-semibold text-gray-900 mb-2">Adidas Ultraboost</h3>
-              <div class="flex items-center justify-center gap-5 w-full">
-                <button class="py-1 px-4 bg-amber-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-yellow-500/90 flex justify-center items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                    <path d="M16 5l3 3" />
-                  </svg>
-                  Editar
-                </button>
-                <button class="py-1 px-4 bg-red-500 rounded-sm text-white cursor-pointer transition-all duration-200 hover:bg-red-500/90 flex justify-center items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M4 7l16 0" />
-                    <path d="M10 11l0 6" />
-                    <path d="M14 11l0 6" />
-                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                  </svg>
-                  Eliminar
-                </button>
-              </div>
-            </div>
+
+            <?php endforeach; ?>
+
           </div>
         </div>
       </div>

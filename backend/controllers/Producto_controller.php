@@ -59,6 +59,18 @@ class ProductoController {
     require __DIR__ . '/../../frontend/views/tienda.view.php';
   }
 
+  // Tienda
+  public function productos() {
+    $conexion = conectarDB();
+    $productoModel = new Producto($conexion);
+
+    $productos_nike = $productoModel->obtenerMarca("nike");
+    $productos_adidas = $productoModel->obtenerMarca("adidas");
+    $productos_puma = $productoModel->obtenerMarca("puma");
+
+    require __DIR__ . '/../../frontend/views/productos.view.php';
+  }
+
 }
 
 
@@ -99,4 +111,6 @@ if ($page === "index.php") {
   $productoController->index();
 } elseif ($page === "tienda.php") {
   $productoController->tienda();
+} elseif ($page === "productos.php") {
+  $productoController->productos();
 }
