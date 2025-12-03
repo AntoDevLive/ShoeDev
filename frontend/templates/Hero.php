@@ -1,4 +1,4 @@
-<section class="py-20 bg-linear-to-b from-gray-100 to-white">
+<section id="inicio" class="py-20 bg-linear-to-b from-gray-100 to-white scroll-mt-20">
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-5xl font-bold mb-4">Productos <span class="text-orange-600">Estrella</span></h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">Descubre nuestra selección premium de zapatillas deportivas diseñadas para el máximo rendimiento</p>

@@ -1,4 +1,4 @@
-  <div id="modal-form" class="fixed inset-0 flex justify-center items-center bg-black/50 hidden">
+  <div id="modal-form" class="fixed z-20 inset-0 flex justify-center items-center bg-black/50 hidden">
     <form enctype="multipart/form-data" method="POST" action="/shoedev/crear_producto.php" class="flex flex-col justify-center items-center bg-neutral-100 gap-6 py-10 px-8 w-120 rounded-lg shadow-lg shadow-black/50 relative">
       
     <input type="hidden" name="action" value="crear-producto">

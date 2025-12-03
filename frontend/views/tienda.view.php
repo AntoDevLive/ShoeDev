@@ -25,7 +25,7 @@
   <?php include 'frontend/templates/Carrito.php' ?>
 
   <!-- Search & Filters -->
-  <div class="bg-gray-100/30 border-b border-gray-300 pt-25">
+  <div id="inicio" class="bg-gray-100/30 border-b border-gray-300 pt-25 scroll-mt-20">
     <div class="container mx-auto px-4 py-6">
 
       <!-- Search -->
@@ -231,7 +231,7 @@
 </body>
 
 <script src="frontend/src/js/carrito.js"></script>
-<script src="frontend/src/js/tienda.js"></script>
+<script src="frontend/src/js/search.js"></script>
 <script src="frontend/src/js/main.js"></script>
 
 </html>

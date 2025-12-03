@@ -1,4 +1,4 @@
-<header id="inicio" class="bg-white/70 backdrop-blur-xl <?php if (basename($_SERVER['SCRIPT_NAME']) === 'tienda.php' || basename($_SERVER['SCRIPT_NAME']) === 'productos.php') echo 'fixed mb-50 w-full z-10 shadow-md shadow-black/30' ?> ">
+<header class="bg-white/70 backdrop-blur-xl <?php if (basename($_SERVER['SCRIPT_NAME']) === 'tienda.php' || basename($_SERVER['SCRIPT_NAME']) === 'productos.php') echo 'fixed mb-50 w-full z-10 shadow-md shadow-black/30' ?> ">
     <nav class="border-b border-b-slate-400/40 backdrop-blur">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
