@@ -13,6 +13,8 @@ const nuevoProductoBtn = document.querySelector('#nuevo-producto-btn');
 const toast = document.querySelector('#toast');
 const submit = document.querySelector('#submit');
 
+const sectionNike = document.querySelector('#productos-nike');
+
 
 // Preview imagen
 function mostrarPreview(file) {
@@ -120,6 +122,7 @@ async function crearProducto() {
 
     if (data.status === "success") {
       closeModalForm();
+      listarNike(); // CAMBIAR A RENDERIZACIÓN GLOBAL
       mostrarToast(data.message);
       setTimeout(() => {
         ocultarToast();
@@ -132,7 +135,7 @@ async function crearProducto() {
     console.error(err);
     console.log('error');
   }
-  
+
 }
 
 
@@ -149,7 +152,7 @@ function ocultarToast() {
 // Modal form
 function openModalForm(mode) {
   modalForm.classList.remove("hidden");
-  if(mode === 'editando') {
+  if (mode === 'editando') {
     submit.value = 'Guardar';
   } else {
     submit.value = 'Crear Producto';
@@ -174,20 +177,31 @@ modalForm.addEventListener("click", closeModalForm);
 form.addEventListener("click", e => e.stopPropagation());
 
 
-const editBtn = document.querySelectorAll('.edit-btn');
 
-editBtn.forEach(btn => {
+// Botones de editar y eliminar en los productos extraidos de la API
+function activarBotones() {
 
-  btn.addEventListener('click', () => {
-    const id = btn.closest('.product-card').getAttribute('data-id');
+  const editBtn = document.querySelectorAll('.edit-btn');
 
-    getCampos(id);
-
-    openModalForm('editando');
+  editBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.closest('.product-card').getAttribute('data-id');
+      getCampos(id);
+      openModalForm('editando');
+    });
   });
 
+  const deleteBtn = document.querySelectorAll('.delete-btn');
 
-});
+  deleteBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.closest('.product-card').getAttribute('data-id');
+      console.log('eliminando: ', id);
+    });
+  });
+
+}
+
 
 
 async function getCampos(id) {
@@ -229,3 +243,53 @@ function formEdit(imagen, titulo, descripcion, marca, stock, precio) {
   stockInput.value = stock;
   priceInput.value = precio;
 }
+
+
+
+async function listarNike() {
+
+  try {
+    const res = await fetch('/shoedev/get_nike.php');
+    const productos = await res.json();
+
+    sectionNike.innerHTML = ""; // limpiamos
+
+    productos.forEach(producto => {
+
+      const card = `
+        <div data-id="${producto.id}"
+            class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex flex-col shadow-lg shadow-black/30">
+
+          <div class="aspect-square overflow-hidden rounded-lg mb-4">
+            <img src="/shoedev/backend/uploads/products/${producto.imagen}"
+                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </div>
+
+          <h3 class="font-semibold text-gray-900 mb-2 capitalize text-xl">
+            ${producto.titulo}
+          </h3>
+
+          <div class="flex items-center justify-start gap-5 w-full mt-2">
+            <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90 edit-btn">
+              Editar
+            </button>
+            <button class="py-1 px-4 bg-red-500 text-white rounded-sm cursor-pointer hover:bg-red-500/90 delete-btn">
+              Eliminar
+            </button>
+          </div>
+
+        </div>
+      `;
+
+      sectionNike.innerHTML += card;
+    });
+
+    activarBotones();
+
+  } catch (err) {
+    console.error("Error al cargar productos Nike:", err);
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', listarNike);
