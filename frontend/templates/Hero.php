@@ -28,7 +28,7 @@
                                 <path d="M17 17h-11v-14h-2" />
                                 <path d="M6 5l14 1l-1 7h-13" />
                             </svg>
-                            Comprar
+                            Añadir
                         </button>
                         <button class="producto-agregado-btn hidden flex items-center gap-1 bg-green-600 px-3 py-2 rounded cursor-cursor text-sm text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
