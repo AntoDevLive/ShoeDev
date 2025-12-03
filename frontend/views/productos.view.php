@@ -28,7 +28,7 @@
   <?php include __DIR__ . '/../templates/Modal_form_admin.php' ?>
 
   <!-- Título section -->
-  <section class="bg-neutral-50 py-15 flex flex-col justify-center items-center gap-8">
+  <section class="bg-neutral-50 pb-8 flex flex-col justify-center items-center gap-8 pt-30">
 
     <div class="w-110 border-b border-b-orange-400 text-center">
       <h1 class="text-4xl font-semibold text-orange-600">Administrar Productos</h1>
