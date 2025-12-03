@@ -105,10 +105,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = new User($conexion);
     $user->eliminarCuenta($password);
 
-    // header('Location: /shoedev/backend/config/cerrar.php');
-
     exit;
 
   }
 
+  // Editar info 
+  if ($action === 'update-info') {
+    $conexion = conectarDB();
+    $user = new User($conexion);
+
+    $email = $_POST['email'] ?? '';
+    $nombre = $_POST['nombre'] ?? '';
+    $apellidos = $_POST['apellidos'] ?? '';
+    $direccion = $_POST['direccion'] ?? '';
+    $nacimiento = $_POST['nacimiento'] ?? '';
+
+    $result = $user->updateProfile($email, $nombre, $apellidos, $direccion, $nacimiento);
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
+    exit;
+  }
 }

@@ -106,7 +106,7 @@ submitInfo.addEventListener('click', e => {
 async function editInfo() {
   const formData = new FormData(infoForm);
 
-  const res = await fetch('/shoedev/ajax.php', {
+  const res = await fetch('/shoedev/backend/controllers/User_controller.php', {
     method: 'POST',
     body: formData
   });

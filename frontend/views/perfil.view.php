@@ -23,10 +23,6 @@
   <!-- Carrito -->
   <?php include '../frontend/templates/Carrito.php' ?>
 
-  <!-- Toast -->
-  <div id="toast-edit"
-    class="text-xl bg-green-500 text-white py-2 px-5 fixed left-0 top-2/4 rounded-tr-md rounded-br-md -translate-x-full duration-500 transition-all opacity-0">
-  </div>
 
   <!-- Modal Eliminar -->
   <div id="modal-eliminar" class="hidden fixed inset-0 bg-black/50 z-99 flex justify-center items-center">
@@ -117,8 +113,14 @@
   </section>
 
   <!-- Datos del usuario -->
-  <section class="flex justify-center items-center flex-col gap-4 bg-neutral-100 p-10">
+  <section class="flex justify-center items-center flex-col gap-4 bg-neutral-100 p-10 relative">
     <div class="flex justify-center items-center gap-2">
+
+      <!-- Toast -->
+      <div id="toast-edit"
+        class="text-xl bg-green-500 text-white py-2 px-5 absolute left-0 top-0 rounded-tr-md rounded-br-md -translate-x-full duration-500 transition-all opacity-0">
+      </div>
+
       <h3 class="text-4xl">Mi información</h3>
       <button title="Editar información" id="edit-info-btn" class="bg-yellow-500 p-1 rounded-full cursor-pointer transition-all duration-200 hover:bg-yellow-500/80">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
@@ -131,6 +133,7 @@
       </button>
     </div>
     <form id="info-profile-form" class="disabled w-150 py-12 px-8 bg-orange-50 flex flex-col gap-5 justify-center items-center shadow-xl rounded-lg">
+      <input type="hidden" name="action" value="update-info">
       <fieldset class="grid grid-cols-2 w-full gap-5">
         <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full" type="email" placeholder="Email" value="<?php echo $perfil['email'] ?>" name="email">
         <input class="bg-white border border-orange-300 p-1.5 text-xl rounded-md w-full capitalize" type="text" placeholder="Nombre" value="<?php echo $perfil['nombre'] ?>" name="nombre">

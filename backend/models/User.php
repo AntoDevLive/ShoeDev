@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+
+// session_start();
 
 class User {
 
@@ -202,5 +204,49 @@ class User {
     header('Location: /shoedev/backend/config/cerrar.php');
     return true;
   }
-  
+
+
+  // Editar info
+  public function updateProfile($email, $nombre, $apellidos, $direccion, $nacimiento) {
+
+    if (!isset($_SESSION['id'])) {
+      return ['status' => 'error', 'message' => 'No hay sesión activa.'];
+    }
+
+    try {
+      $usuarioId = $_SESSION['id'];
+
+      // Actualizar email en tabla usuario
+      $stmtUsuario = $this->conexion->prepare(
+        "UPDATE usuario SET email = :email WHERE id = :id"
+      );
+      $stmtUsuario->execute([
+        ':email' => $email,
+        ':id' => $usuarioId
+      ]);
+
+      // Actualizar datos del perfil
+      $stmtPerfil = $this->conexion->prepare(
+        "UPDATE perfil 
+               SET nombre = :nombre,
+                   apellidos = :apellidos,
+                   direccion = :direccion,
+                   nacimiento = :nacimiento
+               WHERE usuario_id = :id"
+      );
+      $stmtPerfil->execute([
+        ':nombre' => $nombre,
+        ':apellidos' => $apellidos,
+        ':direccion' => $direccion,
+        ':nacimiento' => $nacimiento,
+        ':id' => $usuarioId
+      ]);
+
+      return ['status' => 'success', 'message' => 'Perfil actualizado correctamente'];
+    } catch (PDOException $e) {
+      error_log($e->getMessage(), 3, __DIR__ . '/../logs/db_errors.log');
+      return ['status' => 'error', 'message' => 'Error al actualizar perfil.'];
+    }
+  }
+
 }
