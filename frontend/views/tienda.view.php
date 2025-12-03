@@ -31,7 +31,13 @@
       <!-- Search -->
       <div class="max-w-2xl mx-auto mb-6 relative">
         <input id="searchInput" type="text" placeholder="Buscar zapatillas..." class="pl-10 h-12 w-full border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-600">
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">🔍</span>
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+          </svg>
+        </span>
       </div>
 
       <!-- Brand Filter Buttons -->
@@ -43,6 +49,19 @@
 
     </div>
   </div>
+
+  <!-- Búsqueda sin resultados -->
+  <section id="empty-search" class="flex justify-center items-center flex-col gap-2 text-neutral-500 py-35 hidden">
+    <p class="text-3xl">¡Oh no!</p>
+    <p class="text-2xl">No encontramos resultados que coincidan con tu búsqueda.</p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mood-sad">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+      <path d="M9 10l.01 0" />
+      <path d="M15 10l.01 0" />
+      <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
+    </svg>
+  </section>
 
   <!-- Nike Section -->
   <section id="nike" class="py-16 scroll-mt-20">

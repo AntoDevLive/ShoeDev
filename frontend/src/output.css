@@ -1051,6 +1051,18 @@
   .py-26 {
     padding-block: calc(var(--spacing) * 26);
   }
+  .py-30 {
+    padding-block: calc(var(--spacing) * 30);
+  }
+  .py-35 {
+    padding-block: calc(var(--spacing) * 35);
+  }
+  .py-40 {
+    padding-block: calc(var(--spacing) * 40);
+  }
+  .py-50 {
+    padding-block: calc(var(--spacing) * 50);
+  }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
   }
@@ -1141,6 +1153,15 @@
   }
   .text-gray-900 {
     color: var(--color-gray-900);
+  }
+  .text-neutral-400 {
+    color: var(--color-neutral-400);
+  }
+  .text-neutral-500 {
+    color: var(--color-neutral-500);
+  }
+  .text-neutral-600 {
+    color: var(--color-neutral-600);
   }
   .text-orange-600 {
     color: var(--color-orange-600);
