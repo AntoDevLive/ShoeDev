@@ -10,9 +10,10 @@ const stockInput = form.querySelector('input[placeholder="Stock"]');
 const priceInput = form.querySelector('input[placeholder="Precio"]');
 const modalForm = document.querySelector('#modal-form');
 const nuevoProductoBtn = document.querySelector('#nuevo-producto-btn');
+const toast = document.querySelector('#toast');
 
 
-// FUNCIONES DE PREVIEW DE IMAGEN
+// Preview imagen
 function mostrarPreview(file) {
   const reader = new FileReader();
 
@@ -36,7 +37,7 @@ inputFile.addEventListener("change", function () {
 });
 
 
-// VALIDACIÓN DEL FORMULARIO
+// Validación
 function limpiarErrores() {
   errorMsg.classList.add("hidden");
   errorMsg.textContent = "";
@@ -106,7 +107,7 @@ form.addEventListener("submit", e => {
 
 
 async function crearProducto() {
-  // Crear FormData con todos los campos del form
+
   const formData = new FormData(form);
 
   try {
@@ -119,7 +120,10 @@ async function crearProducto() {
 
     if (data.status === "success") {
       closeModalForm();
-      console.log(data.message);
+      mostrarToast(data.message);
+      setTimeout(() => {
+        ocultarToast();
+      }, 3000);
     } else {
       console.log('error');
     }
@@ -128,10 +132,21 @@ async function crearProducto() {
     console.error(err);
     console.log('error');
   }
+  
 }
 
 
-// MODAL DEL FORMULARIO
+function mostrarToast(msg) {
+  toast.textContent = msg;
+  toast.classList.remove('-translate-x-full', 'opacity-0');
+}
+
+function ocultarToast() {
+  toast.classList.add('-translate-x-full', 'opacity-0');
+}
+
+
+// Modal form
 function openModalForm() {
   modalForm.classList.remove("hidden");
 }
@@ -143,13 +158,12 @@ function closeModalForm() {
   preview.classList.add("hidden");
 }
 
-// EVENTOS MODAL
+// Eventos modal
 nuevoProductoBtn.addEventListener("click", openModalForm);
 cerrarBtn.addEventListener("click", e => {
   e.preventDefault();
   closeModalForm();
 });
 
-// Cerrar modal al hacer click fuera del formulario
 modalForm.addEventListener("click", closeModalForm);
 form.addEventListener("click", e => e.stopPropagation());

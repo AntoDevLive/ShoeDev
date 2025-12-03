@@ -13,7 +13,7 @@
 <body class="min-h-screen text-gray-900 relative">
 
   <!-- Subir Btn -->
-  <?php include __DIR__ .'/../templates/Btn_subir.php' ?>
+  <?php include __DIR__ . '/../templates/Btn_subir.php' ?>
 
   <!-- Modal -->
   <?php include __DIR__ . '/../templates/Modal.php' ?>
@@ -39,7 +39,8 @@
   <!-- Secciones de productos -->
   <section class="flex flex-col justify-center items-center gap-12 py-8">
 
-  
+    <!-- Toast -->
+    <div id="toast" class="bg-green-500 text-white py-2 px-5 text-xl rounded-br-md rounded-tr-md shadow-md shadow-neutral-500 fixed top-50 left-0 -translate-x-full opacity-0 transition-all duration-500"></div>
 
     <button id="nuevo-producto-btn" class="bg-blue-500 text-white text-xl py-2 px-5 capitalize cursor-pointer rounded-md transition-all duration-300 hover:bg-blue-500/90">Nuevo producto</button>
 

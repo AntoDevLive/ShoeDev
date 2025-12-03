@@ -46,7 +46,9 @@
     --color-neutral-300: oklch(87% 0 0);
     --color-neutral-400: oklch(70.8% 0 0);
     --color-neutral-500: oklch(55.6% 0 0);
+    --color-neutral-600: oklch(43.9% 0 0);
     --color-neutral-700: oklch(37.1% 0 0);
+    --color-neutral-900: oklch(20.5% 0 0);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -280,6 +282,12 @@
   }
   .top-4 {
     top: calc(var(--spacing) * 4);
+  }
+  .top-20 {
+    top: calc(var(--spacing) * 20);
+  }
+  .top-50 {
+    top: calc(var(--spacing) * 50);
   }
   .-right-1 {
     right: calc(var(--spacing) * -1);
@@ -1247,16 +1255,40 @@
       --tw-shadow-color: color-mix(in oklab, var(--color-gray-600) var(--tw-shadow-alpha), transparent);
     }
   }
+  .shadow-neutral-100 {
+    --tw-shadow-color: oklch(97% 0 0);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-neutral-100) var(--tw-shadow-alpha), transparent);
+    }
+  }
   .shadow-neutral-300 {
     --tw-shadow-color: oklch(87% 0 0);
     @supports (color: color-mix(in lab, red, red)) {
       --tw-shadow-color: color-mix(in oklab, var(--color-neutral-300) var(--tw-shadow-alpha), transparent);
     }
   }
+  .shadow-neutral-500 {
+    --tw-shadow-color: oklch(55.6% 0 0);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-neutral-500) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-neutral-600 {
+    --tw-shadow-color: oklch(43.9% 0 0);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-neutral-600) var(--tw-shadow-alpha), transparent);
+    }
+  }
   .shadow-neutral-700 {
     --tw-shadow-color: oklch(37.1% 0 0);
     @supports (color: color-mix(in lab, red, red)) {
       --tw-shadow-color: color-mix(in oklab, var(--color-neutral-700) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-neutral-900 {
+    --tw-shadow-color: oklch(20.5% 0 0);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-neutral-900) var(--tw-shadow-alpha), transparent);
     }
   }
   .outline {
