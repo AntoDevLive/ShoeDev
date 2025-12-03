@@ -56,12 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostrar mensaje vacío si no hay resultados
     emptySearchSection.classList.toggle('hidden', hasVisibleProducts || query === '');
 
-    // --- 👇 LÓGICA DEL BOTÓN NUEVO PRODUCTO 👇 ---
     if (nuevoProductoBtn) {
       if (!hasVisibleProducts && query !== "") {
-        nuevoProductoBtn.classList.add("hidden");   // ocultar si no hay productos
+        nuevoProductoBtn.classList.add("hidden");
       } else {
-        nuevoProductoBtn.classList.remove("hidden"); // mostrar si sí hay productos o búsqueda vacía
+        nuevoProductoBtn.classList.remove("hidden");
       }
     }
   });
