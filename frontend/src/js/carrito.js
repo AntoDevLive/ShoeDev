@@ -134,7 +134,7 @@ if (carrito) {
                     <input id="cantidad" type="number" value="${producto.cantidad}" min="1" max="99" class="text-center w-12 bg-neutral-200 rounded-sm">
                     <button id="aumentar-btn" class="btn-cantidad py-0 px-2 bg-orange-200 cursor-pointer rounded-sm transition-all duration-200 active:scale-90 hover:bg-orange-300">+</button>
                 </div>
-                <button class="btn-eliminar bg-red-500 text-white px-4 py-2 rounded cursor-pointer transition-all duration-200 hover:bg-red-500/90">Eliminar</button>
+                <button class="btn-eliminar bg-red-500 text-white px-2 py-1 rounded cursor-pointer transition-all duration-200 hover:bg-red-500/90 text-md">Eliminar</button>
             </div>
         `;
 

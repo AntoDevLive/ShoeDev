@@ -73,18 +73,43 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
           <!-- Productos Nike -->
-          <div class="product-card bg-white rounded-lg shadow hover:shadow-xl transition p-4" data-name="Nike Air Force" data-brand="Nike">
-            <div class="aspect-square overflow-hidden rounded-lg mb-4">
-              <img src="frontend/src/assets/nike1.jfif" alt="Nike 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          <?php foreach ($productos_nike as $producto): ?>
+
+            <div data-id="<?php echo $producto['id'] ?>" class="producto product-card shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group flex flex-col justify-center items-start" data-name="<?php echo $producto['titulo'] ?>" data-brand="<?php echo $producto['marca'] ?>">
+              <a href="/shoedev/producto.php?id=<?php echo $producto['id'] ?>">
+                <div class="aspect-square mb-4 bg-gray-100 rounded-lg overflow-hidden">
+                  <img src="/shoedev/backend/uploads/products/<?php echo $producto['imagen'] ?>" alt="Zapatilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                </div>
+              </a>
+              <div class="flex justify-center items-start flex-col">
+                <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded mb-2 text-sm capitalize"><?php echo $producto['marca'] ?></span>
+                <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
+              </div>
+              <div class="flex items-center justify-between mt-1 relative w-full">
+                <span class="precio-producto text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
+                <button class="producto-btn flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 17h-11v-14h-2" />
+                    <path d="M6 5l14 1l-1 7h-13" />
+                  </svg>
+                  Comprar
+                </button>
+                <button class="producto-agregado-btn hidden flex items-center gap-1 bg-green-600 px-3 py-2 rounded cursor-cursor text-sm text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l5 5l10 -10" />
+                  </svg>
+                  Producto añadido
+                </button>
+              </div>
             </div>
-            <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded mb-2 text-sm">Nike</span>
-            <h3 class="font-semibold text-gray-900 mb-2">Nike Air Force</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xl font-bold text-orange-600">82,99€</p>
-              <button class="px-2 py-1 border border-gray-300 rounded hover:bg-orange-600 hover:text-white transition">🛒</button>
-            </div>
-          </div>
+
+          <?php endforeach; ?>
 
         </div>
       </div>
@@ -101,17 +126,45 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div class="product-card bg-white rounded-lg shadow hover:shadow-xl transition p-4" data-name="Puma RS" data-brand="Puma">
-            <div class="aspect-square overflow-hidden rounded-lg mb-4">
-              <img src="frontend/src/assets/puma1.jfif" alt="Puma 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+
+          <!-- Productos Puma -->
+          <?php foreach ($productos_puma as $producto): ?>
+
+            <div data-id="<?php echo $producto['id'] ?>" class="producto product-card shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group flex flex-col justify-center items-start" data-name="<?php echo $producto['titulo'] ?>" data-brand="<?php echo $producto['marca'] ?>">
+              <a href="/shoedev/producto.php?id=<?php echo $producto['id'] ?>">
+                <div class="aspect-square mb-4 bg-gray-100 rounded-lg overflow-hidden">
+                  <img src="/shoedev/backend/uploads/products/<?php echo $producto['imagen'] ?>" alt="Zapatilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                </div>
+              </a>
+              <div class="flex justify-center items-start flex-col">
+                <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded mb-2 text-sm capitalize"><?php echo $producto['marca'] ?></span>
+                <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
+              </div>
+              <div class="flex items-center justify-between mt-1 relative w-full">
+                <span class="precio-producto text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
+                <button class="producto-btn flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 17h-11v-14h-2" />
+                    <path d="M6 5l14 1l-1 7h-13" />
+                  </svg>
+                  Comprar
+                </button>
+                <button class="producto-agregado-btn hidden flex items-center gap-1 bg-green-600 px-3 py-2 rounded cursor-cursor text-sm text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l5 5l10 -10" />
+                  </svg>
+                  Producto añadido
+                </button>
+              </div>
             </div>
-            <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded mb-2 text-sm">Puma</span>
-            <h3 class="font-semibold text-gray-900 mb-2">Puma RS</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xl font-bold text-orange-600">99,99€</p>
-              <button class="px-2 py-1 border border-gray-300 rounded hover:bg-orange-600 hover:text-white transition">🛒</button>
-            </div>
-          </div>
+
+          <?php endforeach; ?>
+
+
         </div>
       </div>
     </div>
@@ -127,17 +180,44 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div class="product-card bg-white rounded-lg shadow hover:shadow-xl transition p-4" data-name="Adidas Ultraboost" data-brand="Adidas">
-            <div class="aspect-square overflow-hidden rounded-lg mb-4">
-              <img src="frontend/src/assets/adidas1.jfif" alt="Adidas 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+
+          <!-- Productos Adidas -->
+          <?php foreach ($productos_adidas as $producto): ?>
+
+            <div data-id="<?php echo $producto['id'] ?>" class="producto product-card shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group flex flex-col justify-center items-start" data-name="<?php echo $producto['titulo'] ?>" data-brand="<?php echo $producto['marca'] ?>">
+              <a href="/shoedev/producto.php?id=<?php echo $producto['id'] ?>">
+                <div class="aspect-square mb-4 bg-gray-100 rounded-lg overflow-hidden">
+                  <img src="/shoedev/backend/uploads/products/<?php echo $producto['imagen'] ?>" alt="Zapatilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                </div>
+              </a>
+              <div class="flex justify-center items-start flex-col">
+                <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded mb-2 text-sm capitalize"><?php echo $producto['marca'] ?></span>
+                <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
+              </div>
+              <div class="flex items-center justify-between mt-1 relative w-full">
+                <span class="precio-producto text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
+                <button class="producto-btn flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                    <path d="M17 17h-11v-14h-2" />
+                    <path d="M6 5l14 1l-1 7h-13" />
+                  </svg>
+                  Comprar
+                </button>
+                <button class="producto-agregado-btn hidden flex items-center gap-1 bg-green-600 px-3 py-2 rounded cursor-cursor text-sm text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l5 5l10 -10" />
+                  </svg>
+                  Producto añadido
+                </button>
+              </div>
             </div>
-            <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded mb-2 text-sm">Adidas</span>
-            <h3 class="font-semibold text-gray-900 mb-2">Adidas Ultraboost</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xl font-bold text-orange-600">130,99€</p>
-              <button class="px-2 py-1 border border-gray-300 rounded hover:bg-orange-600 hover:text-white transition">🛒</button>
-            </div>
-          </div>
+
+          <?php endforeach; ?>
+
         </div>
       </div>
     </div>

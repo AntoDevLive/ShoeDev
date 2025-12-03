@@ -27,8 +27,8 @@ if (file_exists($producto_model)) {
 // Manejar Model Producto
 class ProductoController {
 
-  public function index()
-  {
+  // Index
+  public function index() {
 
     $conexion = conectarDB();
     $productoModel = new Producto($conexion);
@@ -39,9 +39,26 @@ class ProductoController {
     $productos_total_puma = $productoModel->obtenerTotalMarca("puma");
     $productos_estrella = $productoModel->obtenerRandom(3);
     $productos_temporada = $productoModel->obtenerRandom(8);
+    $productos_nike = $productoModel->obtenerMarca("nike");
+    $productos_adidas = $productoModel->obtenerMarca("adidas");
+    $productos_puma = $productoModel->obtenerMarca("puma");
 
     require_once __DIR__ . '/../../frontend/views/index.view.php';
   }
+
+
+  // Tienda
+  public function tienda() {
+    $conexion = conectarDB();
+    $productoModel = new Producto($conexion);
+
+    $productos_nike = $productoModel->obtenerMarca("nike");
+    $productos_adidas = $productoModel->obtenerMarca("adidas");
+    $productos_puma = $productoModel->obtenerMarca("puma");
+
+    require __DIR__ . '/../../frontend/views/tienda.view.php';
+  }
+
 }
 
 
@@ -73,5 +90,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 
+
+// Lógica de rutas
 $productoController = new ProductoController();
-$productoController->index();
+$page = basename($_SERVER['PHP_SELF']);
+
+if ($page === "index.php") {
+  $productoController->index();
+} elseif ($page === "tienda.php") {
+  $productoController->tienda();
+}
