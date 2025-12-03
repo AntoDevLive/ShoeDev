@@ -16,72 +16,43 @@
                     <!-- Slides -->
                     <?php foreach ($productos_temporada as $producto): ?>
 
-                        <div class="swiper-slide">
-                            <div class="img-container">
-                                <img src="backend/uploads/products/<?php echo $producto['imagen']; ?>" alt="">
-                            </div>
-                            <div class="info">
-                                <p><?php echo $producto['titulo']; ?></p>
-                                <div class="info-footer">
-                                    <span><?php echo $producto['precio']; ?></span>
-                                    <button>Ver más</button>
+
+
+
+                        <div data-id="<?php echo $producto['id'] ?>" class="swiper-slide producto shadow-xl/20 rounded-lg p-6 hover:shadow-xl/30 transition group flex flex-col justify-center items-start">
+                            <a href="/shoedev/producto.php?id=<?php echo $producto['id'] ?>">
+                                <div class="img-container aspect-square mb-4 bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="/shoedev/backend/uploads/products/<?php echo $producto['imagen'] ?>" alt="Zapatilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                 </div>
+                            </a>
+                            <div class="flex justify-center items-start flex-col">
+                                <span class="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded mb-2 text-sm capitalize"><?php echo $producto['marca'] ?></span>
+                                <h3 class="text-xl font-bold mb-2 capitalize"><?php echo $producto['titulo'] ?></h3>
+                            </div>
+                            <div class="flex items-center justify-between mt-1 relative w-full">
+                                <span class="precio-producto text-2xl font-bold text-orange-600"><?php echo $producto['precio'] ?></span>
+                                <button class="producto-btn flex items-center gap-2 bg-orange-600 text-white px-3 py-2 rounded hover:bg-orange-500 transition cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                        <path d="M17 17h-11v-14h-2" />
+                                        <path d="M6 5l14 1l-1 7h-13" />
+                                    </svg>
+                                    Comprar
+                                </button>
+                                <button class="producto-agregado-btn hidden flex items-center gap-1 bg-green-600 px-3 py-2 rounded cursor-cursor text-sm text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M5 12l5 5l10 -10" />
+                                    </svg>
+                                    Producto añadido
+                                </button>
                             </div>
                         </div>
 
                     <?php endforeach; ?>
 
-                    <div class="swiper-slide">
-                        <div class="img-container">
-                            <img src="frontend/src/assets/model5.jpg" alt="">
-                        </div>
-                        <div class="info">
-                            <p>Ultra Stride</p>
-                            <div class="info-footer">
-                                <span>159.99€</span>
-                                <button>Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="img-container">
-                            <img src="frontend/src/assets/model6.jpg" alt="">
-                        </div>
-                        <div class="info">
-                            <p>Classic Low</p>
-                            <div class="info-footer">
-                                <span>89.99€</span>
-                                <button>Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="img-container">
-                            <img src="frontend/src/assets/model7.jpg" alt="">
-                        </div>
-                        <div class="info">
-                            <p>Power Jump</p>
-                            <div class="info-footer">
-                                <span>169.99€</span>
-                                <button>Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="img-container">
-                            <img src="frontend/src/assets/model1.jpg" alt="">
-                        </div>
-                        <div class="info">
-                            <p>Motion Trainer</p>
-                            <div class="info-footer">
-                                <span>129.99€</span>
-                                <button>Ver más</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>

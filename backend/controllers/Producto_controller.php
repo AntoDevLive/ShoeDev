@@ -38,7 +38,7 @@ class ProductoController {
     $productos_total_adidas = $productoModel->obtenerTotalMarca("adidas");
     $productos_total_puma = $productoModel->obtenerTotalMarca("puma");
     $productos_estrella = $productoModel->obtenerRandom(3);
-    $productos_temporada = $productoModel->obtenerRandom(3);
+    $productos_temporada = $productoModel->obtenerRandom(8);
 
     require_once __DIR__ . '/../../frontend/views/index.view.php';
   }

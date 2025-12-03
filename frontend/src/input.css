@@ -79,7 +79,6 @@ input[type='number']:hover::-webkit-outer-spin-button {
     overflow: hidden;
     padding-bottom: 10px;
     transition: all .3s;
-    cursor: pointer;
 }
 
 /* BOTONES */
@@ -139,10 +138,6 @@ img {
     aspect-ratio: 16/9;
     object-fit: cover;
     transition: .3s;
-}
-
-.swiper-slide:hover .img-container img {
-    transform: scale(1.1);
 }
 
 .swiper-slide:hover {
