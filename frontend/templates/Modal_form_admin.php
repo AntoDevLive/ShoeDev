@@ -44,7 +44,7 @@
       <input name="stock" type="number" placeholder="Stock" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
       <input name="precio" type="number" placeholder="Precio" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all" step="0.01" min="0">
 
-      <input type="submit" value="Crear Producto" class="bg-blue-500 text-white p-2 rounded-md w-full cursor-pointer transition-all duration-300 hover:bg-blue-500/90">
+      <input id="submit" type="submit" value="Crear Producto" class="bg-blue-500 text-white p-2 rounded-md w-[50%] self-start cursor-pointer transition-all duration-300 hover:bg-blue-500/90">
 
       <p id="errorMsg" class="text-red-900 text-center hidden"></p>
     </form>

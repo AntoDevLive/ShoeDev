@@ -22,13 +22,13 @@
   <?php include __DIR__ . '/../templates/Carrito.php' ?>
 
 
-  <section class="bg-neutral-50 py-15 flex flex-col justify-center items-center gap-8">
+  <section class="bg-neutral-50/50 py-15 flex flex-col justify-center items-center gap-8">
 
-    <div class="w-80 border-b border-b-slate-600 text-center">
-      <p class="text-2xl font-semibold text-slate-800">Panel de administrador</p>
+    <div class="w-90 border-b border-b-slate-600 text-center">
+      <p class="text-3xl font-semibold text-slate-800">Panel de administrador</p>
     </div>
 
-    <h1 class="capitalize text-4xl font-semibold text-orange-600">Bienvenido, <?php echo $_SESSION['username'] ?></h1>
+    <h1 class="capitalize text-5xl font-semibold text-orange-600">Bienvenido, <?php echo $_SESSION['username'] ?></h1>
 
   </section>
 
@@ -54,8 +54,8 @@
           Administrar productos
         </h2>
 
-        <p class="mt-2 text-slate-600 text-sm">
-          Agrega, edita y elimina productos de la tienda.
+        <p class="mt-2 text-slate-600 text-md">
+          Agrega, edita y elimina productos de la tienda de forma rápida, segura y eficiente.
         </p>
       </a>
 
@@ -76,7 +76,7 @@
           Administrar usuarios
         </h2>
 
-        <p class="mt-2 text-slate-600 text-sm">
+        <p class="mt-2 text-slate-600 text-md">
           Gestiona la información de los usuarios y elimina cuentas de forma segura.
         </p>
 
@@ -103,7 +103,7 @@
           Historial de compras
         </h2>
 
-        <p class="mt-2 text-slate-600 text-sm">
+        <p class="mt-2 text-slate-600 text-md">
           Consulta todas las compras realizadas en ShoeDev de forma rápida y eficiente.
         </p>
       </a>

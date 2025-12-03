@@ -78,7 +78,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
             <?php foreach ($productos_nike as $producto): ?>
-              <div class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-start flex-col w-full shadow-lg shadow-black/30"
+              <div data-id="<?php echo $producto['id']; ?>" class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-start flex-col w-full shadow-lg shadow-black/30"
                 data-name="<?php echo $producto['titulo']; ?>"
                 data-brand="<?php echo $producto['marca']; ?>">
                 <div class="aspect-square overflow-hidden rounded-lg mb-4">
@@ -86,7 +86,7 @@
                 </div>
                 <h3 class="font-semibold text-gray-900 mb-2 capitalize text-xl"><?php echo $producto['titulo'] ?></h3>
                 <div class="flex items-center justify-start gap-5 w-full mt-2">
-                  <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90">Editar</button>
+                  <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90 edit-btn">Editar</button>
                   <button class="py-1 px-4 bg-red-500 text-white rounded-sm cursor-pointer hover:bg-red-500/90">Eliminar</button>
                 </div>
               </div>
@@ -108,7 +108,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
             <?php foreach ($productos_adidas as $producto): ?>
-              <div class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-start flex-col w-full shadow-lg shadow-black/30"
+              <div data-id="<?php echo $producto['id']; ?>" class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-start flex-col w-full shadow-lg shadow-black/30"
                 data-name="<?php echo $producto['titulo']; ?>"
                 data-brand="<?php echo $producto['marca']; ?>">
                 <div class="aspect-square overflow-hidden rounded-lg mb-4">
@@ -116,7 +116,7 @@
                 </div>
                 <h3 class="font-semibold text-gray-900 mb-2 capitalize text-xl"><?php echo $producto['titulo'] ?></h3>
                 <div class="flex items-center justify-start gap-5 w-full mt-2">
-                  <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90">Editar</button>
+                  <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90 edit-btn">Editar</button>
                   <button class="py-1 px-4 bg-red-500 text-white rounded-sm cursor-pointer hover:bg-red-500/90">Eliminar</button>
                 </div>
               </div>
@@ -138,7 +138,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
             <?php foreach ($productos_puma as $producto): ?>
-              <div class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-start flex-col w-full shadow-lg shadow-black/30"
+              <div data-id="<?php echo $producto['id']; ?>" class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex justify-center items-start flex-col w-full shadow-lg shadow-black/30"
                 data-name="<?php echo $producto['titulo']; ?>"
                 data-brand="<?php echo $producto['marca']; ?>">
                 <div class="aspect-square overflow-hidden rounded-lg mb-4">
@@ -146,7 +146,7 @@
                 </div>
                 <h3 class="font-semibold text-gray-900 mb-2 capitalize text-xl"><?php echo $producto['titulo'] ?></h3>
                 <div class="flex items-center justify-start gap-5 w-full mt-2">
-                  <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90">Editar</button>
+                  <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90 edit-btn">Editar</button>
                   <button class="py-1 px-4 bg-red-500 text-white rounded-sm cursor-pointer hover:bg-red-500/90">Eliminar</button>
                 </div>
               </div>

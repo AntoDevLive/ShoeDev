@@ -11,6 +11,7 @@ const priceInput = form.querySelector('input[placeholder="Precio"]');
 const modalForm = document.querySelector('#modal-form');
 const nuevoProductoBtn = document.querySelector('#nuevo-producto-btn');
 const toast = document.querySelector('#toast');
+const submit = document.querySelector('#submit');
 
 
 // Preview imagen
@@ -100,7 +101,6 @@ form.addEventListener("submit", e => {
   e.preventDefault();
 
   if (validarFormulario()) {
-    // form.submit();
     crearProducto();
   }
 });
@@ -147,8 +147,13 @@ function ocultarToast() {
 
 
 // Modal form
-function openModalForm() {
+function openModalForm(mode) {
   modalForm.classList.remove("hidden");
+  if(mode === 'editando') {
+    submit.value = 'Guardar';
+  } else {
+    submit.value = 'Crear Producto';
+  }
 }
 
 function closeModalForm() {
@@ -159,7 +164,7 @@ function closeModalForm() {
 }
 
 // Eventos modal
-nuevoProductoBtn.addEventListener("click", openModalForm);
+nuevoProductoBtn.addEventListener("click", () => openModalForm('crear'));
 cerrarBtn.addEventListener("click", e => {
   e.preventDefault();
   closeModalForm();
@@ -167,3 +172,60 @@ cerrarBtn.addEventListener("click", e => {
 
 modalForm.addEventListener("click", closeModalForm);
 form.addEventListener("click", e => e.stopPropagation());
+
+
+const editBtn = document.querySelectorAll('.edit-btn');
+
+editBtn.forEach(btn => {
+
+  btn.addEventListener('click', () => {
+    const id = btn.closest('.product-card').getAttribute('data-id');
+
+    getCampos(id);
+
+    openModalForm('editando');
+  });
+
+
+});
+
+
+async function getCampos(id) {
+
+  const formData = new FormData();
+  formData.append('id', id);
+
+  try {
+    const res = await fetch('/shoedev/update_product.php', {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await res.json();
+
+    formEdit(data.imagen, data.titulo, data.descripcion, data.marca, data.stock, data.precio);
+
+  } catch (err) {
+    console.error(err);
+  }
+
+}
+
+//Form con los datos del producto a editar
+function formEdit(imagen, titulo, descripcion, marca, stock, precio) {
+
+  // Mostrar imagen actual del producto
+  if (imagen) {
+    preview.innerHTML = `
+      <img src="/shoedev/backend/uploads/products/${imagen}" class="w-full h-full object-cover" />
+    `;
+    preview.classList.remove("hidden");
+  }
+
+  // Rellenar campos del formulario
+  titleInput.value = titulo;
+  descriptionInput.value = descripcion;
+  brandSelect.value = marca;
+  stockInput.value = stock;
+  priceInput.value = precio;
+}
