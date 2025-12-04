@@ -14,6 +14,8 @@ const toast = document.querySelector('#toast');
 const submit = document.querySelector('#submit');
 
 const sectionNike = document.querySelector('#productos-nike');
+const sectionAdidas = document.querySelector('#productos-adidas');
+const sectionPuma = document.querySelector('#productos-puma');
 
 
 // Preview imagen
@@ -122,7 +124,7 @@ async function crearProducto() {
 
     if (data.status === "success") {
       closeModalForm();
-      listarNike(); // CAMBIAR A RENDERIZACIÓN GLOBAL
+      listarProductos();
       mostrarToast(data.message);
       setTimeout(() => {
         ocultarToast();
@@ -252,13 +254,13 @@ async function listarNike() {
     const res = await fetch('/shoedev/get_nike.php');
     const productos = await res.json();
 
-    sectionNike.innerHTML = ""; // limpiamos
+    sectionNike.innerHTML = "";
 
     productos.forEach(producto => {
 
       const card = `
         <div data-id="${producto.id}"
-            class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex flex-col shadow-lg shadow-black/30">
+            class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex flex-col shadow-lg shadow-black/30" data-name="${producto.titulo}" data-brand="${producto.marca}">
 
           <div class="aspect-square overflow-hidden rounded-lg mb-4">
             <img src="/shoedev/backend/uploads/products/${producto.imagen}"
@@ -292,4 +294,103 @@ async function listarNike() {
 }
 
 
-document.addEventListener('DOMContentLoaded', listarNike);
+async function listarAdidas() {
+
+  try {
+    const res = await fetch('/shoedev/get_adidas.php');
+    const productos = await res.json();
+
+    sectionAdidas.innerHTML = ""; 
+
+    productos.forEach(producto => {
+
+      const card = `
+        <div data-id="${producto.id}"
+            class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex flex-col shadow-lg shadow-black/30" data-name="${producto.titulo}" data-brand="${producto.marca}">
+
+          <div class="aspect-square overflow-hidden rounded-lg mb-4">
+            <img src="/shoedev/backend/uploads/products/${producto.imagen}"
+                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </div>
+
+          <h3 class="font-semibold text-gray-900 mb-2 capitalize text-xl">
+            ${producto.titulo}
+          </h3>
+
+          <div class="flex items-center justify-start gap-5 w-full mt-2">
+            <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90 edit-btn">
+              Editar
+            </button>
+            <button class="py-1 px-4 bg-red-500 text-white rounded-sm cursor-pointer hover:bg-red-500/90 delete-btn">
+              Eliminar
+            </button>
+          </div>
+
+        </div>
+      `;
+
+      sectionAdidas.innerHTML += card;
+    });
+
+    activarBotones();
+
+  } catch (err) {
+    console.error("Error al cargar productos Nike:", err);
+  }
+}
+
+
+async function listarPuma() {
+
+  try {
+    const res = await fetch('/shoedev/get_puma.php');
+    const productos = await res.json();
+
+    sectionPuma.innerHTML = "";
+
+    productos.forEach(producto => {
+
+      const card = `
+        <div data-id="${producto.id}"
+            class="product-card bg-neutral-100 rounded-lg hover:shadow-xl transition p-4 flex flex-col shadow-lg shadow-black/30" data-name="${producto.titulo}" data-brand="${producto.marca}">
+
+          <div class="aspect-square overflow-hidden rounded-lg mb-4">
+            <img src="/shoedev/backend/uploads/products/${producto.imagen}"
+                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+          </div>
+
+          <h3 class="font-semibold text-gray-900 mb-2 capitalize text-xl">
+            ${producto.titulo}
+          </h3>
+
+          <div class="flex items-center justify-start gap-5 w-full mt-2">
+            <button class="py-1 px-4 bg-amber-500 text-white rounded-sm cursor-pointer hover:bg-yellow-500/90 edit-btn">
+              Editar
+            </button>
+            <button class="py-1 px-4 bg-red-500 text-white rounded-sm cursor-pointer hover:bg-red-500/90 delete-btn">
+              Eliminar
+            </button>
+          </div>
+
+        </div>
+      `;
+
+      sectionPuma.innerHTML += card;
+    });
+
+    activarBotones();
+
+  } catch (err) {
+    console.error("Error al cargar productos Nike:", err);
+  }
+}
+
+
+function listarProductos() {
+  listarNike();
+  listarAdidas();
+  listarPuma();
+}
+
+
+document.addEventListener('DOMContentLoaded', listarProductos);
