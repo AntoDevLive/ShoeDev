@@ -16,6 +16,12 @@ const submit = document.querySelector('#submit');
 const sectionNike = document.querySelector('#productos-nike');
 const sectionAdidas = document.querySelector('#productos-adidas');
 const sectionPuma = document.querySelector('#productos-puma');
+const actionInput = document.querySelector('#action-input');
+
+const modalEliminar = document.querySelector('#modal-eliminar');
+const dialogModalEliminar = document.querySelector('#dialog-modal-eliminar');
+const btnDialogEliminar = document.querySelector('#btn-dialog-eliminar');
+const btnDialogCancelar = document.querySelector('#btn-dialog-cancelar');
 
 
 // Preview imagen
@@ -104,13 +110,18 @@ function validarFormulario() {
 form.addEventListener("submit", e => {
   e.preventDefault();
 
-  if (validarFormulario()) {
+  if (validarFormulario() && submit.value === 'Crear Producto') {
     crearProducto();
+  } else {
+    editarProducto();
   }
+
 });
 
 
 async function crearProducto() {
+
+  actionInput.value = 'crear-producto';
 
   const formData = new FormData(form);
 
@@ -139,6 +150,38 @@ async function crearProducto() {
   }
 
 }
+
+
+async function editarProducto() {
+  actionInput.value = 'editar-producto';
+
+  const formData = new FormData(form);
+
+  try {
+    const res = await fetch('/shoedev/update_product.php', {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await res.json();
+
+    if (data.status === "success") {
+      closeModalForm();
+      listarProductos();
+      mostrarToast(data.message);
+      setTimeout(() => {
+        ocultarToast();
+      }, 3000);
+    } else {
+      console.log('error');
+    }
+
+  } catch (err) {
+    console.error(err);
+    console.log('error');
+  }
+}
+
 
 
 function mostrarToast(msg) {
@@ -196,36 +239,82 @@ function activarBotones() {
   const deleteBtn = document.querySelectorAll('.delete-btn');
 
   deleteBtn.forEach(btn => {
+
     btn.addEventListener('click', () => {
       const id = btn.closest('.product-card').getAttribute('data-id');
-      console.log('eliminando: ', id);
+      openModalEliminar();
+      btnDialogEliminar.addEventListener('click', () => eliminarProducto(id));
     });
+
   });
 
 }
 
 
-
-async function getCampos(id) {
-
+async function eliminarProducto(id) {
   const formData = new FormData();
   formData.append('id', id);
 
   try {
-    const res = await fetch('/shoedev/update_product.php', {
+    const res = await fetch('/shoedev/eliminar_producto.php', {
       method: 'POST',
       body: formData
     });
 
     const data = await res.json();
 
-    formEdit(data.imagen, data.titulo, data.descripcion, data.marca, data.stock, data.precio);
+    if (data.status === "success") {
+      closeModalEliminar();
+      listarProductos();
+      mostrarToast(data.message);
+      setTimeout(() => {
+        ocultarToast();
+      }, 3000);
+    } else {
+      console.log('error');
+    }
 
   } catch (err) {
     console.error(err);
+    console.log('error');
   }
-
 }
+
+
+
+function openModalEliminar() {
+  modalEliminar.classList.remove('hidden');
+}
+
+function closeModalEliminar() {
+  modalEliminar.classList.add('hidden');
+}
+
+dialogModalEliminar.addEventListener('click', e => e.stopPropagation());
+modalEliminar.addEventListener('click', closeModalEliminar);
+btnDialogCancelar.addEventListener('click', closeModalEliminar);
+
+
+
+
+async function getCampos(id) {
+
+  document.querySelector('#product-id').value = id;
+
+  const formData = new FormData();
+  formData.append('id', id);
+  formData.append('action', 'obtener');
+
+  const res = await fetch('/shoedev/update_product.php', {
+    method: 'POST',
+    body: formData
+  });
+
+  const data = await res.json();
+  formEdit(data.imagen, data.titulo, data.descripcion, data.marca, data.stock, data.precio);
+}
+
+
 
 //Form con los datos del producto a editar
 function formEdit(imagen, titulo, descripcion, marca, stock, precio) {

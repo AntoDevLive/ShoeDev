@@ -17,6 +17,7 @@
   <?php include __DIR__ . '/../templates/Header.php' ?>
   <?php include __DIR__ . '/../templates/Carrito.php' ?>
   <?php include __DIR__ . '/../templates/Modal_form_admin.php' ?>
+  <?php include __DIR__ . '/../templates/Modal_eliminar.php' ?>
 
   <!-- Título section -->
   <section id="inicio" class="bg-neutral-50 pb-8 flex flex-col justify-center items-center gap-8 pt-30 scroll-mt-20">

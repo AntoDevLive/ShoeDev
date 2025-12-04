@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const query = searchInput.value.toLowerCase().trim();
     let hasVisibleProducts = false;
 
-    // 🔥 Recoger SIEMPRE los productos más recientes del DOM (incluye dinámicos)
+    // Recoger los productos más recientes del DOM
     const products = document.querySelectorAll('.product-card');
 
-    // --- Mostrar/ocultar productos según búsqueda ---
+    // Mostrar/ocultar productos según búsqueda
     products.forEach(product => {
       const name = product.dataset.name?.toLowerCase() || "";
       const brand = product.dataset.brand?.toLowerCase() || "";
@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // --- Mostrar mensaje "sin resultados" ---
+    // Mostrar mensaje sin resultados
     emptySearchSection.classList.toggle('hidden', hasVisibleProducts || query === '');
 
-    // --- Mostrar/ocultar botón "Nuevo Producto" en admin ---
+    // Mostrar/ocultar botón Nuevo Producto en admin
     if (nuevoProductoBtn) {
       if (!hasVisibleProducts && query !== "") {
         nuevoProductoBtn.classList.add("hidden");
