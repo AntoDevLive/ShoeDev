@@ -1,5 +1,5 @@
 <div id="modal-eliminar" class="fixed inset-0 z-90 bg-black/70 flex justify-center items-center hidden">
-  <div id="dialog-modal-eliminar" class="bg-neutral-400 flex justify-center items-center flex-col gap-5 p-5 rounded-md shadow-lg shadow-black/50">
+  <div id="dialog-modal-eliminar" class="bg-neutral-200 flex justify-center items-center flex-col gap-5 p-5 rounded-md shadow-lg shadow-black/50">
     <!-- Mensaje dialog -->
     <div class="flex justify-center items-center flex-col gap-1">
       <p class="text-2xl font-semibold">¿Seguro que deseas eliminar este producto?</p>

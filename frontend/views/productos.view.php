@@ -46,8 +46,13 @@
         <button onclick="document.getElementById('adidas').scrollIntoView({behavior:'smooth'})" class="px-4 py-2 border border-gray-400 rounded-md font-semibold hover:bg-orange-600 hover:text-white transition cursor-pointer">Adidas</button>
       </div>
     </div>
+
+  </section>
+
+  <section class="flex flex-col justify-center items-center gap-12 py-8">
+
     <!-- Búsqueda sin resultados -->
-    <section id="empty-search" class="flex justify-center items-center flex-col gap-2 text-neutral-500 py-35 hidden">
+    <section id="empty-search" class="flex justify-center items-center flex-col gap-2 text-neutral-500 py-25 hidden">
       <p class="text-3xl">¡Oh no!</p>
       <p class="text-2xl">No encontramos resultados que coincidan con tu búsqueda.</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mood-sad">
@@ -58,10 +63,6 @@
         <path d="M9.5 15.25a3.5 3.5 0 0 1 5 0" />
       </svg>
     </section>
-
-  </section>
-
-  <section class="flex flex-col justify-center items-center gap-12 py-8">
 
 
     <div id="toast" class="bg-green-500 text-white py-2 px-5 text-xl rounded-br-md rounded-tr-md shadow-md shadow-neutral-500 fixed top-50 left-0 -translate-x-full opacity-0 transition-all duration-500"></div>
