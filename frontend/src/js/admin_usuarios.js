@@ -181,25 +181,50 @@ async function listarUsers() {
 
 // Handle modal eliminar
 function openDialogEliminar(id) {
-
   modalEliminar.classList.remove('hidden');
   const btnEliminar = document.querySelector('#btn-dialog-eliminar');
   const btnCancelarEliminar = document.querySelector('#btn-dialog-cancelar');
-  btnEliminar.addEventListener('click', () => deleteUser(id));
-  btnCancelarEliminar.addEventListener('click', closeDialogEliminar);
-  modalEliminar.addEventListener('click', closeDialogEliminar);
-  dialogEliminar.addEventListener('click', e => e.stopPropagation());
 
+  // Reemplaza cualquier listener anterior
+  btnEliminar.onclick = async () => {
+    await deleteUser(id);
+  };
+  btnCancelarEliminar.onclick = closeDialogEliminar;
+
+  modalEliminar.onclick = closeDialogEliminar;
+  dialogEliminar.onclick = e => e.stopPropagation();
 }
+
+
 
 function closeDialogEliminar() {
   modalEliminar.classList.add('hidden');
 }
 
 
-function deleteUser(id) {
-  console.log(id);
-  closeDialogEliminar();
+async function deleteUser(id) {
+
+  try {
+
+    const res = await fetch('/shoedev/delete_user.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({id})
+    });
+
+    const data = await res.json();
+    listarUsers();
+    closeDialogEliminar();
+    mostrarToast(data.message);
+    setTimeout(() => {
+      ocultarToast();
+    }, 3000);
+
+  } catch(error) {
+    console.log(error);
+  }
 }
 
 
