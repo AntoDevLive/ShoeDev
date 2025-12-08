@@ -18,7 +18,7 @@
   <!-- Modal form -->
   <div id="modal-form" class="fixed z-20 inset-0 flex justify-center items-center bg-black/50 hidden">
 
-    <form id="user-form" method="POST" action="" class="flex flex-col justify-center items-center bg-neutral-100 gap-6 py-10 px-8 w-120 rounded-lg shadow-lg shadow-black/50 relative">
+    <form id="user-form" method="POST" action="/shoedev/edit_user_info.php" class="flex flex-col justify-center items-center bg-neutral-100 gap-6 py-10 px-8 w-120 rounded-lg shadow-lg shadow-black/50 relative">
 
       <button id="cerrar-btn" class="absolute right-2 top-2 cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -30,7 +30,7 @@
 
       <input type="hidden" name="id" id="id">
 
-      <input name="usuario" id="usuario" type="text" placeholder="Usuario" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+      <input name="username" id="usuario" type="text" placeholder="Usuario" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
 
       <input name="email" id="email" type="email" placeholder="Email" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
 
@@ -56,6 +56,8 @@
 
   </div>
 
+  <!-- Toast -->
+  <div id="toast" class="bg-green-500 text-white py-2 px-5 text-xl rounded-br-md rounded-tr-md shadow-md shadow-neutral-500 fixed top-50 left-0 -translate-x-full opacity-0 transition-all duration-500"></div>
 
   <!-- Header -->
   <?php include __DIR__ . '/../templates/Header.php' ?>

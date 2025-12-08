@@ -4,6 +4,7 @@ const btnOldest = document.getElementById('btnOldest');
 const btnAdmin = document.getElementById('btnAdmin');
 const btnStandard = document.getElementById('btnStandard');
 const tbody = document.getElementById('usersTbody');
+const toast = document.getElementById('toast');
 let rows = [];
 let searchQuery = '';
 let roleFilter = 'all'; // all | admin | standard
@@ -286,13 +287,48 @@ function validarFormulario() {
 }
 
 // Evento submit
-form.addEventListener("submit", e => {
+form.addEventListener("submit", async e => {
   e.preventDefault();
 
   if (validarFormulario()) {
-    //FETCH UPDATE
+    await updateUser();
+    closeModalForm();
   }
 });
+
+
+// update con AJAX
+async function updateUser() {
+  try {
+    const formData = new FormData(form);
+
+    const res = await fetch('/shoedev/edit_user_info.php', {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await res.json();
+    listarUsers();
+    mostrarToast(data.message);
+    setTimeout(() => {
+      ocultarToast();
+    }, 3000);
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+function mostrarToast(msg) {
+  toast.textContent = msg;
+  toast.classList.remove('-translate-x-full', 'opacity-0');
+}
+
+function ocultarToast() {
+  toast.classList.add('-translate-x-full', 'opacity-0');
+}
+
 
 
 function closeModalForm() {
