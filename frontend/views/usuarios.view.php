@@ -1,17 +1,3 @@
-<?php
-
-require '../config/database.php';
-
-$conexion = conectarDB();
-
-$stmt_usuario = $conexion->prepare(
-  "SELECT usuario.id, usuario.username, usuario.email, usuario.rol, perfil.nombre, perfil.apellidos, perfil.direccion, perfil.nacimiento FROM usuario LEFT JOIN perfil on usuario.id = perfil.usuario_id"
-);
-$stmt_usuario->execute();
-$usuarios = $stmt_usuario->fetchAll(PDO::FETCH_ASSOC);
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,6 +14,48 @@ $usuarios = $stmt_usuario->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- Modal -->
   <?php include __DIR__ . '/../templates/Modal.php' ?>
+
+  <!-- Modal form -->
+  <div id="modal-form" class="fixed z-20 inset-0 flex justify-center items-center bg-black/50 hidden">
+
+    <form id="user-form" method="POST" action="" class="flex flex-col justify-center items-center bg-neutral-100 gap-6 py-10 px-8 w-120 rounded-lg shadow-lg shadow-black/50 relative">
+
+      <button id="cerrar-btn" class="absolute right-2 top-2 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="gray" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M18 6l-12 12" />
+          <path d="M6 6l12 12" />
+        </svg>
+      </button>
+
+      <input type="hidden" name="id" id="id">
+
+      <input name="usuario" id="usuario" type="text" placeholder="Usuario" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+
+      <input name="email" id="email" type="email" placeholder="Email" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+
+      <input name="nombre" id="nombre" type="text" placeholder="Nombre" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+
+      <input name="apellidos" id="apellidos" type="text" placeholder="Apellidos" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+
+      <input name="direccion" id="direccion" type="text" placeholder="Dirección" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+
+      <input name="nacimiento" id="nacimiento" type="date" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+
+      <select name="rol" id="rol" class="border p-2 w-full rounded-md outline-none focus:shadow-md focus:shadow-black/30 duration-200 transition-all">
+        <option disabled selected>-- Seleccionar Rol --</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select>
+
+      <input id="submit" type="submit" value="Guardar Cambios" class="bg-blue-500 text-white p-2 rounded-md w-[50%] self-start cursor-pointer transition-all duration-300 hover:bg-blue-500/90">
+
+      <p id="errorMsg" class="text-red-900 text-center hidden"></p>
+
+    </form>
+
+  </div>
+
 
   <!-- Header -->
   <?php include __DIR__ . '/../templates/Header.php' ?>
@@ -88,29 +116,7 @@ $usuarios = $stmt_usuario->fetchAll(PDO::FETCH_ASSOC);
 
         <tbody id="usersTbody" class="divide-y divide-gray-200 bg-white text-center">
 
-          <?php foreach ($usuarios as $user):
-            // normalizamos rol para dataset
-            $rol_data = isset($user['rol']) ? strtolower($user['rol']) : '';
-          ?>
-            <tr class="user-row hover:bg-orange-50 transition" data-id="<?php echo (int)$user['id']; ?>" data-rol="<?php echo htmlspecialchars($rol_data, ENT_QUOTES); ?>">
-              <td class="py-3 px-4"> <?php echo $user['id']; ?> </td>
-              <td class="py-3 px-4 username-cell"><?php echo $user['username']; ?></td>
-              <td class="py-3 px-4 email-cell"><?php echo $user['email']; ?></td>
-              <td class="py-3 px-4 capitalize nombre-cell"><?php echo $user['nombre']; ?></td>
-              <td class="py-3 px-4 capitalize apellidos-cell"><?php echo $user['apellidos']; ?></td>
-              <td class="py-3 px-4 capitalize direccion-cell"><?php echo $user['direccion']; ?></td>
-              <td class="py-3 px-4 nacimiento-cell"><?php echo $user['nacimiento']; ?></td>
-              <td class="py-3 px-4">
-                <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs font-semibold capitalize rol-cell"><?php echo $user['rol']; ?></span>
-              </td>
-              <td class="py-3 px-4">
-                <div class="flex gap-3 justify-center">
-                  <button class="px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md transition cursor-pointer">Editar</button>
-                  <button class="px-3 py-1 text-sm bg-red-500 hover:bg-red-600 text-white rounded-md transition cursor-pointer">Eliminar</button>
-                </div>
-              </td>
-            </tr>
-          <?php endforeach; ?>
+
 
         </tbody>
       </table>
@@ -125,6 +131,6 @@ $usuarios = $stmt_usuario->fetchAll(PDO::FETCH_ASSOC);
 <!-- scripts -->
 <script src="/shoedev/frontend/src/js/carrito.js"></script>
 <script src="/shoedev/frontend/src/js/main.js"></script>
-<script src="/shoedev/frontend/src/js/users-filter.js"></script>
+<script src="/shoedev/frontend/src/js/admin_usuarios.js"></script>
 
 </html>
