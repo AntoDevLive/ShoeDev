@@ -5,6 +5,8 @@ const btnAdmin = document.getElementById('btnAdmin');
 const btnStandard = document.getElementById('btnStandard');
 const tbody = document.getElementById('usersTbody');
 const toast = document.getElementById('toast');
+const modalEliminar = document.querySelector('#modal-eliminar');
+const dialogEliminar = document.querySelector('#dialog-modal-eliminar');
 let rows = [];
 let searchQuery = '';
 let roleFilter = 'all'; // all | admin | standard
@@ -132,7 +134,7 @@ async function listarUsers() {
           <td class="py-3 px-4">
             <div class="flex gap-3 justify-center">
               <button class="edit-user-btn px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md transition cursor-pointer">Editar</button>
-              <button class="px-3 py-1 text-sm bg-red-500 hover:bg-red-600 text-white rounded-md transition cursor-pointer">Eliminar</button>
+              <button class="delete-user-btn px-3 py-1 text-sm bg-red-500 hover:bg-red-600 text-white rounded-md transition cursor-pointer">Eliminar</button>
             </div>
           </td>
         </tr>
@@ -156,6 +158,15 @@ async function listarUsers() {
       } 
     });
 
+
+    //btns eliminar
+    document.querySelectorAll('.delete-user-btn').forEach(btn => {
+      btn.onclick = () => {
+        const id = btn.closest('.user-row').querySelector('.id-cell').textContent;
+        openDialogEliminar(id);
+      }
+    });
+
     // Actualizar el array rows después de cargar los usuarios
     rows = Array.from(tbody.querySelectorAll('tr.user-row'));
 
@@ -166,6 +177,31 @@ async function listarUsers() {
     console.log(error);
   }
 }
+
+
+// Handle modal eliminar
+function openDialogEliminar(id) {
+
+  modalEliminar.classList.remove('hidden');
+  const btnEliminar = document.querySelector('#btn-dialog-eliminar');
+  const btnCancelarEliminar = document.querySelector('#btn-dialog-cancelar');
+  btnEliminar.addEventListener('click', () => deleteUser(id));
+  btnCancelarEliminar.addEventListener('click', closeDialogEliminar);
+  modalEliminar.addEventListener('click', closeDialogEliminar);
+  dialogEliminar.addEventListener('click', e => e.stopPropagation());
+
+}
+
+function closeDialogEliminar() {
+  modalEliminar.classList.add('hidden');
+}
+
+
+function deleteUser(id) {
+  console.log(id);
+  closeDialogEliminar();
+}
+
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function () {
