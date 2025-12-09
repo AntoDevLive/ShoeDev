@@ -97,6 +97,7 @@
                     <a href="/shoedev/index.php#marcas" class="text-md font-medium text-gray-500 hover:text-orange-600 transition">Marcas</a>
                     <a href="/shoedev/contacto.php" class="text-md font-medium text-gray-500 hover:text-orange-600 transition">Contacto</a>
 
+                    <?php if(basename($_SERVER['SCRIPT_NAME']) !='compra.php'): ?>
                     <button class="carrito-btn cursor-pointer flex items-center gap-2 bg-orange-600 text-white p-2 rounded-full hover:bg-orange-500 transition relative">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -111,6 +112,7 @@
                             0
                         </span>
                     </button>
+                    <?php endif; ?>
 
                 </div>
 

@@ -1,3 +1,16 @@
+<?php
+
+require '../backend/config/database.php';
+
+$conexion = conectarDB();
+
+$stmt = $conexion->prepare("SELECT perfil.nombre, perfil.apellidos, perfil.direccion, usuario.email FROM perfil RIGHT JOIN usuario ON usuario.id = perfil.usuario_id");
+$stmt->execute();
+$info = $stmt->fetch();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,7 +23,7 @@
   <title>ShoeDev | Administrar productos</title>
 </head>
 
-<body class="min-h-screen text-gray-900">
+<body class="min-h-screen text-gray-900 flex flex-col">
 
   <!-- Modal -->
   <?php include __DIR__ . '/../templates/Modal.php' ?>
@@ -31,6 +44,99 @@
   </section>
 
 
+  <!-- info compra-->
+  <section class="flex flex-col lg:flex-row gap-8 px-6 grow py-10">
+
+    <!-- CARD USUARIO -->
+    <div class="flex-1 flex justify-center">
+
+      <div class="max-w-xl w-full">
+
+        <div class="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200">
+
+          <!-- Header de la card -->
+          <div class="bg-orange-500 px-6 py-2">
+            <h2 class="text-white font-semibold text-lg text-center">Información del Usuario</h2>
+          </div>
+
+          <!-- Contenido -->
+          <div class="p-7 bg-neutral-50/70">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+              <!-- Nombre -->
+              <div class="bg-white py-2 px-4 rounded-lg shadow-sm border">
+                <p class="text-sm text-gray-500 font-medium">Nombre</p>
+                <p class="text-gray-800 font-semibold">
+                  <?php echo $info['nombre']; ?>
+                </p>
+              </div>
+
+              <!-- Apellidos -->
+              <div class="bg-white py-2 px-4 rounded-lg shadow-sm border">
+                <p class="text-sm text-gray-500 font-medium">Apellidos</p>
+                <p class="text-gray-800 font-semibold">
+                  <?php echo $info['apellidos']; ?>
+                </p>
+              </div>
+
+              <!-- Dirección -->
+              <div class="bg-white py-2 px-4 rounded-lg shadow-sm border">
+                <p class="text-sm text-gray-500 font-medium">Dirección</p>
+                <p class="text-gray-800 font-semibold">
+                  <?php echo $info['direccion']; ?>
+                </p>
+              </div>
+
+              <!-- Email -->
+              <div class="bg-white py-2 px-4 rounded-lg shadow-sm border">
+                <p class="text-sm text-gray-500 font-medium">Email</p>
+                <p class="text-gray-800 font-semibold">
+                  <?php echo $info['email']; ?>
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tabla productos -->
+    <div class="overflow-x-auto flex-1">
+      <table class="min-w-full bg-white rounded-lg shadow-md overflow-hidden">
+        <thead class="bg-orange-500">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-white">Producto</th>
+            <th class="px-4 py-3 text-left font-semibold text-white">Cantidad</th>
+            <th class="px-4 py-3 text-left font-semibold text-white">Precio</th>
+            <th class="px-4 py-3 text-left font-semibold text-white">Subtotal</th>
+          </tr>
+        </thead>
+
+        <tbody id="tbody" class="bg-neutral-50/70">
+        </tbody>
+
+        <tfoot>
+          <tr class="bg-orange-100">
+            <td colspan="3" class="px-4 py-3 text-right font-semibold text-gray-700">
+              Total:
+            </td>
+            <td id="totalFinal" class="px-4 py-3 font-bold text-gray-900"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <button data-user-id="<?php echo $_SESSION['id']; ?>" id="confirmar-compra-btn" class="text-xl py-2 px-6 rounded-md bg-green-500 text-white mt-4 cursor-pointer duration-200 transition-all hover:bg-green-500/80">Confirmar compra</button>
+
+    </div>
+
+  </section>
+
+
+
 
 
   <!-- Footer -->
@@ -40,5 +146,6 @@
 
 <script src="/shoedev/frontend/src/js/carrito.js"></script>
 <script src="/shoedev/frontend/src/js/main.js"></script>
+<script src="/shoedev/frontend/src/js/compra.js"></script>
 
 </html>
