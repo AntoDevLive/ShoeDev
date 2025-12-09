@@ -43,7 +43,7 @@
                 <span class="subtotal">0,00 €</span>
             </div>
 
-            <button class="comprar-carrito-btn w-full bg-orange-600 mt-2 text-white rounded-sm p-1.5 cursor-pointer transition-all duration-300 hover:bg-orange-600/80 hover:tracking-wide">Proceder a la compra</button>
+            <a href="/shoedev/compra.php" class="comprar-carrito-btn w-full bg-orange-600 mt-2 text-white rounded-sm p-1.5 cursor-pointer transition-all duration-300 hover:bg-orange-600/80 hover:tracking-wide block text-center">Proceder a la compra</a>
         </section>
 
         <button class="vaciar-carrito-btn disabled w-full bg-black text-white rounded-sm p-1 mt-2 cursor-pointer transition-all duration-300 hover:bg-black/70">Vaciar Carrito</button>
