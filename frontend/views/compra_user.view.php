@@ -34,6 +34,33 @@ $info = $stmt->fetch();
   <!-- Carrito -->
   <?php include __DIR__ . '/../templates/Carrito.php' ?>
 
+  <!-- Modal compra -->
+  <div id="modal-compra" class="fixed inset-0 bg-black/50 flex justify-center items-center hidden">
+
+    <!-- Procesando card -->
+    <div id="card-procesando" class="bg-neutral-300 flex justify-center items-center flex-col gap-2 z-99 rounded-md py-5 px-6 shadow-md shadow-black/60">
+      <!-- Loader -->
+      <div id="loader" class=""></div>
+      <p class="text-xl">Procesando la compra, espere por favor.</p>
+    </div>
+
+    <!-- Exito card -->
+    <div id="card-exito" class="bg-neutral-300 flex justify-center items-center flex-col gap-1 z-101 rounded-md py-5 px-6 shadow-md shadow-black/60 hidden">
+      <div class="flex justify-center items-center gap-2">
+        <div class="flex justify-center items-center bg-green-600 rounded-full p-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 12l5 5l10 -10" />
+          </svg>
+        </div>
+        <p class="text-xl">pedido realizado exitosamente</p>
+      </div>
+      <p class="text-lg">Gracias por confiar en ShoeDev.</p>
+    </div>
+
+
+  </div>
+
   <!-- Título section -->
   <section class="bg-neutral-50 py-15 flex flex-col justify-center items-center gap-8">
 
@@ -144,6 +171,7 @@ $info = $stmt->fetch();
 
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="/shoedev/frontend/src/js/carrito.js"></script>
 <script src="/shoedev/frontend/src/js/main.js"></script>
 <script src="/shoedev/frontend/src/js/compra.js"></script>

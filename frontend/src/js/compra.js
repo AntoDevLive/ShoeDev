@@ -46,9 +46,41 @@ document.querySelector('#totalFinal').textContent = total.toFixed(2) + " €";
 
 
 const confirmarCompraBtn = document.querySelector('#confirmar-compra-btn');
+const modalCompra = document.querySelector('#modal-compra');
+const cardProcesando = document.querySelector('#card-procesando');
+const loader = document.querySelector('#loader');
+const cardExito = document.querySelector('#card-exito');
 const userId = confirmarCompraBtn.getAttribute('data-user-id');
 
-confirmarCompraBtn.addEventListener('click', realizarCompra);
+confirmarCompraBtn.addEventListener('click', () => {
+
+  modalCompra.classList.remove('hidden');
+  loader.classList.add('loader');
+  setTimeout(() => {
+    localStorage.setItem('carrito', JSON.stringify([]));
+    cardProcesando.classList.add('hidden');
+    loader.classList.remove('loader');
+    cardExito.classList.remove('hidden');
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+    realizarCompra();
+  }, 1500);
+
+
+  setTimeout(() => {
+    window.location.href = "/shoedev/index.php"
+  }, 4000);
+
+});
+
+
+
+
+
+
 
 async function realizarCompra() {
 
