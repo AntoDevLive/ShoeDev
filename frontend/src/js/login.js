@@ -4,10 +4,14 @@ const registerForm = document.querySelector('#register-form');
 const loginForm = document.querySelector('#login-form');
 const loginImg = document.querySelector('#login-img');
 const registerImg = document.querySelector('#register-img');
+const showPassLogin = document.querySelector('#show-password');
+const showPassReg = document.querySelector('#show-password-reg');
 
 
 // Mostrar registro, ocultar login
 function tabLogin() {
+
+  loginForm.reset();
 
   loginForm.classList.remove('opacity-100');
   loginForm.classList.remove('z-10');
@@ -29,6 +33,8 @@ function tabLogin() {
 
 // Mostrar login, ocultar registro
 function tabRegister() {
+
+  registerForm.reset();
 
   registerForm.classList.add('opacity-0');
   registerForm.classList.remove('opacity-100');
@@ -56,3 +62,137 @@ function tabForm(form) {
 loginLink.addEventListener('click', () => tabForm(loginForm));
 registerLink.addEventListener('click', () => tabForm(registerForm));
 
+
+showPassLogin.addEventListener('change', () => {
+  const password = document.querySelector('#password-login');
+  password.type === 'password' ? password.type = 'text' : password.type = 'password';
+});
+
+if (showPassReg) {
+    showPassReg.addEventListener('change', () => {
+        const passwordReg = document.querySelector('#pass-reg');
+        const passwordRepReg = document.querySelector('#pass-rep-reg');
+        if (passwordReg && passwordRepReg) {
+            const newType = passwordReg.type === 'password' ? 'text' : 'password';
+            passwordReg.type = newType;
+            passwordRepReg.type = newType;
+        }
+    });
+}
+
+// Regex para email
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Función para mostrar mensaje de error
+function showError(form, message) {
+    let msgEl = form.querySelector('.form-error');
+    if (!msgEl) {
+        msgEl = document.createElement('p');
+        msgEl.className = 'form-error text-red-600 text-center mb-2';
+        form.insertBefore(msgEl, form.querySelector('input[type="submit"]'));
+    }
+    msgEl.textContent = message;
+}
+
+// Función para limpiar mensaje de error
+function clearError(form) {
+    const msgEl = form.querySelector('.form-error');
+    if (msgEl) msgEl.remove();
+}
+
+// Función para validar login
+function validateLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('email-login');
+    const password = document.getElementById('password-login');
+
+    let valid = true;
+    clearError(loginForm);
+
+    [email, password].forEach(input => {
+        if (!input.value.trim()) {
+            input.classList.add('border-red-500', 'border-2', 'rounded-md');
+            valid = false;
+        }
+    });
+
+    if (email.value && !emailRegex.test(email.value)) {
+        email.classList.add('border-red-500', 'border-2', 'rounded-md');
+        showError(loginForm, 'El email no es válido.');
+        return;
+    }
+
+    if (!valid) {
+        showError(loginForm, 'Los campos marcados son obligatorios.');
+        return;
+    }
+
+    loginForm.submit();
+}
+
+// Función para validar registro
+function validateRegister(e) {
+    e.preventDefault();
+    const fields = [
+        document.getElementById('nombre'),
+        document.getElementById('apellidos'),
+        document.getElementById('nacimiento'),
+        document.getElementById('direccion'),
+        document.getElementById('correo-reg'),
+        document.getElementById('username'),
+        document.getElementById('pass-reg'),
+        document.getElementById('pass-rep-reg')
+    ];
+
+    clearError(registerForm);
+    let errors = [];
+
+    // Validar campos vacíos
+    fields.forEach(input => {
+        if (!input.value.trim()) {
+            input.classList.add('border-red-500', 'border-2', 'rounded-md');
+            if (!errors.includes('Los campos marcados son obligatorios')) {
+                errors.push('Los campos marcados son obligatorios');
+            }
+        }
+    });
+
+    // Validar email
+    const email = document.getElementById('correo-reg');
+    if (email.value && !emailRegex.test(email.value)) {
+        email.classList.add('border-red-500', 'border-2', 'rounded-md');
+        errors.push('El email no es válido');
+    }
+
+    // Validar que las contraseñas coincidan
+    const pass = document.getElementById('pass-reg');
+    const passRep = document.getElementById('pass-rep-reg');
+    if (pass.value && passRep.value && pass.value !== passRep.value) {
+        pass.classList.add('border-red-500', 'border-2', 'rounded-md');
+        passRep.classList.add('border-red-500', 'border-2', 'rounded-md');
+        errors.push('Las contraseñas no coinciden');
+    }
+
+    if (errors.length > 0) {
+        showError(registerForm, errors.join('. '));
+        return;
+    }
+
+    registerForm.submit();
+}
+
+// Quitar error cuando el usuario escribe
+function removeErrorOnInput(input) {
+    input.addEventListener('input', () => {
+        input.classList.remove('border-red-500', 'border-2', 'rounded-md');
+        clearError(input.closest('form'));
+    });
+}
+
+// Aplicar listeners a todos los inputs
+document.querySelectorAll('#login-form input').forEach(removeErrorOnInput);
+document.querySelectorAll('#register-form input').forEach(removeErrorOnInput);
+
+// Escuchar submit
+loginForm.addEventListener('submit', validateLogin);
+registerForm.addEventListener('submit', validateRegister);

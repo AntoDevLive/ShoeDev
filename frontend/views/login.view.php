@@ -39,10 +39,12 @@
         <h2 class="text-2xl font-semibold text-gray-600">Iniciar Sesión</h2>
         <input type="hidden" name="action" value="login">
         <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300" type="text" name="email" id="email-login" placeholder="Email">
-        <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
-          <input class="outline-none w-full py-1.5 px-2.5 text-xl" type="password" name="password" id="password-login" placeholder="Contraseña">
+        <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300" type="password" name="password" id="password-login" placeholder="Contraseña">
+        <div class="w-full">
+          <input type="checkbox" class="h-full" id="show-password">
+          <label for="show-password" class="text-lg">Mostrar contraseña</label>
         </div>
-        <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white" type="submit" value="Iniciar Sesión">
+        <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white" type="submit" value="Iniciar Sesión" id="submit-login">
 
         <p>¿Aún no tienes una cuenta? <span id="login-link" class="underline text-orange-600 font-semibold cursor-pointer">Registrarme</span></p>
       </form>
@@ -65,44 +67,49 @@
         <fieldset class="grid grid-cols-2 gap-2">
           <!-- Nombre -->
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="text" name="nombre" placeholder="Nombre">
+            type="text" name="nombre" placeholder="Nombre" id="nombre">
 
           <!-- Apellidos -->
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="text" name="apellidos" placeholder="Apellidos" >
+            type="text" name="apellidos" placeholder="Apellidos" id="apellidos">
 
           <!-- Fecha de nacimiento -->
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="date" name="fecha_nacimiento" >
+            type="date" name="fecha_nacimiento" id="nacimiento">
 
           <!-- Dirección -->
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="text" name="direccion" placeholder="Dirección" >
+            type="text" name="direccion" placeholder="Dirección" id="direccion">
         </fieldset>
 
         <!-- Email -->
         <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-          type="email" name="email" placeholder="Correo electrónico" >
+          type="email" name="email" placeholder="Correo electrónico" id="correo-reg">
 
         <!-- Username -->
         <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-          type="text" name="username" placeholder="Nombre de usuario" >
+          type="text" name="username" placeholder="Nombre de usuario" id="username">
 
         <!-- Contraseña -->
-        <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
-          <input class="outline-none w-full py-1.5 px-2.5 text-xl"
-            type="password" name="password" placeholder="Contraseña" >
+        <div class="w-full">
+          <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
+            type="password" name="password" placeholder="Contraseña" id="pass-reg">
         </div>
 
         <!-- Repite contraseña -->
-        <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
-          <input class="outline-none w-full py-1.5 px-2.5 text-xl"
-            type="password" name="password2" placeholder="Repite la contraseña" >
+        <div class="w-full">
+          <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
+            type="password" name="password" placeholder="Contraseña" id="pass-rep-reg">
+        </div>
+
+        <div class="w-full">
+          <input type="checkbox" class="h-full" id="show-password-reg">
+          <label for="show-password-reg" class="text-lg">Mostrar contraseña</label>
         </div>
 
         <!-- Botón -->
         <input class="cursor-pointer transition-all duration-300 hover:bg-orange-500 w-full rounded-sm p-2 text-xl bg-orange-600 text-white"
-          type="submit" value="Registrarme">
+          type="submit" value="Registrarme" id="submit-reg">
 
         <p>¿Ya tienes una cuenta?
           <span id="register-link" class="underline text-orange-600 font-semibold cursor-pointer">Iniciar Sesión</span>

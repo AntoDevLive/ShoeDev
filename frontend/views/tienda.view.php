@@ -8,7 +8,7 @@
   <title>ShoeDev | Tienda</title>
 </head>
 
-<body class="min-h-screen bg-gray-50 text-gray-900">
+<body class="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
 
   <!-- Subir Btn -->
   <?php include 'frontend/templates/Btn_subir.php' ?>
@@ -51,7 +51,7 @@
   </div>
 
   <!-- Búsqueda sin resultados -->
-  <section id="empty-search" class="flex justify-center items-center flex-col gap-2 text-neutral-500 py-35 hidden">
+  <section id="empty-search" class="flex justify-center grow items-center flex-col gap-2 text-neutral-500 py-35 hidden">
     <p class="text-3xl">¡Oh no!</p>
     <p class="text-2xl">No encontramos resultados que coincidan con tu búsqueda.</p>
     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mood-sad">
