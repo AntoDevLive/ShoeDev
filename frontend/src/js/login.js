@@ -55,3 +55,4 @@ function tabForm(form) {
 
 loginLink.addEventListener('click', () => tabForm(loginForm));
 registerLink.addEventListener('click', () => tabForm(registerForm));
+

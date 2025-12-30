@@ -225,39 +225,61 @@ if (carrito) {
 
 
   // Añadir productos
-  productoBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+productoBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.producto');
+    const productoAgregadoBtn = btn.closest('.producto').querySelector('.producto-agregado-btn');
+    const id = card.dataset.id;
+    const titulo = card.querySelector('h3').textContent;
+    const precio = parseFloat(
+      card.querySelector('.precio-producto').textContent.replace("€", "").replace(",", ".")
+    );
+    const imagen = card.querySelector('img').src;
 
-      const card = btn.closest('.producto');
-      const productoAgregadoBtn = btn.closest('.producto').querySelector('.producto-agregado-btn');
-      const id = card.dataset.id;
-      const titulo = card.querySelector('h3').textContent;
-      const precio = parseFloat(
-        card.querySelector('.precio-producto').textContent.replace("€", "").replace(",", ".")
-      );
-      const imagen = card.querySelector('img').src;
+    let producto = carritoArray.find(p => p.id === id);
 
-      let producto = carritoArray.find(p => p.id === id);
+    if (producto) {
+      producto.cantidad++;
+    } else {
+      producto = { id, titulo, precio, imagen, cantidad: 1 };
+      carritoArray.push(producto);
+    }
 
-      if (producto) {
-        producto.cantidad++;
-      } else {
-        producto = { id, titulo, precio, imagen, cantidad: 1 };
-        carritoArray.push(producto);
-      }
+    btn.classList.add('hidden');
+    productoAgregadoBtn.classList.remove('hidden');
 
-      btn.classList.add('hidden');
-      productoAgregadoBtn.classList.remove('hidden');
+    setTimeout(() => {
+      btn.classList.remove('hidden');
+      productoAgregadoBtn.classList.add('hidden');
+    }, 1000);
 
-      setTimeout(() => {
-        btn.classList.remove('hidden');
-        productoAgregadoBtn.classList.add('hidden');
-      }, 1000);
-
-      guardarCarrito();
-      renderProductoCarrito(producto);
-    });
+    guardarCarrito();
+    renderProductoCarrito(producto);
   });
+});
+
+// botón de la página individual
+const addToCartBtn = document.querySelector('.producto-btn');
+
+addToCartBtn?.addEventListener('click', () => {
+  const id = addToCartBtn.dataset.id;
+  const titulo = addToCartBtn.dataset.titulo;
+  const precio = parseFloat(addToCartBtn.dataset.precio.replace(",", "."));
+  const imagen = addToCartBtn.dataset.imagen;
+
+  let producto = carritoArray.find(p => p.id === id);
+
+  if (producto) {
+    producto.cantidad++;
+  } else {
+    producto = { id, titulo, precio, imagen, cantidad: 1 };
+    carritoArray.push(producto);
+  }
+
+  guardarCarrito();
+  renderProductoCarrito(producto);
+});
+
 
 
   function mostrarDialog() {
@@ -306,6 +328,38 @@ if (carrito) {
       currency: "EUR"
     }).format(valor);
   }
+
+
+  const comprarAhoraBtn = document.getElementById('comprar-ahora-btn');
+
+comprarAhoraBtn?.addEventListener('click', () => {
+  const productoBtn = document.querySelector('.producto-btn'); // el botón "Añadir al carrito"
+  
+  const productoActual = {
+    id: productoBtn.dataset.id,
+    titulo: productoBtn.dataset.titulo,
+    precio: parseFloat(productoBtn.dataset.precio),
+    imagen: productoBtn.dataset.imagen,
+    cantidad: 1
+  };
+
+  // Tomar los productos que ya están en localStorage
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+  // Ver si el producto ya está en el carrito
+  const index = carrito.findIndex(p => p.id === productoActual.id);
+  if (index > -1) {
+    carrito[index].cantidad += 1;
+  } else {
+    carrito.push(productoActual);
+  }
+
+  // Guardar carrito actualizado
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+
+  // Redirigir a compra.php
+  window.location.href = "/shoedev/compra.php";
+});
 
 
 

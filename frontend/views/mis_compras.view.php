@@ -48,7 +48,7 @@ if (!isset($_SESSION['id'])) {
             type="text" 
             id="searchInput" 
             placeholder="Buscar por ID, fecha, modelo..." 
-            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+            class="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
 
@@ -56,13 +56,13 @@ if (!isset($_SESSION['id'])) {
         <div class="flex gap-2">
           <button 
             id="btnRecent" 
-            class="px-4 py-2 rounded-lg border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition font-semibold"
+            class="px-4 py-2 rounded-lg border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition font-semibold cursor-pointer"
           >
             Más recientes
           </button>
           <button 
             id="btnOldest" 
-            class="px-4 py-2 rounded-lg border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition font-semibold"
+            class="px-4 py-2 rounded-lg border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition font-semibold cursor-pointer"
           >
             Más antiguas
           </button>

@@ -831,6 +831,9 @@
   .border-gray-400 {
     border-color: var(--color-gray-400);
   }
+  .border-gray-500 {
+    border-color: var(--color-gray-500);
+  }
   .border-gray-700 {
     border-color: var(--color-gray-700);
   }
@@ -857,6 +860,12 @@
   }
   .border-b-neutral-400 {
     border-bottom-color: var(--color-neutral-400);
+  }
+  .border-b-orange-100 {
+    border-bottom-color: var(--color-orange-100);
+  }
+  .border-b-orange-300 {
+    border-bottom-color: var(--color-orange-300);
   }
   .border-b-orange-400 {
     border-bottom-color: var(--color-orange-400);
@@ -1141,6 +1150,9 @@
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
+  }
+  .py-7 {
+    padding-block: calc(var(--spacing) * 7);
   }
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
@@ -1896,6 +1908,11 @@
       @supports (color: color-mix(in lab, red, red)) {
         --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-black) 50%, transparent) var(--tw-shadow-alpha), transparent);
       }
+    }
+  }
+  .focus\:ring-orange-400 {
+    &:focus {
+      --tw-ring-color: var(--color-orange-400);
     }
   }
   .focus\:ring-orange-500 {

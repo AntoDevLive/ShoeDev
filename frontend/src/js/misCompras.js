@@ -91,7 +91,7 @@ async function listarCompras() {
 
     compras.forEach(compra => {
       const td = `
-        <tr class="compra-row hover:bg-orange-50 transition" data-compra-id="${compra.compra_id}">
+        <tr class="compra-row hover:bg-orange-50 transition border-b border-b-orange-300" data-compra-id="${compra.compra_id}">
           <td class="py-3 px-6 text-center">${compra.compra_id}</td>
           <td class="py-3 px-6 text-center">${compra.fecha}</td>
           <td class="py-3 px-6 flex justify-center">
@@ -99,8 +99,8 @@ async function listarCompras() {
           </td>
           <td class="py-3 px-6 text-center">${compra.titulo}</td>
           <td class="py-3 px-6 text-center">${compra.cantidad}</td>
-          <td class="py-3 px-6 text-center">$${parseFloat(compra.precio_compra).toFixed(2)}</td>
-          <td class="py-3 px-6 text-center font-bold text-orange-600">$${parseFloat(compra.subtotal).toFixed(2)}</td>
+          <td class="py-3 px-6 text-center">${parseFloat(compra.precio_compra).toFixed(2)} €</td>
+          <td class="py-3 px-6 text-center font-bold text-orange-600">${parseFloat(compra.subtotal).toFixed(2)} €</td>
         </tr>
       `;
 

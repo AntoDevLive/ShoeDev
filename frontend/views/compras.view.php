@@ -10,7 +10,7 @@
   <title>ShoeDev | Administrar productos</title>
 </head>
 
-<body class="min-h-screen text-gray-900">
+<body class="min-h-screen text-gray-900 flex flex-col">
 
   <!-- Modal -->
   <?php include __DIR__ . '/../templates/Modal.php' ?>
@@ -43,11 +43,8 @@
               type="text" 
               id="searchInput" 
               placeholder="Buscar por ID, usuario, producto, fecha..." 
-              class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm"
+            class="w-full px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
-            <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-3.5 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
           </div>
         </div>
 
@@ -55,13 +52,13 @@
         <div class="flex gap-2">
           <button 
             id="btnRecent" 
-            class="px-4 py-3 rounded-lg border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition font-semibold shadow-sm"
+            class="px-4 py-2 rounded-lg border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition font-semibold cursor-pointer"
           >
             Más recientes
           </button>
           <button 
             id="btnOldest" 
-            class="px-4 py-3 rounded-lg border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition font-semibold shadow-sm"
+            class="px-4 py-2 rounded-lg border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white transition font-semibold cursor-pointer"
           >
             Más antiguas
           </button>
@@ -72,7 +69,7 @@
   </section>
 
   <!-- Tabla de compras -->
-  <section class="flex justify-center items-center flex-col py-10 grow px-4">
+  <section class="flex justify-center items-center flex-col py-15 grow px-4">
     <div class="w-full max-w-7xl overflow-x-auto shadow-lg rounded-lg">
       <table id="comprasTable" class="w-full text-center bg-white">
         <thead class="bg-orange-600">

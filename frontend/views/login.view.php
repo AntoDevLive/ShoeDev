@@ -65,39 +65,39 @@
         <fieldset class="grid grid-cols-2 gap-2">
           <!-- Nombre -->
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="text" name="nombre" placeholder="Nombre" required>
+            type="text" name="nombre" placeholder="Nombre">
 
           <!-- Apellidos -->
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="text" name="apellidos" placeholder="Apellidos" required>
+            type="text" name="apellidos" placeholder="Apellidos" >
 
           <!-- Fecha de nacimiento -->
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="date" name="fecha_nacimiento" required>
+            type="date" name="fecha_nacimiento" >
 
           <!-- Dirección -->
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="text" name="direccion" placeholder="Dirección" required>
+            type="text" name="direccion" placeholder="Dirección" >
         </fieldset>
 
         <!-- Email -->
         <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-          type="email" name="email" placeholder="Correo electrónico" required>
+          type="email" name="email" placeholder="Correo electrónico" >
 
         <!-- Username -->
         <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-          type="text" name="username" placeholder="Nombre de usuario" required>
+          type="text" name="username" placeholder="Nombre de usuario" >
 
         <!-- Contraseña -->
         <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
           <input class="outline-none w-full py-1.5 px-2.5 text-xl"
-            type="password" name="password" placeholder="Contraseña" required>
+            type="password" name="password" placeholder="Contraseña" >
         </div>
 
         <!-- Repite contraseña -->
         <div class="w-full border border-orange-300 focus-within:border-orange-500 bg-white rounded-md">
           <input class="outline-none w-full py-1.5 px-2.5 text-xl"
-            type="password" name="password2" placeholder="Repite la contraseña" required>
+            type="password" name="password2" placeholder="Repite la contraseña" >
         </div>
 
         <!-- Botón -->

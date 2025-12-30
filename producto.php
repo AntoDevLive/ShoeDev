@@ -21,18 +21,22 @@ $infoProducto = $stmt->fetch();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="frontend/src/output.css">
-  <title>ShoeDev | Tienda</title>
+  <title>ShoeDev | <?php echo $infoProducto['titulo']; ?></title>
 </head>
 
 <body>
 
   <div class="min-h-screen bg-background">
+
+    <!-- Modal -->
+    <?php include 'frontend/templates/Modal.php' ?>
+
     <!-- Header -->
     <?php include 'frontend/templates/Header.php' ?>
 
-
     <!-- Carrito -->
     <?php include 'frontend/templates/Carrito.php' ?>
+
 
     <main class="container mx-auto px-4 py-8">
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-16">
@@ -80,12 +84,26 @@ $infoProducto = $stmt->fetch();
           </p>
 
 
-          <!-- Add to Cart -->
-          <div class="flex flex-col sm:flex-row gap-4 pt-4">
-            <button class="flex-1 h-14 text-lg gap-2 bg-primary text-white bg-orange-500 cursor-pointer rounded-md hover:bg-orange-500/90 transition-all duration-300">
-              Añadir al carrito
-            </button>
-          </div>
+          <!-- Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+  <button
+    class="producto-btn bg-orange-500 text-white w-full text-2xl font-semibold py-3 rounded-lg cursor-pointer transition-all duration-300 hover:bg-orange-500/85 focus:outline-none focus:ring-2 focus:ring-orange-400"
+    data-id="<?php echo $infoProducto['id']; ?>"
+    data-titulo="<?php echo htmlspecialchars($infoProducto['titulo']); ?>"
+    data-precio="<?php echo $infoProducto['precio']; ?>"
+    data-imagen="/shoedev/backend/uploads/products/<?php echo $infoProducto['imagen']; ?>">
+    Añadir al carrito
+  </button>
+
+  <a
+    id="comprar-ahora-btn"
+    class="producto-btn bg-white border-2 border-orange-500 text-orange-500 w-full text-2xl font-semibold py-3 rounded-lg cursor-pointer transition-all duration-300 hover:bg-orange-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-400 text-center">
+    Comprar Ahora
+  </a>
+</div>
+
+
+          
 
           <!-- Features -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-border">
@@ -111,5 +129,8 @@ $infoProducto = $stmt->fetch();
 
   <?php include 'frontend/templates/Footer.php' ?>
 </body>
+
+<script src="/shoedev/frontend/src/js/carrito.js"></script>
+<script src="/shoedev/frontend/src/js/main.js"></script>
 
 </html>
