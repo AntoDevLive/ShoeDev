@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/shoedev/frontend/src/output.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-  <link rel="shortcut icon" href="frontend/src/assets/favicon.png" type="image/x-icon">
-  <title>ShoeDev</title>
+    <link rel="shortcut icon" href="/shoedev/frontend/src/assets/favicon.png" type="image/x-icon">
+  <title>ShoeDev | Admin</title>
 </head>
 
 <body class="min-h-screen text-gray-900">

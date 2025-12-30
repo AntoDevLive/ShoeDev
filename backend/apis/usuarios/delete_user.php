@@ -8,7 +8,7 @@ $data = json_decode($input, true);
 // Sacar el id
 $id = $data['id'] ?? null;
 
-require __DIR__ . '/backend/config/database.php';
+require __DIR__ . '/../../config/database.php';
 $conexion = conectarDB();
 
 // Eliminar datos de la tabla usuario

@@ -21,6 +21,7 @@ $infoProducto = $stmt->fetch();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="frontend/src/output.css">
+      <link rel="shortcut icon" href="/shoedev/frontend/src/assets/favicon.png" type="image/x-icon">
   <title>ShoeDev | <?php echo $infoProducto['titulo']; ?></title>
 </head>
 

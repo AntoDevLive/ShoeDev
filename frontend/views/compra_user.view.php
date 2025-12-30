@@ -20,7 +20,7 @@ $info = $stmt->fetch();
   <link rel="stylesheet" href="/shoedev/frontend/src/output.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
   <link rel="shortcut icon" href="frontend/src/assets/favicon.png" type="image/x-icon">
-  <title>ShoeDev | Administrar productos</title>
+  <title>ShoeDev | Historial de Compras</title>
 </head>
 
 <body class="min-h-screen text-gray-900 flex flex-col">

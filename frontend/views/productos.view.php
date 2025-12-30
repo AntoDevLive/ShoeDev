@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/shoedev/frontend/src/output.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-  <link rel="shortcut icon" href="frontend/src/assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/shoedev/frontend/src/assets/favicon.png" type="image/x-icon">
   <title>ShoeDev | Administrar productos</title>
 </head>
 

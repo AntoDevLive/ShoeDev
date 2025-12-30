@@ -10,7 +10,7 @@ $apellidos  = $_POST['apellidos'];
 $direccion  = $_POST['direccion'];
 $nacimiento = $_POST['nacimiento'];
 
-require __DIR__ . '/backend/config/database.php';
+require __DIR__ . '/../../config/database.php';
 $conexion = conectarDB();
 
 // Actualizar tabla usuario

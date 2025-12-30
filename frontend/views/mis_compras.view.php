@@ -15,8 +15,8 @@ if (!isset($_SESSION['id'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../frontend/src/output.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-  <link rel="shortcut icon" href="frontend/src/assets/favicon.png" type="image/x-icon">
-  <title>Mis Compras - ShoeDev</title>
+    <link rel="shortcut icon" href="/shoedev/frontend/src/assets/favicon.png" type="image/x-icon">
+  <title>ShoeDev | Mis compras</title>
 </head>
 
 <body class="flex flex-col min-h-screen">

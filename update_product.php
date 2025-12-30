@@ -7,17 +7,13 @@ header('Content-Type: application/json');
 $action = $_POST['action'] ?? null;
 $id = $_POST['id'] ?? null;
 
-// ===============================
-// VALIDACIÓN BÁSICA
-// ===============================
+
 if (!$action) {
   echo json_encode(['status' => 'error', 'message' => 'No se recibió acción']);
   exit;
 }
 
-// ===============================
-// ACCIÓN: OBTENER CAMPOS
-// ===============================
+
 if ($action === 'obtener') {
 
   if (!$id) {
@@ -49,9 +45,6 @@ if ($action === 'obtener') {
 
 
 
-// ===============================
-// ACCIÓN: EDITAR PRODUCTO
-// ===============================
 if ($action === 'editar-producto') {
 
   if (!$id) {

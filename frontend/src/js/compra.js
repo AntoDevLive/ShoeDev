@@ -86,7 +86,7 @@ async function realizarCompra() {
 
   try{
 
-  const res = await fetch('/shoedev/set_compra.php', {
+  const res = await fetch('/shoedev/backend/apis/compras/set_compra.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

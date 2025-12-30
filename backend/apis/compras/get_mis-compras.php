@@ -8,7 +8,7 @@ if (!isset($_SESSION['id'])) {
   exit;
 }
 
-require 'backend/config/database.php';
+require __DIR__ . '/../../config/database.php';
 
 $conexion = conectarDB();
 

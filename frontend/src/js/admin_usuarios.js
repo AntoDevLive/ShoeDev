@@ -206,7 +206,7 @@ async function deleteUser(id) {
 
   try {
 
-    const res = await fetch('/shoedev/delete_user.php', {
+    const res = await fetch('/shoedev/backend/apis/usuarios/delete_user.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

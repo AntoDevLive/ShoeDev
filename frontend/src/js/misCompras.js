@@ -84,7 +84,7 @@ function updateButtonStates() {
 // Listar las compras en tiempo real
 async function listarCompras() {
   try {
-    const res = await fetch('/shoedev/get_mis-compras.php');
+    const res = await fetch('/shoedev/backend/apis/compras/get_mis-compras.php');
     const compras = await res.json();
 
     tbody.innerHTML = '';

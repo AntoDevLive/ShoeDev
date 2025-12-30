@@ -340,7 +340,7 @@ function formEdit(imagen, titulo, descripcion, marca, stock, precio) {
 async function listarNike() {
 
   try {
-    const res = await fetch('/shoedev/get_nike.php');
+    const res = await fetch('/shoedev/backend/apis/productos/get_nike.php');
     const productos = await res.json();
 
     sectionNike.innerHTML = "";
@@ -386,7 +386,7 @@ async function listarNike() {
 async function listarAdidas() {
 
   try {
-    const res = await fetch('/shoedev/get_adidas.php');
+    const res = await fetch('/shoedev/backend/apis/productos/get_adidas.php');
     const productos = await res.json();
 
     sectionAdidas.innerHTML = ""; 
@@ -432,7 +432,7 @@ async function listarAdidas() {
 async function listarPuma() {
 
   try {
-    const res = await fetch('/shoedev/get_puma.php');
+    const res = await fetch('/shoedev/backend/apis/productos/get_puma.php');
     const productos = await res.json();
 
     sectionPuma.innerHTML = "";

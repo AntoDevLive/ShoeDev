@@ -1,6 +1,6 @@
 <?php
 
-require 'backend/config/database.php';
+require __DIR__ . '/../../config/database.php';
 
 $conexion = conectarDB();
 
