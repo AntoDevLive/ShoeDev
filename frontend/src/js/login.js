@@ -7,6 +7,7 @@ const registerImg = document.querySelector('#register-img');
 const showPassLogin = document.querySelector('#show-password');
 const showPassReg = document.querySelector('#show-password-reg');
 const submitLogin = document.querySelector('#submit-login');
+const submitReg = document.querySelector('#submit-reg');
 
 
 // Mostrar registro, ocultar login
@@ -148,7 +149,7 @@ async function validateLogin(e) {
             if (!msg) {
                 msg = document.createElement('p');
                 msg.textContent = 'Usuario o contraseña incorrectos';
-                msg.classList.add( 'login-error-msg', 'text-red-600', 'text-lg', 'font-semibold');
+                msg.classList.add('login-error-msg', 'text-red-600', 'text-lg', 'font-semibold');
                 submitLogin.before(msg);
             }
 
@@ -156,19 +157,22 @@ async function validateLogin(e) {
             const msg = document.querySelector('.login-error-msg');
             if (msg) msg.remove();
             loginForm.submit();
-            
+
         }
 
 
     } catch (error) {
         console.error('Error en el login');
     }
-    
+
 }
 
 // Función para validar registro
-function validateRegister(e) {
+async function validateRegister(e) {
     e.preventDefault();
+
+    const username = document.getElementById('username');
+
     const fields = [
         document.getElementById('nombre'),
         document.getElementById('apellidos'),
@@ -214,7 +218,69 @@ function validateRegister(e) {
         return;
     }
 
-    registerForm.submit();
+
+    try {
+        const res = await fetch('/shoedev/backend/apis/usuarios/verificar_registro.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email.value.trim(),
+                username: username.value.trim()
+            })
+        });
+
+        if (!res.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        const data = await res.json();
+
+        let msg = document.querySelector('.login-error-msg');
+
+        if (!msg) {
+            msg = document.createElement('p');
+            msg.classList.add(
+                'login-error-msg',
+                'text-red-600',
+                'text-lg',
+                'font-semibold'
+            );
+            submitReg.before(msg);
+        }
+
+        if (data.message === 'used email') {
+            msg.textContent = 'El email ya existe';
+        }
+        else if (data.message === 'used username') {
+            msg.textContent = 'Nombre de usuario no disponible';
+        }
+        else if (data.message === 'success') {
+            msg.remove();
+            registerForm.submit();
+        }
+
+    } catch (error) {
+        console.error('Error en el registro:', error);
+
+        let msg = document.querySelector('.login-error-msg');
+
+        if (!msg) {
+            msg = document.createElement('p');
+            msg.classList.add(
+                'login-error-msg',
+                'text-red-600',
+                'text-lg',
+                'font-semibold'
+            );
+            submitReg.before(msg);
+        }
+
+        msg.textContent = 'Error inesperado. Intenta nuevamente.';
+    }
+
+
 }
 
 // Quitar error cuando el usuario escribe

@@ -102,6 +102,17 @@
             type="password" name="password" placeholder="Contraseña" id="pass-rep-reg">
         </div>
 
+        <!-- Medidor de seguridad -->
+         <div class="w-full grid grid-cols-2 place-items-center">
+          <span class="w-full">Seguridad de la contraseña</span>
+          <div class="grid grid-cols-3 w-full h-3 rounded-md overflow-hidden bg-gray-200 border- border-neutral-600 relative">
+            <div class="w-full bg-red-500"></div>
+            <div class="w-full bg-yellow-500"></div>
+            <div class="w-full bg-green-500"></div>
+            <span class="absolute top-5 left-2/4 -translate-2/4">Débil</span>
+          </div>
+         </div>
+
         <div class="w-full">
           <input type="checkbox" class="h-full" id="show-password-reg">
           <label for="show-password-reg" class="text-lg">Mostrar contraseña</label>
