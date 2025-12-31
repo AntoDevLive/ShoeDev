@@ -1,5 +1,5 @@
 <?php
-require 'backend/config/database.php';
+require __DIR__ . '/../../config/database.php';
 $conexion = conectarDB();
 
 header('Content-Type: application/json');
@@ -58,7 +58,7 @@ if ($action === 'editar-producto') {
   $stock = $_POST['stock'] ?? '';
   $precio = $_POST['precio'] ?? '';
 
-  $uploadDir = __DIR__ . "/backend/uploads/products/";
+  $uploadDir = __DIR__ . "/../../uploads/products/";
 
   // Obtener la imagen actual
   $stmt = $conexion->prepare("SELECT imagen FROM producto WHERE id = :id");
@@ -66,7 +66,7 @@ if ($action === 'editar-producto') {
   $producto = $stmt->fetch(PDO::FETCH_ASSOC);
   $imagenActual = $producto['imagen'] ?? null;
 
-  $nuevaImagen = $imagenActual; // por defecto se mantiene la antigua
+  $nuevaImagen = $imagenActual;
 
   // Si se subió nueva imagen
   if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {

@@ -158,7 +158,7 @@ async function editarProducto() {
   const formData = new FormData(form);
 
   try {
-    const res = await fetch('/shoedev/update_product.php', {
+    const res = await fetch('/shoedev/backend/apis/productos/update_product.php', {
       method: 'POST',
       body: formData
     });
@@ -305,7 +305,7 @@ async function getCampos(id) {
   formData.append('id', id);
   formData.append('action', 'obtener');
 
-  const res = await fetch('/shoedev/update_product.php', {
+  const res = await fetch('/shoedev/backend/apis/productos/update_product.php', {
     method: 'POST',
     body: formData
   });
