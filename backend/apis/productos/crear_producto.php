@@ -2,8 +2,8 @@
 session_start();
 
 // RUTAS CORRECTAS
-require_once __DIR__ . "/backend/config/database.php";
-require_once __DIR__ . "/backend/models/Producto.php";
+require_once __DIR__ . "/../../config/database.php";
+require_once __DIR__ . "/../../models/Producto.php";
 
 // Validación mínima
 $required = ['titulo', 'marca', 'descripcion', 'stock', 'precio'];
@@ -24,7 +24,7 @@ $stock       = $_POST['stock'];
 $precio      = $_POST['precio'];
 
 $imagen = null;
-$uploadDir = __DIR__ . "/backend/uploads/products/";
+$uploadDir = __DIR__ . "/../../uploads/products/";
 
 // Procesar imagen
 if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {

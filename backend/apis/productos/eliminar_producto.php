@@ -17,7 +17,7 @@ $stmt->execute([':id' => $id]);
 $producto = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($producto && $producto['imagen']) {
-  $path = __DIR__ . "/backend/uploads/products/" . $producto['imagen'];
+  $path = __DIR__ . "/../../uploads/products/" . $producto['imagen'];
   if (file_exists($path)) unlink($path);
 }
 

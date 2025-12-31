@@ -126,7 +126,7 @@ async function crearProducto() {
   const formData = new FormData(form);
 
   try {
-    const res = await fetch('/shoedev/crear_producto.php', {
+    const res = await fetch('/shoedev/backend/apis/productos/crear_producto.php', {
       method: 'POST',
       body: formData
     });
