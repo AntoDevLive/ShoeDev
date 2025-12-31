@@ -113,7 +113,7 @@ function updateButtonStates() {
 // Listar los usuarios en tiempo real
 async function listarUsers() {
   try {
-    const res = await fetch('/shoedev/backend/admin/apis/usuarios/get_users.php');
+    const res = await fetch('/shoedev/backend/apis/usuarios/get_users.php');
     const usuarios = await res.json();
 
     tbody.innerHTML = '';
