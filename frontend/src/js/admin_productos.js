@@ -256,7 +256,7 @@ async function eliminarProducto(id) {
   formData.append('id', id);
 
   try {
-    const res = await fetch('/shoedev/eliminar_producto.php', {
+    const res = await fetch('/shoedev/backend/apis/productos/eliminar_producto.php', {
       method: 'POST',
       body: formData
     });

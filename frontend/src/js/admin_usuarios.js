@@ -363,7 +363,7 @@ async function updateUser() {
   try {
     const formData = new FormData(form);
 
-    const res = await fetch('/shoedev/edit_user_info.php', {
+    const res = await fetch('/shoedev/backend/apis/usuarios/edit_user_info.php', {
       method: 'POST',
       body: formData
     });

@@ -88,7 +88,6 @@
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --blur-sm: 8px;
     --blur-xl: 24px;
     --default-transition-duration: 150ms;
@@ -974,12 +973,6 @@
     --tw-gradient-position: to right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
-  .bg-\[url\(assets\/img-login\.jpg\)\] {
-    background-image: url(assets/img-login.jpg);
-  }
-  .bg-\[url\(assets\/img-registro\.jpg\)\] {
-    background-image: url(assets/img-registro.jpg);
-  }
   .from-gray-100 {
     --tw-gradient-from: var(--color-gray-100);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -1011,15 +1004,6 @@
   }
   .mask-\[linear-gradient\(to_left\,black_30\%\,transparent\)\] {
     mask-image: linear-gradient(to left,black 30%,transparent);
-  }
-  .bg-cover {
-    background-size: cover;
-  }
-  .bg-center {
-    background-position: center;
-  }
-  .bg-no-repeat {
-    background-repeat: no-repeat;
   }
   .\!object-cover {
     object-fit: cover !important;
