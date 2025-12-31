@@ -169,3 +169,34 @@ function closeModalEliminar() {
     modalEliminar.classList.add('hidden');
     inputConfirmarPassword.value = '';
   }
+
+
+const eliminarCuentaSubmit = document.querySelector('#submit-eliminar-cuenta');
+
+eliminarCuentaSubmit.addEventListener('click', e => {
+  e.preventDefault();
+
+  const mensajeExistente = document.querySelector('.msg');
+
+  if (inputConfirmarPassword.value.trim() === '') {
+
+    if (!mensajeExistente) {
+      const p = document.createElement('p');
+      p.textContent = 'Debes escribir tu contraseña';
+      p.classList.add('text-red-600', 'text-lg', 'font-semibold', 'msg');
+
+      eliminarCuentaSubmit.before(p);
+    }
+
+  } else {
+    if (mensajeExistente) mensajeExistente.remove();
+    eliminarCuenta(inputConfirmarPassword.value.trim());
+  }
+});
+
+
+async function eliminarCuenta(password) {
+  
+  const res = await fetch('/shoedev/backend/apis/usuarios/verificar_eliminar_cuenta.php');
+
+}

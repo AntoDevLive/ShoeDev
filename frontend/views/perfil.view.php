@@ -59,7 +59,7 @@
 
           <input type="hidden" name="action" value="eliminar-cuenta">
 
-          <input type="submit" value="Eliminar cuenta" class="bg-red-500 text-lg py-1 px-2.5 rounded-md w-[50%] duration-300 hover:bg-red-500/85 cursor-pointer transition-all text-white">
+          <input id="submit-eliminar-cuenta" type="submit" value="Eliminar cuenta" class="bg-red-500 text-lg py-1 px-2.5 rounded-md w-[50%] duration-300 hover:bg-red-500/85 cursor-pointer transition-all text-white">
         </form>
 
       </div>

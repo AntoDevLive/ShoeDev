@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $conexion = conectarDB();
     $user = new User($conexion);
-    $user->eliminarCuenta($password);
+    $user->eliminarCuenta($password); 
 
     exit;
 
