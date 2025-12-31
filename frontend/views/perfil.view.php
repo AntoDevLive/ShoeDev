@@ -37,7 +37,7 @@
       <header class="py-2 text-center text-[23px] bg-red-900 w-full font-semibold text-white">Eliminar cuenta</header>
       <div class="flex justify-center items-center flex-col gap-3 py-6 px-5">
         <p>Introduce tu contraseña para eliminar la cuenta</p>
-        <form method="POST" action="/shoedev/backend/controllers/User_controller.php" class="w-full flex justify-center items-center relative flex-col gap-3">
+        <form method="POST" action="/shoedev/backend/controllers/User_controller.php" class="w-full flex justify-center items-center relative flex-col gap-3" id="form-eliminar">
           <div class="w-full flex justify-center items-center relative">
             <input name="password" id="input-confirmar-password" type="password" placeholder="Contraseña" class="bg-white text-lg py-1 px-2.5 rounded-md shadow-md w-[80%] outline-none duration-300 transition-all focus:shadow-black/50 focus:shadow-md">
 

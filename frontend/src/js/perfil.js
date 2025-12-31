@@ -16,6 +16,7 @@ const eye = document.querySelector('#eye');
 const eyeOff = document.querySelector('#eye-off');
 const cerrarBtn = document.querySelector('#btn-cerrar');
 const formEliminarCuenta = document.querySelector('#form-eliminar-cuenta');
+const formEliminar = document.querySelector('#form-eliminar');
 const modalEliminar = document.querySelector('#modal-eliminar');
 const eliminarCuentaBtn = document.querySelector('#eliminar-cuenta-btn');
 
@@ -158,7 +159,7 @@ formEliminarCuenta.addEventListener('click', e => e.stopPropagation());
 eliminarCuentaBtn.addEventListener('click', e => {
   e.stopPropagation();
   openModalEliminar();
-}); 
+});
 
 function openModalEliminar() {
   modalEliminar.classList.remove('hidden');
@@ -166,9 +167,9 @@ function openModalEliminar() {
 
 
 function closeModalEliminar() {
-    modalEliminar.classList.add('hidden');
-    inputConfirmarPassword.value = '';
-  }
+  modalEliminar.classList.add('hidden');
+  inputConfirmarPassword.value = '';
+}
 
 
 const eliminarCuentaSubmit = document.querySelector('#submit-eliminar-cuenta');
@@ -196,7 +197,36 @@ eliminarCuentaSubmit.addEventListener('click', e => {
 
 
 async function eliminarCuenta(password) {
-  
-  const res = await fetch('/shoedev/backend/apis/usuarios/verificar_eliminar_cuenta.php');
+  try {
+    const res = await fetch('/shoedev/backend/apis/usuarios/verificar_eliminar_cuenta.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        password: password
+      })
+    });
 
+    const data = await res.json();
+    const msg = document.querySelector('.msg');
+    if (data.message === 'success') {
+
+      if (msg) msg.remove();
+      formEliminar.submit();
+
+    } else {
+
+      if (!msg) {
+        const p = document.createElement('p');
+        p.textContent = 'Contraseña incorrecta';
+        p.classList.add('text-red-600', 'text-lg', 'font-semibold', 'msg');
+        eliminarCuentaSubmit.before(p);
+      }
+
+    }
+
+  } catch (error) {
+    console.error('Error al eliminar la cuenta', error);
+  }
 }

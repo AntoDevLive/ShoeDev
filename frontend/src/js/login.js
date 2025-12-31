@@ -6,56 +6,57 @@ const loginImg = document.querySelector('#login-img');
 const registerImg = document.querySelector('#register-img');
 const showPassLogin = document.querySelector('#show-password');
 const showPassReg = document.querySelector('#show-password-reg');
+const submitLogin = document.querySelector('#submit-login');
 
 
 // Mostrar registro, ocultar login
 function tabLogin() {
 
-  loginForm.reset();
+    loginForm.reset();
 
-  loginForm.classList.remove('opacity-100');
-  loginForm.classList.remove('z-10');
-  loginForm.classList.add('pointer-events-none');
-  loginForm.classList.add('opacity-0');
+    loginForm.classList.remove('opacity-100');
+    loginForm.classList.remove('z-10');
+    loginForm.classList.add('pointer-events-none');
+    loginForm.classList.add('opacity-0');
 
-  registerForm.classList.remove('opacity-0');
-  registerForm.classList.remove('pointer-events-none');
-  registerForm.classList.add('opacity-100');
-  registerForm.classList.add('z-10');
+    registerForm.classList.remove('opacity-0');
+    registerForm.classList.remove('pointer-events-none');
+    registerForm.classList.add('opacity-100');
+    registerForm.classList.add('z-10');
 
-  loginImg.classList.remove('opacity-0');
-  loginImg.classList.add('opacity-100');
+    loginImg.classList.remove('opacity-0');
+    loginImg.classList.add('opacity-100');
 
-  registerImg.classList.remove('opacity-100');
-  registerImg.classList.add('opacity-0');
+    registerImg.classList.remove('opacity-100');
+    registerImg.classList.add('opacity-0');
 
 }
 
 // Mostrar login, ocultar registro
 function tabRegister() {
 
-  registerForm.reset();
+    registerForm.reset();
 
-  registerForm.classList.add('opacity-0');
-  registerForm.classList.remove('opacity-100');
-  registerForm.classList.add('pointer-events-none');
+    registerForm.classList.add('opacity-0');
+    registerForm.classList.remove('opacity-100');
+    registerForm.classList.add('pointer-events-none');
 
-  loginForm.classList.add('opacity-100');
-  loginForm.classList.remove('opacity-0');
-  loginForm.classList.remove('pointer-events-none');
-  loginForm.classList.add('z-10');
+    loginForm.classList.add('opacity-100');
+    loginForm.classList.remove('opacity-0');
+    loginForm.classList.remove('pointer-events-none');
+    loginForm.classList.add('z-10');
 
-  registerImg.classList.remove('opacity-0');
-  registerImg.classList.add('opacity-100');
+    registerImg.classList.remove('opacity-0');
+    registerImg.classList.add('opacity-100');
 
-  loginImg.classList.remove('opacity-100');
-  loginImg.classList.add('opacity-0');
+    loginImg.classList.remove('opacity-100');
+    loginImg.classList.add('opacity-0');
 
 }
 
 
 function tabForm(form) {
-  form === loginForm ? tabLogin() : tabRegister();
+    form === loginForm ? tabLogin() : tabRegister();
 }
 
 
@@ -64,8 +65,8 @@ registerLink.addEventListener('click', () => tabForm(registerForm));
 
 
 showPassLogin.addEventListener('change', () => {
-  const password = document.querySelector('#password-login');
-  password.type === 'password' ? password.type = 'text' : password.type = 'password';
+    const password = document.querySelector('#password-login');
+    password.type === 'password' ? password.type = 'text' : password.type = 'password';
 });
 
 if (showPassReg) {
@@ -94,14 +95,14 @@ function showError(form, message) {
     msgEl.textContent = message;
 }
 
-// Función para limpiar mensaje de error
+// limpiar mensaje de error
 function clearError(form) {
     const msgEl = form.querySelector('.form-error');
     if (msgEl) msgEl.remove();
 }
 
-// Función para validar login
-function validateLogin(e) {
+// validar login
+async function validateLogin(e) {
     e.preventDefault();
     const email = document.getElementById('email-login');
     const password = document.getElementById('password-login');
@@ -127,7 +128,42 @@ function validateLogin(e) {
         return;
     }
 
-    loginForm.submit();
+    try {
+        const res = await fetch('/shoedev/backend/apis/usuarios/verificar_login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email.value.trim(),
+                password: password.value.trim()
+            })
+        });
+
+        const data = await res.json();
+        if (data.message === 'wrong email' || data.message === 'wrong password') {
+
+            let msg = document.querySelector('.login-error-msg');
+
+            if (!msg) {
+                msg = document.createElement('p');
+                msg.textContent = 'Usuario o contraseña incorrectos';
+                msg.classList.add( 'login-error-msg', 'text-red-600', 'text-lg', 'font-semibold');
+                submitLogin.before(msg);
+            }
+
+        } else {
+            const msg = document.querySelector('.login-error-msg');
+            if (msg) msg.remove();
+            loginForm.submit();
+            
+        }
+
+
+    } catch (error) {
+        console.error('Error en el login');
+    }
+    
 }
 
 // Función para validar registro
