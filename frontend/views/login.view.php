@@ -105,11 +105,16 @@
         <!-- Medidor de seguridad -->
          <div class="w-full grid grid-cols-2 place-items-center">
           <span class="w-full">Seguridad de la contraseña</span>
-          <div class="grid grid-cols-3 w-full h-3 rounded-md overflow-hidden bg-gray-200 border- border-neutral-600 relative">
-            <div class="w-full bg-red-500"></div>
-            <div class="w-full bg-yellow-500"></div>
-            <div class="w-full bg-green-500"></div>
-            <span class="absolute top-5 left-2/4 -translate-2/4">Débil</span>
+          <div class="grid grid-cols-3 w-full h-3 rounded-md bg-gray-400 border border-neutral-600 relative">
+            <div class="w-full bg-red-500 rounded-tl-md rounded-bl-md relative">
+              <span class="absolute top-7 left-2/4 -translate-2/4">Inválida</span>
+            </div>
+            <div class="w-full bg-yellow-500 relative">
+              <span class="absolute top-7 left-2/4 -translate-2/4">Débil</span>
+            </div>
+            <div class="w-full bg-green-500 rounded-tr-md rounded-br-md relative">
+              <span class="absolute top-7 left-2/4 -translate-2/4">Segura</span>
+            </div>
           </div>
          </div>
 

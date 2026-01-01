@@ -8,6 +8,7 @@ const showPassLogin = document.querySelector('#show-password');
 const showPassReg = document.querySelector('#show-password-reg');
 const submitLogin = document.querySelector('#submit-login');
 const submitReg = document.querySelector('#submit-reg');
+let passwordStrength = 'invalid';
 
 
 // Mostrar registro, ocultar login
@@ -102,6 +103,17 @@ function clearError(form) {
     if (msgEl) msgEl.remove();
 }
 
+function clearRegisterErrors() {
+    // Error genérico del formulario (frontend)
+    const formError = registerForm.querySelector('.form-error');
+    if (formError) formError.remove();
+
+    // Error de backend (email / username)
+    const backendError = registerForm.querySelector('.login-error-msg');
+    if (backendError) backendError.remove();
+}
+
+
 // validar login
 async function validateLogin(e) {
     e.preventDefault();
@@ -167,7 +179,7 @@ async function validateLogin(e) {
 
 }
 
-// Función para validar registro
+// validar registro
 async function validateRegister(e) {
     e.preventDefault();
 
@@ -184,10 +196,15 @@ async function validateRegister(e) {
         document.getElementById('pass-rep-reg')
     ];
 
-    clearError(registerForm);
+    // Limpiar errores previos
+    const formError = registerForm.querySelector('.form-error');
+    if (formError) formError.remove();
+    const backendError = registerForm.querySelector('.login-error-msg');
+    if (backendError) backendError.remove();
+
     let errors = [];
 
-    // Validar campos vacíos
+    // Campos vacíos
     fields.forEach(input => {
         if (!input.value.trim()) {
             input.classList.add('border-red-500', 'border-2', 'rounded-md');
@@ -197,14 +214,14 @@ async function validateRegister(e) {
         }
     });
 
-    // Validar email
+    // Validar email con regex
     const email = document.getElementById('correo-reg');
-    if (email.value && !emailRegex.test(email.value)) {
+    if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
         email.classList.add('border-red-500', 'border-2', 'rounded-md');
         errors.push('El email no es válido');
     }
 
-    // Validar que las contraseñas coincidan
+    // Contraseñas no coinciden
     const pass = document.getElementById('pass-reg');
     const passRep = document.getElementById('pass-rep-reg');
     if (pass.value && passRep.value && pass.value !== passRep.value) {
@@ -213,83 +230,91 @@ async function validateRegister(e) {
         errors.push('Las contraseñas no coinciden');
     }
 
+    // Si hay errores de frontend, mostrar y detener
     if (errors.length > 0) {
-        showError(registerForm, errors.join('. '));
+        let msgEl = registerForm.querySelector('.form-error');
+        if (!msgEl) {
+            msgEl = document.createElement('p');
+            msgEl.className = 'form-error text-red-600 text-lg font-semibold text-center mb-2';
+            registerForm.insertBefore(msgEl, registerForm.querySelector('input[type="submit"]'));
+        }
+        msgEl.textContent = errors.join('. ');
         return;
     }
 
-
+    // Comprobar backend
     try {
         const res = await fetch('/shoedev/backend/apis/usuarios/verificar_registro.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 email: email.value.trim(),
                 username: username.value.trim()
             })
         });
 
-        if (!res.ok) {
-            throw new Error('Error en la respuesta del servidor');
-        }
-
+        if (!res.ok) throw new Error('Error en la respuesta del servidor');
         const data = await res.json();
 
-        let msg = document.querySelector('.login-error-msg');
-
+        let msg = registerForm.querySelector('.login-error-msg');
         if (!msg) {
             msg = document.createElement('p');
-            msg.classList.add(
-                'login-error-msg',
-                'text-red-600',
-                'text-lg',
-                'font-semibold'
-            );
+            msg.classList.add('login-error-msg', 'text-red-600', 'text-lg', 'font-semibold', 'text-center', 'mb-2');
             submitReg.before(msg);
         }
 
         if (data.message === 'used email') {
             msg.textContent = 'El email ya existe';
+            email.classList.add('border-red-500', 'border-2', 'rounded-md');
+            return;
         }
-        else if (data.message === 'used username') {
+        if (data.message === 'used username') {
             msg.textContent = 'Nombre de usuario no disponible';
+            username.classList.add('border-red-500', 'border-2', 'rounded-md');
+            return;
         }
-        else if (data.message === 'success') {
+        if (data.message === 'success') {
             msg.remove();
+            // Contraseña insegura
+            if (passwordStrength !== 'strong') {
+                let passMsg = registerForm.querySelector('.form-error');
+                if (!passMsg) {
+                    passMsg = document.createElement('p');
+                    passMsg.className = 'form-error text-red-600 text-md font-semibold text-center mb-2';
+                    registerForm.insertBefore(passMsg, registerForm.querySelector('input[type="submit"]'));
+                }
+                passMsg.textContent = 'La contraseña no es segura. Debe tener al menos 8 caracteres, una mayúscula, un número y un símbolo.';
+                pass.classList.add('border-red-500', 'border-2', 'rounded-md');
+                return;
+            }
             registerForm.submit();
         }
 
     } catch (error) {
         console.error('Error en el registro:', error);
-
-        let msg = document.querySelector('.login-error-msg');
-
+        let msg = registerForm.querySelector('.login-error-msg');
         if (!msg) {
             msg = document.createElement('p');
-            msg.classList.add(
-                'login-error-msg',
-                'text-red-600',
-                'text-lg',
-                'font-semibold'
-            );
+            msg.classList.add('login-error-msg', 'text-red-600', 'text-lg', 'font-semibold', 'text-center', 'mb-2');
             submitReg.before(msg);
         }
-
         msg.textContent = 'Error inesperado. Intenta nuevamente.';
     }
-
-
 }
+
+
+
+
+
 
 // Quitar error cuando el usuario escribe
 function removeErrorOnInput(input) {
     input.addEventListener('input', () => {
         input.classList.remove('border-red-500', 'border-2', 'rounded-md');
-        clearError(input.closest('form'));
+        clearRegisterErrors();
     });
 }
+
 
 // Aplicar listeners a todos los inputs
 document.querySelectorAll('#login-form input').forEach(removeErrorOnInput);
@@ -298,3 +323,70 @@ document.querySelectorAll('#register-form input').forEach(removeErrorOnInput);
 // Escuchar submit
 loginForm.addEventListener('submit', validateLogin);
 registerForm.addEventListener('submit', validateRegister);
+
+
+
+// MEDIDOR DE SEGURIDAD CONTRASEÑA
+const passwordInput = document.getElementById('pass-reg');
+const strengthBar = passwordInput
+    ?.closest('form')
+    .querySelector('.grid.grid-cols-3');
+
+const strengthLevels = strengthBar?.children;
+
+// Reglas
+const hasUppercase = (str) => /[A-Z]/.test(str);
+const hasNumber = (str) => /[0-9]/.test(str);
+const hasSymbol = (str) => /[^a-zA-Z0-9]/.test(str);
+
+// Reset visual
+function resetStrengthBar() {
+    [...strengthLevels].forEach(level => {
+        level.classList.remove('opacity-100');
+        level.classList.add('opacity-0');
+    });
+}
+
+// Activar nivel
+function activateStrengthLevel(index) {
+    resetStrengthBar();
+    strengthLevels[index].classList.remove('opacity-0');
+    strengthLevels[index].classList.add('opacity-100');
+}
+
+// Evaluar contraseña
+function evaluatePasswordStrength(password) {
+
+    // 🔴 Inválida
+    if (!password || password.length < 8 || !hasUppercase(password)) {
+        activateStrengthLevel(0);
+        passwordStrength = 'invalid';
+        return;
+    }
+
+    // 🟢 Segura
+    if (
+        password.length >= 8 &&
+        hasUppercase(password) &&
+        hasNumber(password) &&
+        hasSymbol(password)
+    ) {
+        activateStrengthLevel(2);
+        passwordStrength = 'strong';
+        return;
+    }
+
+    // 🟡 Débil
+    activateStrengthLevel(1);
+    passwordStrength = 'weak';
+}
+
+
+
+// Estado inicial
+resetStrengthBar();
+
+// Escuchar cambios
+passwordInput.addEventListener('input', (e) => {
+    evaluatePasswordStrength(e.target.value);
+});
