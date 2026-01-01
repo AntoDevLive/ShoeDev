@@ -357,14 +357,14 @@ function activateStrengthLevel(index) {
 // Evaluar contraseña
 function evaluatePasswordStrength(password) {
 
-    // 🔴 Inválida
+    // Inválida
     if (!password || password.length < 8 || !hasUppercase(password)) {
         activateStrengthLevel(0);
         passwordStrength = 'invalid';
         return;
     }
 
-    // 🟢 Segura
+    // Segura
     if (
         password.length >= 8 &&
         hasUppercase(password) &&
@@ -376,11 +376,10 @@ function evaluatePasswordStrength(password) {
         return;
     }
 
-    // 🟡 Débil
+    // Débil
     activateStrengthLevel(1);
     passwordStrength = 'weak';
 }
-
 
 
 // Estado inicial
@@ -390,3 +389,19 @@ resetStrengthBar();
 passwordInput.addEventListener('input', (e) => {
     evaluatePasswordStrength(e.target.value);
 });
+
+
+// BLOQUEAR FECHAS PARA MENORES DE 18
+const nacimientoInput = document.getElementById('nacimiento');
+
+if (nacimientoInput) {
+    const hoy = new Date();
+
+    const fechaMaxima = new Date(
+        hoy.getFullYear() - 18,
+        hoy.getMonth(),
+        hoy.getDate()
+    );
+
+    nacimientoInput.max = fechaMaxima.toISOString().split('T')[0];
+}

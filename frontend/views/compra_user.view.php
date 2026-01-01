@@ -1,16 +1,3 @@
-<?php
-
-require '../backend/config/database.php';
-
-$conexion = conectarDB();
-
-$stmt = $conexion->prepare("SELECT perfil.nombre, perfil.apellidos, perfil.direccion, usuario.email FROM perfil RIGHT JOIN usuario ON usuario.id = perfil.usuario_id");
-$stmt->execute();
-$info = $stmt->fetch();
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,7 +6,7 @@ $info = $stmt->fetch();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/shoedev/frontend/src/output.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-  <link rel="shortcut icon" href="frontend/src/assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/shoedev/frontend/src/assets/favicon.png" type="image/x-icon">
   <title>ShoeDev | Historial de Compras</title>
 </head>
 

@@ -99,7 +99,7 @@
         <!-- Repite contraseña -->
         <div class="w-full">
           <input class="outline-none focus:border-orange-500 w-full rounded-md py-1.5 px-2.5 text-xl bg-white border border-orange-300"
-            type="password" name="password" placeholder="Contraseña" id="pass-rep-reg">
+            type="password" name="password" placeholder="Repite contraseña" id="pass-rep-reg">
         </div>
 
         <!-- Medidor de seguridad -->
