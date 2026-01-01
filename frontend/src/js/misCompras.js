@@ -97,7 +97,8 @@ async function listarCompras() {
           <td class="py-3 px-6 flex justify-center">
             <img class="!w-20 !h-20 !object-cover rounded-md shadow" src="/shoedev/backend/uploads/products/${compra.imagen}" alt="${compra.titulo}">
           </td>
-          <td class="py-3 px-6 text-center">${compra.titulo}</td>
+          <td class="py-3 px-6 text-center capitalize">${compra.titulo}</td>
+          <td class="py-3 px-6 text-center capitalize">${compra.marca}</td>
           <td class="py-3 px-6 text-center">${compra.cantidad}</td>
           <td class="py-3 px-6 text-center">${parseFloat(compra.precio_compra).toFixed(2)} €</td>
           <td class="py-3 px-6 text-center font-bold text-orange-600">${parseFloat(compra.subtotal).toFixed(2)} €</td>

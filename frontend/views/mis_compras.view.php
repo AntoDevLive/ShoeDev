@@ -82,6 +82,7 @@ if (!isset($_SESSION['id'])) {
             <th class="px-6 py-4">Fecha</th>
             <th class="px-6 py-4">Imagen</th>
             <th class="px-6 py-4">Modelo</th>
+            <th class="px-6 py-4">Marca</th>
             <th class="px-6 py-4">Cantidad</th>
             <th class="px-6 py-4">Precio</th>
             <th class="px-6 py-4">Total</th>
