@@ -57,7 +57,7 @@ Entre los aspectos trabajados destacan:
 ### Clonar el repositorio
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/AntoDevLive/ShoeDev.git
 ```
 
 ### Acceder al proyecto
